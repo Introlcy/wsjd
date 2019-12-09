@@ -4,6 +4,7 @@ import com.authority.service.OrganizationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.Resource;
 
@@ -17,7 +18,7 @@ public class OrganizationController {
     @Resource
     private OrganizationService service;
 
-    @RequestMapping(value = "/ognzx")
+    @RequestMapping(value = "/ognzx",method = RequestMethod.GET)
     public String selectAll(Model model){
         model.addAttribute("list",service.selectAllOrganization());
         return "institution-list";

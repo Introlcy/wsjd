@@ -65,8 +65,8 @@
                 <td align="left"><a href="institution-view.html">${ornation.orgname}</a></td>
                 <td align="center">${ornation.exetype}</td>
                 <td align="left">${ornation.linkadd}</td>
-                <td align="center">${ornation.listingdate}</td>
-                <td align="center">${ornation.zbbdocdate}</td>
+                <td align="center">${ornation.listingdate?string('yyyy-MM-dd HH:mm:ss')}</td>
+                <td align="center">${ornation.zbbdocdate?string('yyyy-MM-dd HH:mm:ss')}</td>
                 <td align="center">
                     <a href="institution-view.html" class="btnIconView" title="查看详情"></a>
                     <a href="institution-creat.html" class="btnIconEdit" title="更新"></a>
