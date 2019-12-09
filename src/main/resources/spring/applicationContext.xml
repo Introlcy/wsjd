@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+		xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans.xsd
+	    http://www.springframework.org/schema/context
+	    http://www.springframework.org/schema/context/spring-context.xsd">
+	<!--配置一个注解扫描器-->
+	<context:component-scan base-package="com.ssm">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+
+	<!-- 引入外部资源文件-->
+	<context:property-placeholder location="classpath:db.properties"/>
+
+
+	<!-- 数据源的配置：德鲁伊连接池-->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+		<!-- 基础配置 -->
+		<property name="driverClassName" value="${mysql.dirver}"/>
+		<property name="url" value="${mysql.url}"/>
+		<property name="username" value="${mysql.username}"/>
+		<property name="password" value="${mysql.password}"/>
+		<!-- 关键配置 -->
+		<!-- 初始化时建立物理连接的个数。初始化发生在显示调用init方法，或者第一次getConnection时 -->
+		<property name="initialSize" value="${druid.initialSize}" />
+		<!-- 最小连接池数量 -->
+		<property name="minIdle" value="${druid.minIdle}" />
+		<!-- 最大连接池数量 -->
+		<property name="maxActive" value="${druid.maxActive}" />
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="${druid.maxWait}" />
+	</bean>
+
+
+	<!-- mybatis的SqlSessionFactory对象-->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 数据源-->
+		<property name="dataSource" ref="dataSource"/>
+		<!-- 加载mybatis的全局配置文件-->
+		<property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
+		<!-- 加载mapper映射文件,可以使用通配符-->
+		<property name="mapperLocations" value="classpath:mybatis/mapper/*Mapper.xml"/>
+	</bean>
+
+	<!-- mapper代理对象 -->
+	<!-- mapper代理对象的扫描器-->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 扫描基础包-->
+		<!-- 如果有多个基础包，可以使用逗号分隔-->
+		<property name="basePackage" value="com.ssm.dao" />
+		<!-- 注入SqlSessionFactory-->
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+	</bean>
+
+
+
+</beans>
