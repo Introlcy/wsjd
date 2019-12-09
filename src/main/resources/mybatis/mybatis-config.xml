@@ -16,10 +16,8 @@
         <!-- 开启二级缓存-->
         <setting name="cacheEnabled" value="true"/>
     </settings>
-
-
     <typeAliases>
-      <package name="com.authority.entity" ></package>
+        <package name="com.authority.entity"/>
     </typeAliases>
 
     <!-- 分页插件 -->

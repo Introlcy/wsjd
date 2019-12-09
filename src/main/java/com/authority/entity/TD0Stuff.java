@@ -11,6 +11,7 @@ public class TD0Stuff implements Serializable {
     /**
      * id
      */
+
     private Integer id;
 
     /**

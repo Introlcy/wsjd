@@ -39,6 +39,14 @@
     title, getInDate, perPro, perType, enfCardNo, getCardDate, healthPerNo, getQuaDate, 
     healthCardNo, cardDay, ifStaffPer
   </sql>
+  <select id="getAllStuff" resultType="TD0Stuff">
+    select
+    <include refid="Base_Column_List" />
+    from t_d0_stuff
+  </select>
+
+
+
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
