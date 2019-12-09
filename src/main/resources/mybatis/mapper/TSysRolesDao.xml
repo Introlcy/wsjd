@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.authority.dao.TSysRolesDao">
+  <resultMap id="BaseResultMap" type="com.authority.entity.TSysRoles">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="roleName" jdbcType="VARCHAR" property="rolename" />
+    <result column="roleDesc" jdbcType="VARCHAR" property="roledesc" />
+    <result column="del" jdbcType="VARCHAR" property="del" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, roleName, roleDesc, del
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_roles
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_sys_roles
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.authority.entity.TSysRoles" useGeneratedKeys="true">
+    insert into t_sys_roles (roleName, roleDesc, del
+      )
+    values (#{rolename,jdbcType=VARCHAR}, #{roledesc,jdbcType=VARCHAR}, #{del,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.authority.entity.TSysRoles" useGeneratedKeys="true">
+    insert into t_sys_roles
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rolename != null">
+        roleName,
+      </if>
+      <if test="roledesc != null">
+        roleDesc,
+      </if>
+      <if test="del != null">
+        del,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rolename != null">
+        #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="roledesc != null">
+        #{roledesc,jdbcType=VARCHAR},
+      </if>
+      <if test="del != null">
+        #{del,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.authority.entity.TSysRoles">
+    update t_sys_roles
+    <set>
+      <if test="rolename != null">
+        roleName = #{rolename,jdbcType=VARCHAR},
+      </if>
+      <if test="roledesc != null">
+        roleDesc = #{roledesc,jdbcType=VARCHAR},
+      </if>
+      <if test="del != null">
+        del = #{del,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.authority.entity.TSysRoles">
+    update t_sys_roles
+    set roleName = #{rolename,jdbcType=VARCHAR},
+      roleDesc = #{roledesc,jdbcType=VARCHAR},
+      del = #{del,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

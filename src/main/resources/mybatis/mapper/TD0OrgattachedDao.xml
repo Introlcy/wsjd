@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.authority.dao.TD0OrgattachedDao">
+  <resultMap id="BaseResultMap" type="com.authority.entity.TD0Orgattached">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="orgId" jdbcType="INTEGER" property="orgid" />
+    <result column="orgName" jdbcType="VARCHAR" property="orgname" />
+    <result column="orgNo" jdbcType="VARCHAR" property="orgno" />
+    <result column="orgCode" jdbcType="VARCHAR" property="orgcode" />
+    <result column="onworkerNum" jdbcType="INTEGER" property="onworkernum" />
+    <result column="supervisorNum" jdbcType="INTEGER" property="supervisornum" />
+    <result column="zbbNum" jdbcType="INTEGER" property="zbbnum" />
+    <result column="ifPublicmanage" jdbcType="VARCHAR" property="ifpublicmanage" />
+    <result column="retireNum" jdbcType="INTEGER" property="retirenum" />
+    <result column="officeBuildarea" jdbcType="INTEGER" property="officebuildarea" />
+    <result column="buildingOwnership" jdbcType="VARCHAR" property="buildingownership" />
+    <result column="officeBuildingarea" jdbcType="INTEGER" property="officebuildingarea" />
+    <result column="businessDivCount" jdbcType="INTEGER" property="businessdivcount" />
+    <result column="funDivCount" jdbcType="INTEGER" property="fundivcount" />
+    <result column="orgCount" jdbcType="INTEGER" property="orgcount" />
+    <result column="equ3Count" jdbcType="INTEGER" property="equ3count" />
+    <result column="equ2Count" jdbcType="INTEGER" property="equ2count" />
+    <result column="equ1Count" jdbcType="INTEGER" property="equ1count" />
+    <result column="busCount" jdbcType="INTEGER" property="buscount" />
+    <result column="rapidtestvehicleCount" jdbcType="INTEGER" property="rapidtestvehiclecount" />
+    <result column="motorCount" jdbcType="INTEGER" property="motorcount" />
+    <result column="cameraCount" jdbcType="INTEGER" property="cameracount" />
+    <result column="videoCount" jdbcType="INTEGER" property="videocount" />
+    <result column="copycatNum" jdbcType="INTEGER" property="copycatnum" />
+    <result column="computerNum" jdbcType="INTEGER" property="computernum" />
+    <result column="notepadNum" jdbcType="INTEGER" property="notepadnum" />
+    <result column="serverCount" jdbcType="INTEGER" property="servercount" />
+    <result column="pbxCount" jdbcType="INTEGER" property="pbxcount" />
+    <result column="faxCount" jdbcType="INTEGER" property="faxcount" />
+    <result column="ohpCount" jdbcType="INTEGER" property="ohpcount" />
+    <result column="yearly" jdbcType="VARCHAR" property="yearly" />
+    <result column="VRCOUNT" jdbcType="INTEGER" property="vrcount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, orgId, orgName, orgNo, orgCode, onworkerNum, supervisorNum, zbbNum, ifPublicmanage, 
+    retireNum, officeBuildarea, buildingOwnership, officeBuildingarea, businessDivCount, 
+    funDivCount, orgCount, equ3Count, equ2Count, equ1Count, busCount, rapidtestvehicleCount, 
+    motorCount, cameraCount, videoCount, copycatNum, computerNum, notepadNum, serverCount, 
+    pbxCount, faxCount, ohpCount, yearly, VRCOUNT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_d0_orgattached
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_d0_orgattached
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.authority.entity.TD0Orgattached" useGeneratedKeys="true">
+    insert into t_d0_orgattached (orgId, orgName, orgNo, 
+      orgCode, onworkerNum, supervisorNum, 
+      zbbNum, ifPublicmanage, retireNum, 
+      officeBuildarea, buildingOwnership, officeBuildingarea, 
+      businessDivCount, funDivCount, orgCount, 
+      equ3Count, equ2Count, equ1Count, 
+      busCount, rapidtestvehicleCount, motorCount, 
+      cameraCount, videoCount, copycatNum, 
+      computerNum, notepadNum, serverCount, 
+      pbxCount, faxCount, ohpCount, 
+      yearly, VRCOUNT)
+    values (#{orgid,jdbcType=INTEGER}, #{orgname,jdbcType=VARCHAR}, #{orgno,jdbcType=VARCHAR}, 
+      #{orgcode,jdbcType=VARCHAR}, #{onworkernum,jdbcType=INTEGER}, #{supervisornum,jdbcType=INTEGER}, 
+      #{zbbnum,jdbcType=INTEGER}, #{ifpublicmanage,jdbcType=VARCHAR}, #{retirenum,jdbcType=INTEGER}, 
+      #{officebuildarea,jdbcType=INTEGER}, #{buildingownership,jdbcType=VARCHAR}, #{officebuildingarea,jdbcType=INTEGER}, 
+      #{businessdivcount,jdbcType=INTEGER}, #{fundivcount,jdbcType=INTEGER}, #{orgcount,jdbcType=INTEGER}, 
+      #{equ3count,jdbcType=INTEGER}, #{equ2count,jdbcType=INTEGER}, #{equ1count,jdbcType=INTEGER}, 
+      #{buscount,jdbcType=INTEGER}, #{rapidtestvehiclecount,jdbcType=INTEGER}, #{motorcount,jdbcType=INTEGER}, 
+      #{cameracount,jdbcType=INTEGER}, #{videocount,jdbcType=INTEGER}, #{copycatnum,jdbcType=INTEGER}, 
+      #{computernum,jdbcType=INTEGER}, #{notepadnum,jdbcType=INTEGER}, #{servercount,jdbcType=INTEGER}, 
+      #{pbxcount,jdbcType=INTEGER}, #{faxcount,jdbcType=INTEGER}, #{ohpcount,jdbcType=INTEGER}, 
+      #{yearly,jdbcType=VARCHAR}, #{vrcount,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.authority.entity.TD0Orgattached" useGeneratedKeys="true">
+    insert into t_d0_orgattached
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orgid != null">
+        orgId,
+      </if>
+      <if test="orgname != null">
+        orgName,
+      </if>
+      <if test="orgno != null">
+        orgNo,
+      </if>
+      <if test="orgcode != null">
+        orgCode,
+      </if>
+      <if test="onworkernum != null">
+        onworkerNum,
+      </if>
+      <if test="supervisornum != null">
+        supervisorNum,
+      </if>
+      <if test="zbbnum != null">
+        zbbNum,
+      </if>
+      <if test="ifpublicmanage != null">
+        ifPublicmanage,
+      </if>
+      <if test="retirenum != null">
+        retireNum,
+      </if>
+      <if test="officebuildarea != null">
+        officeBuildarea,
+      </if>
+      <if test="buildingownership != null">
+        buildingOwnership,
+      </if>
+      <if test="officebuildingarea != null">
+        officeBuildingarea,
+      </if>
+      <if test="businessdivcount != null">
+        businessDivCount,
+      </if>
+      <if test="fundivcount != null">
+        funDivCount,
+      </if>
+      <if test="orgcount != null">
+        orgCount,
+      </if>
+      <if test="equ3count != null">
+        equ3Count,
+      </if>
+      <if test="equ2count != null">
+        equ2Count,
+      </if>
+      <if test="equ1count != null">
+        equ1Count,
+      </if>
+      <if test="buscount != null">
+        busCount,
+      </if>
+      <if test="rapidtestvehiclecount != null">
+        rapidtestvehicleCount,
+      </if>
+      <if test="motorcount != null">
+        motorCount,
+      </if>
+      <if test="cameracount != null">
+        cameraCount,
+      </if>
+      <if test="videocount != null">
+        videoCount,
+      </if>
+      <if test="copycatnum != null">
+        copycatNum,
+      </if>
+      <if test="computernum != null">
+        computerNum,
+      </if>
+      <if test="notepadnum != null">
+        notepadNum,
+      </if>
+      <if test="servercount != null">
+        serverCount,
+      </if>
+      <if test="pbxcount != null">
+        pbxCount,
+      </if>
+      <if test="faxcount != null">
+        faxCount,
+      </if>
+      <if test="ohpcount != null">
+        ohpCount,
+      </if>
+      <if test="yearly != null">
+        yearly,
+      </if>
+      <if test="vrcount != null">
+        VRCOUNT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orgid != null">
+        #{orgid,jdbcType=INTEGER},
+      </if>
+      <if test="orgname != null">
+        #{orgname,jdbcType=VARCHAR},
+      </if>
+      <if test="orgno != null">
+        #{orgno,jdbcType=VARCHAR},
+      </if>
+      <if test="orgcode != null">
+        #{orgcode,jdbcType=VARCHAR},
+      </if>
+      <if test="onworkernum != null">
+        #{onworkernum,jdbcType=INTEGER},
+      </if>
+      <if test="supervisornum != null">
+        #{supervisornum,jdbcType=INTEGER},
+      </if>
+      <if test="zbbnum != null">
+        #{zbbnum,jdbcType=INTEGER},
+      </if>
+      <if test="ifpublicmanage != null">
+        #{ifpublicmanage,jdbcType=VARCHAR},
+      </if>
+      <if test="retirenum != null">
+        #{retirenum,jdbcType=INTEGER},
+      </if>
+      <if test="officebuildarea != null">
+        #{officebuildarea,jdbcType=INTEGER},
+      </if>
+      <if test="buildingownership != null">
+        #{buildingownership,jdbcType=VARCHAR},
+      </if>
+      <if test="officebuildingarea != null">
+        #{officebuildingarea,jdbcType=INTEGER},
+      </if>
+      <if test="businessdivcount != null">
+        #{businessdivcount,jdbcType=INTEGER},
+      </if>
+      <if test="fundivcount != null">
+        #{fundivcount,jdbcType=INTEGER},
+      </if>
+      <if test="orgcount != null">
+        #{orgcount,jdbcType=INTEGER},
+      </if>
+      <if test="equ3count != null">
+        #{equ3count,jdbcType=INTEGER},
+      </if>
+      <if test="equ2count != null">
+        #{equ2count,jdbcType=INTEGER},
+      </if>
+      <if test="equ1count != null">
+        #{equ1count,jdbcType=INTEGER},
+      </if>
+      <if test="buscount != null">
+        #{buscount,jdbcType=INTEGER},
+      </if>
+      <if test="rapidtestvehiclecount != null">
+        #{rapidtestvehiclecount,jdbcType=INTEGER},
+      </if>
+      <if test="motorcount != null">
+        #{motorcount,jdbcType=INTEGER},
+      </if>
+      <if test="cameracount != null">
+        #{cameracount,jdbcType=INTEGER},
+      </if>
+      <if test="videocount != null">
+        #{videocount,jdbcType=INTEGER},
+      </if>
+      <if test="copycatnum != null">
+        #{copycatnum,jdbcType=INTEGER},
+      </if>
+      <if test="computernum != null">
+        #{computernum,jdbcType=INTEGER},
+      </if>
+      <if test="notepadnum != null">
+        #{notepadnum,jdbcType=INTEGER},
+      </if>
+      <if test="servercount != null">
+        #{servercount,jdbcType=INTEGER},
+      </if>
+      <if test="pbxcount != null">
+        #{pbxcount,jdbcType=INTEGER},
+      </if>
+      <if test="faxcount != null">
+        #{faxcount,jdbcType=INTEGER},
+      </if>
+      <if test="ohpcount != null">
+        #{ohpcount,jdbcType=INTEGER},
+      </if>
+      <if test="yearly != null">
+        #{yearly,jdbcType=VARCHAR},
+      </if>
+      <if test="vrcount != null">
+        #{vrcount,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.authority.entity.TD0Orgattached">
+    update t_d0_orgattached
+    <set>
+      <if test="orgid != null">
+        orgId = #{orgid,jdbcType=INTEGER},
+      </if>
+      <if test="orgname != null">
+        orgName = #{orgname,jdbcType=VARCHAR},
+      </if>
+      <if test="orgno != null">
+        orgNo = #{orgno,jdbcType=VARCHAR},
+      </if>
+      <if test="orgcode != null">
+        orgCode = #{orgcode,jdbcType=VARCHAR},
+      </if>
+      <if test="onworkernum != null">
+        onworkerNum = #{onworkernum,jdbcType=INTEGER},
+      </if>
+      <if test="supervisornum != null">
+        supervisorNum = #{supervisornum,jdbcType=INTEGER},
+      </if>
+      <if test="zbbnum != null">
+        zbbNum = #{zbbnum,jdbcType=INTEGER},
+      </if>
+      <if test="ifpublicmanage != null">
+        ifPublicmanage = #{ifpublicmanage,jdbcType=VARCHAR},
+      </if>
+      <if test="retirenum != null">
+        retireNum = #{retirenum,jdbcType=INTEGER},
+      </if>
+      <if test="officebuildarea != null">
+        officeBuildarea = #{officebuildarea,jdbcType=INTEGER},
+      </if>
+      <if test="buildingownership != null">
+        buildingOwnership = #{buildingownership,jdbcType=VARCHAR},
+      </if>
+      <if test="officebuildingarea != null">
+        officeBuildingarea = #{officebuildingarea,jdbcType=INTEGER},
+      </if>
+      <if test="businessdivcount != null">
+        businessDivCount = #{businessdivcount,jdbcType=INTEGER},
+      </if>
+      <if test="fundivcount != null">
+        funDivCount = #{fundivcount,jdbcType=INTEGER},
+      </if>
+      <if test="orgcount != null">
+        orgCount = #{orgcount,jdbcType=INTEGER},
+      </if>
+      <if test="equ3count != null">
+        equ3Count = #{equ3count,jdbcType=INTEGER},
+      </if>
+      <if test="equ2count != null">
+        equ2Count = #{equ2count,jdbcType=INTEGER},
+      </if>
+      <if test="equ1count != null">
+        equ1Count = #{equ1count,jdbcType=INTEGER},
+      </if>
+      <if test="buscount != null">
+        busCount = #{buscount,jdbcType=INTEGER},
+      </if>
+      <if test="rapidtestvehiclecount != null">
+        rapidtestvehicleCount = #{rapidtestvehiclecount,jdbcType=INTEGER},
+      </if>
+      <if test="motorcount != null">
+        motorCount = #{motorcount,jdbcType=INTEGER},
+      </if>
+      <if test="cameracount != null">
+        cameraCount = #{cameracount,jdbcType=INTEGER},
+      </if>
+      <if test="videocount != null">
+        videoCount = #{videocount,jdbcType=INTEGER},
+      </if>
+      <if test="copycatnum != null">
+        copycatNum = #{copycatnum,jdbcType=INTEGER},
+      </if>
+      <if test="computernum != null">
+        computerNum = #{computernum,jdbcType=INTEGER},
+      </if>
+      <if test="notepadnum != null">
+        notepadNum = #{notepadnum,jdbcType=INTEGER},
+      </if>
+      <if test="servercount != null">
+        serverCount = #{servercount,jdbcType=INTEGER},
+      </if>
+      <if test="pbxcount != null">
+        pbxCount = #{pbxcount,jdbcType=INTEGER},
+      </if>
+      <if test="faxcount != null">
+        faxCount = #{faxcount,jdbcType=INTEGER},
+      </if>
+      <if test="ohpcount != null">
+        ohpCount = #{ohpcount,jdbcType=INTEGER},
+      </if>
+      <if test="yearly != null">
+        yearly = #{yearly,jdbcType=VARCHAR},
+      </if>
+      <if test="vrcount != null">
+        VRCOUNT = #{vrcount,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.authority.entity.TD0Orgattached">
+    update t_d0_orgattached
+    set orgId = #{orgid,jdbcType=INTEGER},
+      orgName = #{orgname,jdbcType=VARCHAR},
+      orgNo = #{orgno,jdbcType=VARCHAR},
+      orgCode = #{orgcode,jdbcType=VARCHAR},
+      onworkerNum = #{onworkernum,jdbcType=INTEGER},
+      supervisorNum = #{supervisornum,jdbcType=INTEGER},
+      zbbNum = #{zbbnum,jdbcType=INTEGER},
+      ifPublicmanage = #{ifpublicmanage,jdbcType=VARCHAR},
+      retireNum = #{retirenum,jdbcType=INTEGER},
+      officeBuildarea = #{officebuildarea,jdbcType=INTEGER},
+      buildingOwnership = #{buildingownership,jdbcType=VARCHAR},
+      officeBuildingarea = #{officebuildingarea,jdbcType=INTEGER},
+      businessDivCount = #{businessdivcount,jdbcType=INTEGER},
+      funDivCount = #{fundivcount,jdbcType=INTEGER},
+      orgCount = #{orgcount,jdbcType=INTEGER},
+      equ3Count = #{equ3count,jdbcType=INTEGER},
+      equ2Count = #{equ2count,jdbcType=INTEGER},
+      equ1Count = #{equ1count,jdbcType=INTEGER},
+      busCount = #{buscount,jdbcType=INTEGER},
+      rapidtestvehicleCount = #{rapidtestvehiclecount,jdbcType=INTEGER},
+      motorCount = #{motorcount,jdbcType=INTEGER},
+      cameraCount = #{cameracount,jdbcType=INTEGER},
+      videoCount = #{videocount,jdbcType=INTEGER},
+      copycatNum = #{copycatnum,jdbcType=INTEGER},
+      computerNum = #{computernum,jdbcType=INTEGER},
+      notepadNum = #{notepadnum,jdbcType=INTEGER},
+      serverCount = #{servercount,jdbcType=INTEGER},
+      pbxCount = #{pbxcount,jdbcType=INTEGER},
+      faxCount = #{faxcount,jdbcType=INTEGER},
+      ohpCount = #{ohpcount,jdbcType=INTEGER},
+      yearly = #{yearly,jdbcType=VARCHAR},
+      VRCOUNT = #{vrcount,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

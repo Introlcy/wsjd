@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.authority.dao.TD0SectionDao">
+  <resultMap id="BaseResultMap" type="com.authority.entity.TD0Section">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="orgId" jdbcType="INTEGER" property="orgid" />
+    <result column="divCode" jdbcType="VARCHAR" property="divcode" />
+    <result column="divNameCode" jdbcType="VARCHAR" property="divnamecode" />
+    <result column="divName" jdbcType="VARCHAR" property="divname" />
+    <result column="ifSub" jdbcType="VARCHAR" property="ifsub" />
+    <result column="dutyTel" jdbcType="VARCHAR" property="dutytel" />
+    <result column="fax" jdbcType="VARCHAR" property="fax" />
+    <result column="divRoomNo" jdbcType="VARCHAR" property="divroomno" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, orgId, divCode, divNameCode, divName, ifSub, dutyTel, fax, divRoomNo
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_d0_section
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_d0_section
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.authority.entity.TD0Section" useGeneratedKeys="true">
+    insert into t_d0_section (orgId, divCode, divNameCode, 
+      divName, ifSub, dutyTel, 
+      fax, divRoomNo)
+    values (#{orgid,jdbcType=INTEGER}, #{divcode,jdbcType=VARCHAR}, #{divnamecode,jdbcType=VARCHAR}, 
+      #{divname,jdbcType=VARCHAR}, #{ifsub,jdbcType=VARCHAR}, #{dutytel,jdbcType=VARCHAR}, 
+      #{fax,jdbcType=VARCHAR}, #{divroomno,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.authority.entity.TD0Section" useGeneratedKeys="true">
+    insert into t_d0_section
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orgid != null">
+        orgId,
+      </if>
+      <if test="divcode != null">
+        divCode,
+      </if>
+      <if test="divnamecode != null">
+        divNameCode,
+      </if>
+      <if test="divname != null">
+        divName,
+      </if>
+      <if test="ifsub != null">
+        ifSub,
+      </if>
+      <if test="dutytel != null">
+        dutyTel,
+      </if>
+      <if test="fax != null">
+        fax,
+      </if>
+      <if test="divroomno != null">
+        divRoomNo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orgid != null">
+        #{orgid,jdbcType=INTEGER},
+      </if>
+      <if test="divcode != null">
+        #{divcode,jdbcType=VARCHAR},
+      </if>
+      <if test="divnamecode != null">
+        #{divnamecode,jdbcType=VARCHAR},
+      </if>
+      <if test="divname != null">
+        #{divname,jdbcType=VARCHAR},
+      </if>
+      <if test="ifsub != null">
+        #{ifsub,jdbcType=VARCHAR},
+      </if>
+      <if test="dutytel != null">
+        #{dutytel,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null">
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="divroomno != null">
+        #{divroomno,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.authority.entity.TD0Section">
+    update t_d0_section
+    <set>
+      <if test="orgid != null">
+        orgId = #{orgid,jdbcType=INTEGER},
+      </if>
+      <if test="divcode != null">
+        divCode = #{divcode,jdbcType=VARCHAR},
+      </if>
+      <if test="divnamecode != null">
+        divNameCode = #{divnamecode,jdbcType=VARCHAR},
+      </if>
+      <if test="divname != null">
+        divName = #{divname,jdbcType=VARCHAR},
+      </if>
+      <if test="ifsub != null">
+        ifSub = #{ifsub,jdbcType=VARCHAR},
+      </if>
+      <if test="dutytel != null">
+        dutyTel = #{dutytel,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null">
+        fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="divroomno != null">
+        divRoomNo = #{divroomno,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.authority.entity.TD0Section">
+    update t_d0_section
+    set orgId = #{orgid,jdbcType=INTEGER},
+      divCode = #{divcode,jdbcType=VARCHAR},
+      divNameCode = #{divnamecode,jdbcType=VARCHAR},
+      divName = #{divname,jdbcType=VARCHAR},
+      ifSub = #{ifsub,jdbcType=VARCHAR},
+      dutyTel = #{dutytel,jdbcType=VARCHAR},
+      fax = #{fax,jdbcType=VARCHAR},
+      divRoomNo = #{divroomno,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

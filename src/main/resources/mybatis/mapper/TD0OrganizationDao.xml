@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.authority.dao.TD0OrganizationDao">
+  <resultMap id="BaseResultMap" type="com.authority.entity.TD0Organization">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="orgNo" jdbcType="VARCHAR" property="orgno" />
+    <result column="orgCode" jdbcType="VARCHAR" property="orgcode" />
+    <result column="orgName" jdbcType="VARCHAR" property="orgname" />
+    <result column="exeType" jdbcType="VARCHAR" property="exetype" />
+    <result column="areaCode" jdbcType="VARCHAR" property="areacode" />
+    <result column="linkAdd" jdbcType="VARCHAR" property="linkadd" />
+    <result column="listingDate" jdbcType="TIMESTAMP" property="listingdate" />
+    <result column="standaloneDate" jdbcType="TIMESTAMP" property="standalonedate" />
+    <result column="areaType" jdbcType="VARCHAR" property="areatype" />
+    <result column="zbbdocDate" jdbcType="TIMESTAMP" property="zbbdocdate" />
+    <result column="orgLevel" jdbcType="VARCHAR" property="orglevel" />
+    <result column="orgPro" jdbcType="VARCHAR" property="orgpro" />
+    <result column="zipcode" jdbcType="VARCHAR" property="zipcode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, orgNo, orgCode, orgName, exeType, areaCode, linkAdd, listingDate, standaloneDate, 
+    areaType, zbbdocDate, orgLevel, orgPro, zipcode
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_d0_organization
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_d0_organization
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.authority.entity.TD0Organization" useGeneratedKeys="true">
+    insert into t_d0_organization (orgNo, orgCode, orgName, 
+      exeType, areaCode, linkAdd, 
+      listingDate, standaloneDate, areaType, 
+      zbbdocDate, orgLevel, orgPro, 
+      zipcode)
+    values (#{orgno,jdbcType=VARCHAR}, #{orgcode,jdbcType=VARCHAR}, #{orgname,jdbcType=VARCHAR}, 
+      #{exetype,jdbcType=VARCHAR}, #{areacode,jdbcType=VARCHAR}, #{linkadd,jdbcType=VARCHAR}, 
+      #{listingdate,jdbcType=TIMESTAMP}, #{standalonedate,jdbcType=TIMESTAMP}, #{areatype,jdbcType=VARCHAR}, 
+      #{zbbdocdate,jdbcType=TIMESTAMP}, #{orglevel,jdbcType=VARCHAR}, #{orgpro,jdbcType=VARCHAR}, 
+      #{zipcode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.authority.entity.TD0Organization" useGeneratedKeys="true">
+    insert into t_d0_organization
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orgno != null">
+        orgNo,
+      </if>
+      <if test="orgcode != null">
+        orgCode,
+      </if>
+      <if test="orgname != null">
+        orgName,
+      </if>
+      <if test="exetype != null">
+        exeType,
+      </if>
+      <if test="areacode != null">
+        areaCode,
+      </if>
+      <if test="linkadd != null">
+        linkAdd,
+      </if>
+      <if test="listingdate != null">
+        listingDate,
+      </if>
+      <if test="standalonedate != null">
+        standaloneDate,
+      </if>
+      <if test="areatype != null">
+        areaType,
+      </if>
+      <if test="zbbdocdate != null">
+        zbbdocDate,
+      </if>
+      <if test="orglevel != null">
+        orgLevel,
+      </if>
+      <if test="orgpro != null">
+        orgPro,
+      </if>
+      <if test="zipcode != null">
+        zipcode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orgno != null">
+        #{orgno,jdbcType=VARCHAR},
+      </if>
+      <if test="orgcode != null">
+        #{orgcode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgname != null">
+        #{orgname,jdbcType=VARCHAR},
+      </if>
+      <if test="exetype != null">
+        #{exetype,jdbcType=VARCHAR},
+      </if>
+      <if test="areacode != null">
+        #{areacode,jdbcType=VARCHAR},
+      </if>
+      <if test="linkadd != null">
+        #{linkadd,jdbcType=VARCHAR},
+      </if>
+      <if test="listingdate != null">
+        #{listingdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="standalonedate != null">
+        #{standalonedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="areatype != null">
+        #{areatype,jdbcType=VARCHAR},
+      </if>
+      <if test="zbbdocdate != null">
+        #{zbbdocdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orglevel != null">
+        #{orglevel,jdbcType=VARCHAR},
+      </if>
+      <if test="orgpro != null">
+        #{orgpro,jdbcType=VARCHAR},
+      </if>
+      <if test="zipcode != null">
+        #{zipcode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.authority.entity.TD0Organization">
+    update t_d0_organization
+    <set>
+      <if test="orgno != null">
+        orgNo = #{orgno,jdbcType=VARCHAR},
+      </if>
+      <if test="orgcode != null">
+        orgCode = #{orgcode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgname != null">
+        orgName = #{orgname,jdbcType=VARCHAR},
+      </if>
+      <if test="exetype != null">
+        exeType = #{exetype,jdbcType=VARCHAR},
+      </if>
+      <if test="areacode != null">
+        areaCode = #{areacode,jdbcType=VARCHAR},
+      </if>
+      <if test="linkadd != null">
+        linkAdd = #{linkadd,jdbcType=VARCHAR},
+      </if>
+      <if test="listingdate != null">
+        listingDate = #{listingdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="standalonedate != null">
+        standaloneDate = #{standalonedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="areatype != null">
+        areaType = #{areatype,jdbcType=VARCHAR},
+      </if>
+      <if test="zbbdocdate != null">
+        zbbdocDate = #{zbbdocdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orglevel != null">
+        orgLevel = #{orglevel,jdbcType=VARCHAR},
+      </if>
+      <if test="orgpro != null">
+        orgPro = #{orgpro,jdbcType=VARCHAR},
+      </if>
+      <if test="zipcode != null">
+        zipcode = #{zipcode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.authority.entity.TD0Organization">
+    update t_d0_organization
+    set orgNo = #{orgno,jdbcType=VARCHAR},
+      orgCode = #{orgcode,jdbcType=VARCHAR},
+      orgName = #{orgname,jdbcType=VARCHAR},
+      exeType = #{exetype,jdbcType=VARCHAR},
+      areaCode = #{areacode,jdbcType=VARCHAR},
+      linkAdd = #{linkadd,jdbcType=VARCHAR},
+      listingDate = #{listingdate,jdbcType=TIMESTAMP},
+      standaloneDate = #{standalonedate,jdbcType=TIMESTAMP},
+      areaType = #{areatype,jdbcType=VARCHAR},
+      zbbdocDate = #{zbbdocdate,jdbcType=TIMESTAMP},
+      orgLevel = #{orglevel,jdbcType=VARCHAR},
+      orgPro = #{orgpro,jdbcType=VARCHAR},
+      zipcode = #{zipcode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
