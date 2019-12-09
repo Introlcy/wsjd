@@ -62,7 +62,7 @@
         <#list list as ornation>
             <tr>
                 <td align="center">${ornation.orgno}</td>
-                <td align="left"><a href="institution-view.html">${ornation.orgname}</a></td>
+                <td align="left"><a href=/ognzx/${ornation.id}>${ornation.orgname}</a></td>
                 <td align="center">${ornation.exetype}</td>
                 <td align="left">${ornation.linkadd}</td>
                 <td align="center">${ornation.listingdate?string('yyyy-MM-dd HH:mm:ss')}</td>

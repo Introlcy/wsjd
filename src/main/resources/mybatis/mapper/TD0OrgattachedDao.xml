@@ -414,4 +414,61 @@
       VRCOUNT = #{vrcount,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+
+  <resultMap id="ResultMap" type="com.authority.entity.OrganizationAndOrgattached">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="orgId" jdbcType="INTEGER" property="orgid" />
+    <result column="orgName" jdbcType="VARCHAR" property="orgname" />
+    <result column="orgNo" jdbcType="VARCHAR" property="orgno" />
+    <result column="orgCode" jdbcType="VARCHAR" property="orgcode" />
+    <result column="onworkerNum" jdbcType="INTEGER" property="onworkernum" />
+    <result column="supervisorNum" jdbcType="INTEGER" property="supervisornum" />
+    <result column="zbbNum" jdbcType="INTEGER" property="zbbnum" />
+    <result column="ifPublicmanage" jdbcType="VARCHAR" property="ifpublicmanage" />
+    <result column="retireNum" jdbcType="INTEGER" property="retirenum" />
+    <result column="officeBuildarea" jdbcType="INTEGER" property="officebuildarea" />
+    <result column="buildingOwnership" jdbcType="VARCHAR" property="buildingownership" />
+    <result column="officeBuildingarea" jdbcType="INTEGER" property="officebuildingarea" />
+    <result column="businessDivCount" jdbcType="INTEGER" property="businessdivcount" />
+    <result column="funDivCount" jdbcType="INTEGER" property="fundivcount" />
+    <result column="orgCount" jdbcType="INTEGER" property="orgcount" />
+    <result column="equ3Count" jdbcType="INTEGER" property="equ3count" />
+    <result column="equ2Count" jdbcType="INTEGER" property="equ2count" />
+    <result column="equ1Count" jdbcType="INTEGER" property="equ1count" />
+    <result column="busCount" jdbcType="INTEGER" property="buscount" />
+    <result column="rapidtestvehicleCount" jdbcType="INTEGER" property="rapidtestvehiclecount" />
+    <result column="motorCount" jdbcType="INTEGER" property="motorcount" />
+    <result column="cameraCount" jdbcType="INTEGER" property="cameracount" />
+    <result column="videoCount" jdbcType="INTEGER" property="videocount" />
+    <result column="copycatNum" jdbcType="INTEGER" property="copycatnum" />
+    <result column="computerNum" jdbcType="INTEGER" property="computernum" />
+    <result column="notepadNum" jdbcType="INTEGER" property="notepadnum" />
+    <result column="serverCount" jdbcType="INTEGER" property="servercount" />
+    <result column="pbxCount" jdbcType="INTEGER" property="pbxcount" />
+    <result column="faxCount" jdbcType="INTEGER" property="faxcount" />
+    <result column="ohpCount" jdbcType="INTEGER" property="ohpcount" />
+    <result column="yearly" jdbcType="VARCHAR" property="yearly" />
+    <result column="VRCOUNT" jdbcType="INTEGER" property="vrcount" />
+    <association property="td0Organization" javaType="TD0Organization">
+      <id column="id" jdbcType="INTEGER" property="id" />
+      <result column="orgNo" jdbcType="VARCHAR" property="orgno" />
+      <result column="orgCode" jdbcType="VARCHAR" property="orgcode" />
+      <result column="orgName" jdbcType="VARCHAR" property="orgname" />
+      <result column="exeType" jdbcType="VARCHAR" property="exetype" />
+      <result column="areaCode" jdbcType="VARCHAR" property="areacode" />
+      <result column="linkAdd" jdbcType="VARCHAR" property="linkadd" />
+      <result column="listingDate" jdbcType="TIMESTAMP" property="listingdate" />
+      <result column="standaloneDate" jdbcType="TIMESTAMP" property="standalonedate" />
+      <result column="areaType" jdbcType="VARCHAR" property="areatype" />
+      <result column="zbbdocDate" jdbcType="TIMESTAMP" property="zbbdocdate" />
+      <result column="orgLevel" jdbcType="VARCHAR" property="orglevel" />
+      <result column="orgPro" jdbcType="VARCHAR" property="orgpro" />
+      <result column="zipcode" jdbcType="VARCHAR" property="zipcode" />
+    </association>
+  </resultMap>
+  <select id="selectOneOAO" parameterType="java.lang.Integer" resultMap="ResultMap">
+    SELECT t1.*,t2.* FROM t_d0_orgattached t1 INNER JOIN t_d0_organization t2 ON t1.orgid=t2.id WHERE t2.id = #{id}
+  </select>
 </mapper>

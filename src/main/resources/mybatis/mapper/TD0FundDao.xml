@@ -4,9 +4,6 @@
   <resultMap id="BaseResultMap" type="com.authority.entity.TD0Fund">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="orgId" jdbcType="INTEGER" property="orgid" />
-    <result column="orgName" jdbcType="VARCHAR" property="orgname" />
-    <result column="orgNo" jdbcType="VARCHAR" property="orgno" />
-    <result column="orgCode" jdbcType="VARCHAR" property="orgcode" />
     <result column="yearly" jdbcType="VARCHAR" property="yearly" />
     <result column="preFund" jdbcType="DECIMAL" property="prefund" />
     <result column="businessFund" jdbcType="DECIMAL" property="businessfund" />
@@ -14,7 +11,7 @@
     <result column="buildFund" jdbcType="DECIMAL" property="buildfund" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, orgId, orgName, orgNo, orgCode, yearly, preFund, businessFund, dutyFund, buildFund
+    id, orgId,yearly, preFund, businessFund, dutyFund, buildFund
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -27,12 +24,10 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.authority.entity.TD0Fund" useGeneratedKeys="true">
-    insert into t_d0_fund (orgId, orgName, orgNo, 
-      orgCode, yearly, preFund, 
+    insert into t_d0_fund (orgId,yearly, preFund,
       businessFund, dutyFund, buildFund
       )
-    values (#{orgid,jdbcType=INTEGER}, #{orgname,jdbcType=VARCHAR}, #{orgno,jdbcType=VARCHAR}, 
-      #{orgcode,jdbcType=VARCHAR}, #{yearly,jdbcType=VARCHAR}, #{prefund,jdbcType=DECIMAL}, 
+    values (#{orgid,jdbcType=INTEGER}, #{yearly,jdbcType=VARCHAR}, #{prefund,jdbcType=DECIMAL},
       #{businessfund,jdbcType=DECIMAL}, #{dutyfund,jdbcType=DECIMAL}, #{buildfund,jdbcType=DECIMAL}
       )
   </insert>
@@ -41,15 +36,6 @@
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="orgid != null">
         orgId,
-      </if>
-      <if test="orgname != null">
-        orgName,
-      </if>
-      <if test="orgno != null">
-        orgNo,
-      </if>
-      <if test="orgcode != null">
-        orgCode,
       </if>
       <if test="yearly != null">
         yearly,
@@ -70,15 +56,6 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="orgid != null">
         #{orgid,jdbcType=INTEGER},
-      </if>
-      <if test="orgname != null">
-        #{orgname,jdbcType=VARCHAR},
-      </if>
-      <if test="orgno != null">
-        #{orgno,jdbcType=VARCHAR},
-      </if>
-      <if test="orgcode != null">
-        #{orgcode,jdbcType=VARCHAR},
       </if>
       <if test="yearly != null">
         #{yearly,jdbcType=VARCHAR},
@@ -103,15 +80,6 @@
       <if test="orgid != null">
         orgId = #{orgid,jdbcType=INTEGER},
       </if>
-      <if test="orgname != null">
-        orgName = #{orgname,jdbcType=VARCHAR},
-      </if>
-      <if test="orgno != null">
-        orgNo = #{orgno,jdbcType=VARCHAR},
-      </if>
-      <if test="orgcode != null">
-        orgCode = #{orgcode,jdbcType=VARCHAR},
-      </if>
       <if test="yearly != null">
         yearly = #{yearly,jdbcType=VARCHAR},
       </if>
@@ -133,9 +101,6 @@
   <update id="updateByPrimaryKey" parameterType="com.authority.entity.TD0Fund">
     update t_d0_fund
     set orgId = #{orgid,jdbcType=INTEGER},
-      orgName = #{orgname,jdbcType=VARCHAR},
-      orgNo = #{orgno,jdbcType=VARCHAR},
-      orgCode = #{orgcode,jdbcType=VARCHAR},
       yearly = #{yearly,jdbcType=VARCHAR},
       preFund = #{prefund,jdbcType=DECIMAL},
       businessFund = #{businessfund,jdbcType=DECIMAL},

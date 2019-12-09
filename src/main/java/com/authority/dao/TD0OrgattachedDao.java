@@ -1,5 +1,6 @@
 package com.authority.dao;
 
+import com.authority.entity.OrganizationAndOrgattached;
 import com.authority.entity.TD0Orgattached;
 
 public interface TD0OrgattachedDao {
@@ -14,4 +15,6 @@ public interface TD0OrgattachedDao {
     int updateByPrimaryKeySelective(TD0Orgattached record);
 
     int updateByPrimaryKey(TD0Orgattached record);
+
+    OrganizationAndOrgattached selectOneOAO(Integer id);
 }

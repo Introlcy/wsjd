@@ -192,6 +192,6 @@
   </update>
 
   <select id="selectAll" resultMap="BaseResultMap">
-    SELECT orgno,orgname,exetype,linkadd,listingDate,zbbdocDate FROM t_d0_organization
+    SELECT id,orgno,orgname,exetype,linkadd,listingDate,zbbdocDate FROM t_d0_organization
   </select>
 </mapper>

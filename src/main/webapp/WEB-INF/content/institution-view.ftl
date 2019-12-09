@@ -16,112 +16,112 @@
         <form id="institutionCreat" name="institutionCreat" action="" method="post">
 	  <tr>
             <td width="16%" align="right" class="title"><span class="required">*</span>机构编码：</td>
-            <td width="17%" align="left">0123456-01</td>
+            <td width="17%" align="left">${orgattached.orgno}</td>
              <td width="16%" align="right" class="title"><span class="required">*</span>机构代码：</td>
-            <td width="17%" align="left">23232334-9</td>
+            <td width="17%" align="left">${orgattached.orgcode}</td>
             <td width="16%" class="title" align="right"><span class="required">*</span>机构名称：</td>
-            <td width="17%" align="left">江苏省卫生监督所</td>
+            <td width="17%" align="left">${orgattached.td0Organization.orgname}</td>
         </tr>
         <tr>
            <td width="15%" align="right" class="title"><span class="required">*</span>行政类别：</td>
             <td width="19%" align="left">
-            	行政部门</td>
+                ${orgattached.td0Organization.exetype}</td>
            <td align="right" class="title">行政区划：</td>
-            <td align="left" colspan="3"></td>
+            <td align="left" colspan="3">${orgattached.td0Organization.areacode}</td>
         </tr>
         <tr>
             <td align="right" class="title">地址：</td>
-            <td align="left" colspan="3">南京市中央路42号</td>
+            <td align="left" colspan="3">${orgattached.td0Organization.linkadd}</td>
             <td align="right" class="title">邮编：</td>
-            <td align="left">200120</td>
+            <td align="left">${orgattached.td0Organization.zipcode}</td>
         </tr>
         <tr>
             <td align="right" class="title">挂牌日期：</td>
-            <td align="left">2010-04-01</td>
+            <td align="left">${orgattached.td0Organization.listingdate?string('yyyy-MM-dd HH:mm:ss')}</td>
             <td align="right" class="title">独立运行日期：</td>
-            <td align="left">2010-04-08</td>
+            <td align="left">${orgattached.td0Organization.standalonedate?string('yyyy-MM-dd HH:mm:ss')}</td>
             <td align="right" class="title"><span class="required">*</span>行政区类别：</td>
             <td align="left">
-            	省</td>
+                ${orgattached.td0Organization.areatype}</td>
         </tr>
         <tr>
             <td align="right" class="title">在职人数：</td>
-            <td align="left">500</td>
+            <td align="left">${orgattached.onworkernum}</td>
             <td align="right" class="title">卫生监督员数：</td>
-            <td align="left">50</td>
+            <td align="left">${orgattached.supervisornum}</td>
             <td align="right" class="title">编办批文日期：</td>
-            <td align="left">2010-04-12</td>
+            <td align="left">${orgattached.td0Organization.zbbdocdate?string('yyyy-MM-dd HH:mm:ss')}</td>
         </tr>
 		<tr>
             <td align="right" class="title"><span class="required">*</span>机构行政级别 ：</td>
-            <td align="left" >正高级</td>
+            <td align="left" >${orgattached.td0Organization.orglevel}</td>
             <td align="right" class="title"><span class="required">*</span>机构性质：</td>
-            <td align="left">行政机构</td>
+            <td align="left">${orgattached.td0Organization.orgpro}</td>
             <td align="right" class="title"><span class="required">*</span>编制人数 ：</td>
-            <td align="left">120</td>
+            <td align="left">${orgattached.zbbnum}</td>
 		</tr>
 		<tr>
             <td align="right" class="title"><span class="required">*</span>是否参公管理 ：</td>
-          <td align="left">是</td>
+          <td align="left">${orgattached.ifpublicmanage}</td>
             <td align="right" class="title"><span class="required">*</span>离退休人数 ：</td>
-            <td align="left">100</td>
+            <td align="left">${orgattached.retirenum}</td>
             <td align="right" class="title"> <span class="required">*</span>办公用房建筑面积（平方米） ：</td>
-            <td align="left">1000</td>
+            <td align="left">${orgattached.officebuildarea}</td>
 		</tr>
 		<tr>
             <td align="right" class="title"><span class="required">*</span>房屋所有权 ：</td>
-            <td align="left">租</td>
+            <td align="left">${orgattached.buildingownership}</td>
             <td align="right" class="title"> 办公用房在建面积（平方米） ：</td>
-            <td align="left">800</td>
+            <td align="left">${orgattached.officebuildingarea}</td>
             <td align="right" class="title"><span class="required">*</span>业务科室数 ：</td>
-            <td align="left">60</td>
+            <td align="left">${orgattached.businessdivcount}</td>
 		</tr>
 		<tr>
             <td align="right" class="title"><span class="required">*</span>职能科室数 ：</td>
-            <td align="left">120</td>
+            <td align="left">${orgattached.fundivcount}</td>
             <td align="right" class="title"><span class="required">*</span>派出机构数 ：</td>
-            <td align="left">350</td>
+            <td align="left">${orgattached.orgcount}</td>
             <td align="right" class="title"><span class="required">*</span> 检测仪器设备数 ：</td>
             <td align="left">
-			9台（一千&lt;价格&lt;一万）<br/>
-			5台（一万&lt;价格&lt;十万）<br/>
-		  2台（价格大于十万）</td>
+                ${orgattached.equ3count}台（一千&lt;价格&lt;一万）<br/>
+                ${orgattached.equ2count}台（一万&lt;价格&lt;十万）<br/>
+                ${orgattached.equ1count}台（价格大于十万）</td>
         </tr>
 		<tr>
             <td align="right" class="title"><span class="required">*</span> 汽车数（不含快速检测车） ：</td>
-            <td align="left">13</td>
+            <td align="left">${orgattached.buscount}</td>
             <td align="right" class="title"><span class="required">*</span> 快速检测车数 ：</td>
-            <td align="left">10</td>
+            <td align="left">${orgattached.rapidtestvehiclecount}</td>
             <td align="right" class="title"><span class="required">*</span> 摩托车数 ：</td>
-            <td align="left">12</td>
+            <td align="left">${orgattached.motorcount}</td>
         </tr>
 		<tr>
             <td align="right" class="title"><span class="required">*</span> 照相机数
 
  ：</td>
-            <td align="left">50</td>
+            <td align="left">${orgattached.cameracount}</td>
             <td align="right" class="title"><span class="required">*</span> 摄像机数 ：</td>
-            <td align="left">5</td>
+            <td align="left">${orgattached.videocount}</td>
             <td align="right" class="title"><span class="required">*</span> 复印机数：</td>
-            <td align="left">24</td>
+            <td align="left">${orgattached.copycatnum}</td>
         </tr>
 		<tr>
             <td align="right" class="title"><span class="required">*</span> 台式电脑数 ：</td>
-            <td align="left">180</td>
+            <td align="left">${orgattached.computernum}</td>
             <td align="right" class="title"> <span class="required">*</span>笔记本电脑数 ：</td>
-            <td align="left">300</td>
+            <td align="left">${orgattached.notepadnum}</td>
             <td align="right" class="title"><span class="required">*</span> 服务器数 ：</td>
-            <td align="left">18</td>
+            <td align="left">${orgattached.servercount}</td>
         </tr>
 		<tr>
             <td align="right" class="title"> <span class="required">*</span>交换机数 ：</td>
-            <td align="left">6</td>
+            <td align="left">${orgattached.pbxcount}</td>
             <td align="right" class="title"> <span class="required">*</span>传真机数 ：</td>
-            <td align="left">10</td>
+            <td align="left">${orgattached.faxcount}</td>
             <td align="right" class="title"> <span class="required">*</span>投影仪数
 
  ：</td>
-            <td align="left">20</td>
+            <td align="left">${orgattached.ohpcount}</td>
         </tr>
         </form>
     </table>
