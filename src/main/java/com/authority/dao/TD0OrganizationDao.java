@@ -2,6 +2,8 @@ package com.authority.dao;
 
 import com.authority.entity.TD0Organization;
 
+import java.util.List;
+
 public interface TD0OrganizationDao {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface TD0OrganizationDao {
     int updateByPrimaryKeySelective(TD0Organization record);
 
     int updateByPrimaryKey(TD0Organization record);
+
+    List<TD0Organization> selectAll();
 }

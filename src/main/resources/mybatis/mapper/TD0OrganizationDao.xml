@@ -190,4 +190,8 @@
       zipcode = #{zipcode,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT orgno,orgname,exetype,linkadd,listingDate,zbbdocDate FROM t_d0_organization
+  </select>
 </mapper>
