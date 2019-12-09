@@ -3,7 +3,7 @@
 		xmlns="http://www.springframework.org/schema/beans"
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xmlns:context="http://www.springframework.org/schema/context"
-		xmlns:mvc="http://www.springframework.org/schema/mvc"
+		xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
 		xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context
@@ -12,7 +12,7 @@
 	http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<!--配置一个注解扫描器-->
-	<context:component-scan base-package="com.authority.controller"></context:component-scan>
+	<context:component-scan base-package="com.authority.controller"/>
 
 	<mvc:annotation-driven />
 
@@ -21,19 +21,15 @@
 	<mvc:default-servlet-handler/>
 
 	<!--配置试图解析器  -->
-	<bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
-		<property name="order" value="1"></property>
-		<property name="suffix" value=".ftl"></property>
-		<property name="contentType" value="text/html;charset=utf-8"></property>
-		<property name="viewClass">
-			<value>org.springframework.web.servlet.view.freemarker.FreeMarkerView</value>
-		</property>
+	<bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver"
+		  p:viewClass="org.springframework.web.servlet.view.freemarker.FreeMarkerView">
+		<property name="order" value="1"/>
+		<property name="suffix" value=".ftl"/>
+		<property name="contentType" value="text/html;charset=utf-8"/>
 	</bean>
 
 	<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-		<property name="templateLoaderPath">
-			<value>/WEB-INF/content</value>
-		</property>
+		<property name="templateLoaderPath" value="/WEB-INF/content"/>
 		<property name="freemarkerSettings"><!-- 设置FreeMarker环境属性 -->
 			<props>
 				<prop key="template_update_delay">5</prop><!--刷新模板的周期，单位为秒  -->

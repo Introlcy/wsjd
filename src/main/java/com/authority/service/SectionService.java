@@ -1,10 +1,15 @@
-package com.authority.dao;
+package com.authority.service;
 
 import com.authority.entity.TD0Section;
 
 import java.util.List;
 
-public interface TD0SectionDao {
+/**
+ * User: wsq
+ * Date: 2019/12/9
+ * Time: 16:28
+ */
+public interface SectionService {
     /**
      * 通过id删除科室
      * @param id

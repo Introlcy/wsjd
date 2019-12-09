@@ -130,4 +130,10 @@
       divRoomNo = #{divroomno,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="queryAllSection"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_d0_section
+  </select>
 </mapper>
