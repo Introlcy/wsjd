@@ -49,12 +49,17 @@ public class HumanManageImpl implements HumanManageInter {
             td0StuffVo.setJob(td0Stuff.getManagejob());
             td0StuffVo.setMajor(td0Stuff.getEdu());
             td0StuffVo.setName(td0Stuff.getRepmanname());
-            td0StuffVo.setOrgganization(td0Organization.getOrgname());
+            td0StuffVo.setOrganization(td0Organization.getOrgname());
 
             td0StuffVoList.add(td0StuffVo);
         }
 
 
         return td0StuffVoList;
+    }
+
+    @Override
+    public TD0Stuff getOneStuff(Integer id) {
+        return td0StuffDao.selectByPrimaryKey(id);
     }
 }

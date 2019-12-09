@@ -1,11 +1,10 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=7" />
 <title>江苏省卫生监督业务系统</title>
-<link href="../css/main.css" rel="stylesheet" type="text/css" media="all" />
-<script src="../js/jquery-1.4.2.min.js" type="text/javascript"></script>
+<link href="/css/main.css" rel="stylesheet" type="text/css" media="all" />
+<script src="/js/jquery-1.4.2.min.js" type="text/javascript"></script>
 </head>
 <script type="text/javascript">
  function jdy_hide(){
@@ -20,40 +19,57 @@
 <body class="content-pages-body"> 
 <div class="content-pages-wrap"> 
   <div class="commonTitle"> 
-    <h2>&gt;&gt; <a href="member-list.html">人员管理</a> - 人员创建</h2> 
+    <h2>&gt;&gt; <a href="member-list.ftl">人员管理</a> - 人员创建</h2>
   </div> 
   <table border="0" cellspacing="1" cellpadding="0" class="commonTable"> 
-    <form id="memberCreat" name="memberCreat" action="" method="post"> 
-      <tr> 
-        <td width="12%" align="right"><span class="required">*</span>人员编码：</td> 
-        <td width="21%" align="left"><input name="textfield" type="text" class="inputTextNormal" id="textfield" /></td> 
-        <td width="12%" align="right"><span class="required">*</span>姓名：</td> 
-        <td width="21%" align="left"><input name="textfield2" type="text" class="inputTextNormal" id="textfield2" /></td> 
-        <td width="12%" align="right"><span class="required">*</span>性别：</td> 
-        <td align="left"><input type="radio" name="radio" id="radio1" value="radio1" /> 
-          男
-          <input type="radio" name="radio" id="radio2" value="radio2" /> 
-          女</td> 
-      </tr> 
-      <tr> 
-        <td align="right">出生年月：</td> 
-        <td align="left"><input name="textfield3" type="text" class="inputTextNormal" id="textfield3" /></td> 
-        <td align="right">民族：</td> 
-        <td align="left"> <select  name="select" id="select"> 
-            <option>请选择</option> 
-            <option>汉</option> 
-            <option>其他</option> 
-          </select></td> 
-        <td align="right">政治面貌：</td> 
-        <td align="left"><select name="select" id="select"> 
-            <option>请选择</option> 
-            <option>中共党员</option> 
-            <option>团员</option> 
-            <option>民族党派</option> 
-            <option>群众</option> 
-          </select></td> 
-      </tr> 
-      <tr> 
+    <form id="memberCreat" name="memberCreat" action="" method="post">
+        <tr>
+            <td width="12%" align="right"><span class="required">*</span>人员编码：</td>
+            <td width="21%" align="left">
+                <input name="percode" type="text" class="inputTextNormal" id="textfield" value="${person.percode}" /></td>
+            <td width="12%" align="right"><span class="required">*</span>姓名：</td>
+            <td width="21%" align="left">
+                <input name="repmanname" type="text" class="inputTextNormal" id="textfield2"  value="${person.repmanname}"/></td>
+            <td width="12%" align="right"><span class="required">*</span>性别：</td>
+            <td align="left">
+                <input type="radio" name="gender" id="radio1" value="person.gender"
+                        <#if person.gender=="男"> checked="checked"</#if>/>
+                男
+                <input type="radio" name="gender" id="radio2" value="person.gender"
+                        <#if person.gender=="女"> checked="checked"</#if>/>
+                女</td>
+        </tr>
+        <tr>
+            <td align="right">出生年月：</td>
+            <td align="left">
+                <input name="birthdate" type="date" class="inputTextNormal" id="textfield3" value="${person.birthdate?string('yyyy-MM-dd')}" /></td>
+            <td align="right">民族：</td>
+            <td align="left">
+                <select  name="folk" id="select">
+                    <option value=""
+                            <#if person.folk=="">selected="selected"</#if>>请选择</option>
+                    <option value="汉族"
+                            <#if person.folk=="汉族">selected="selected"</#if>
+                    >汉族</option>
+                    <option value="其他"
+                            <#if person.folk=="其他">selected="selected"</#if>>其他</option>
+                </select>
+            </td>
+            <td align="right">政治面貌：</td>
+            <td align="left">
+                <select name="pol" id="select">
+                    <option value=""
+                            <#if person.pol=="">selected="selected"</#if>>请选择</option>
+                    <option value="党员"
+                            <#if person.pol=="党">selected="selected"</#if>>党员</option>
+                    <option value="团员"
+                            <#if person.pol=="团">selected="selected"</#if>>团员</option>
+                    <option value="人民"
+                            <#if person.pol=="人">selected="selected"</#if>>人民</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
         <td width="12%" align="right">手机：</td> 
         <td width="21%" align="left"><input name="textfield" type="text" class="inputTextNormal" id="textfield" /></td> 
         <td width="12%" align="right">电话：</td> 
@@ -163,41 +179,35 @@
           协查人员
           <input type="radio" name="radio" id="radio2" value="radio2" onclick="jdy_hide()"/> 
           不详</td> 
-      </tr> 
-      <tr id="jdy1" style="display:block"> 
-        <td align="right"><span class="required">*</span>行政执法证号：</td> 
-        <td align="left"><input name="textfield32" type="text" class="inputTextNormal" id="textfield32" /></td> 
-        <td align="right"><span class="required">*</span>何时取得行政执法证：</td> 
-        <td align="left"><input name="textfield27" type="text" class="inputTextNormal" id="textfield27" /></td> 
-        <td align="right"><span class="required">*</span>卫生监督胸牌号：</td> 
-        <td align="left"><input name="textfield26" type="text" class="inputTextNormal" id="textfield26" /></td> 
-        </td> 
-      </tr> 
-      <tr id="jdy2" style="display:block"> 
-        <td align="right"><span class="required">*</span>何时取得卫生监督员资格：</td> 
-        <td align="left"><input name="textfield27" type="text" class="inputTextNormal" id="textfield27" /></td> 
-        <td align="right"><span class="required">*</span>目前持有有效的监督员证号：</td> 
-        <td align="left"><input name="textfield3" type="text" class="inputTextNormal" id="textfield3" /></td> 
-        <td align="right"><span class="required">*</span>目前所持有效监督员证的有效时间：</td> 
-        <td align="left"><input name="textfield26" type="text" class="inputTextNormal" id="textfield26" /></td> 
-      </tr> 
-      <tr> 
-        <td align="right">是否为在编人员：</td> 
-        <td align="left"><input type="radio" name="radio" id="radio1" value="radio1" /> 
-          是
-          <input type="radio" name="radio" id="radio2" value="radio2" /> 
-          否</td> 
-        <td align="right"></td> 
-        <td align="left"></td> 
-        <td align="right">&nbsp;</td> 
-        <td align="left">&nbsp;</td> 
-      </tr> 
-    </form> 
-  </table> 
+      </tr>
+        <tr>
+            <td class="title"> 行政执法证号： </td>
+            <td>${person.enfcardno}</td>
+            <td class="title">何时取得行政执法证：</td>
+            <td>${person.getcarddate?string('yyyy-MM-dd')}</td>
+            <td class="title"> 卫生监督胸牌号： </td>
+            <td>${person.healthcardno}</td>
+        </tr>
+        <tr>
+            <td class="title">何时取得卫生监督员资格：</td>
+            <td>${person.getquadate?string('yyyy-MM-dd')}</td>
+            <td class="title"> 目前持有有效的监督员证号： </td>
+            <td>${person.healthcardno}</td>
+            <td class="title">目前所持有效监督员证的有效时间：</td>
+            <td>${person.cardday?string('yyyy-MM-dd')}</td>
+        </tr>
+        <tr>
+            <td class="title">是否为在编人员：</td>
+            <td>${person.ifstaffper}</td>
+            <td class="title"></td>
+            <td colspan="3"></td>
+        </tr>
+    </form>
+  </table>
   <!--//commonTable--> 
   <div id="formPageButton"> 
     <ul> 
-      <li><a href="member-list.html" title="保存" class="btnShort">保存</a></li> 
+      <li><a href="member-list.ftl" title="保存" class="btnShort">保存</a></li>
       <li><a href="javascript:window.history.go(-1)" title="返回" class="btnShort">返回</a></li> 
     </ul> 
   </div> 
