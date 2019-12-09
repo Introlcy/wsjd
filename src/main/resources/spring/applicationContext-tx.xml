@@ -38,7 +38,7 @@
 	</tx:advice>
 	<!-- 事务切入点-->
 	<aop:config>
-		<aop:pointcut id="exp" expression="execution(* com.ssm.service.*Impl.*(..))"/>
+		<aop:pointcut id="exp" expression="execution(* com.authority.service.*Impl.*(..))"/>
 		<!-- 将切点表达式与事务建立联系-->
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="exp" />
 	</aop:config>
