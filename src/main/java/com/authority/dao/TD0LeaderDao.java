@@ -2,6 +2,9 @@ package com.authority.dao;
 
 import com.authority.entity.TD0Leader;
 
+/**
+ * @author admin
+ */
 public interface TD0LeaderDao {
     int deleteByPrimaryKey(Integer id);
 

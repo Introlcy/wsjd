@@ -16,8 +16,8 @@
 /*表头*/
 .eXtremeTable .tableHeader,
 .eXtremeTable .tableHeaderSort { font-weight: bold; text-align:center;} /*共有样式*/
-.eXtremeTable .tableHeader     { background:#f8fcfc url(../WEB-INF/images/bg-table-th.gif) repeat-x 0 0;}/*默认样式*/
-.eXtremeTable .tableHeaderSort { background:#f8fcfc url(../WEB-INF/images/bg-table-th-hover.gif) repeat-x 0 0;}/*鼠标悬停时样式*/
+.eXtremeTable .tableHeader     { background:#f8fcfc url(/images/bg-table-th.gif) repeat-x 0 0;}/*默认样式*/
+.eXtremeTable .tableHeaderSort { background:#f8fcfc url(/images/bg-table-th-hover.gif) repeat-x 0 0;}/*鼠标悬停时样式*/
 
 /*奇偶行样式*/
 .eXtremeTable .odd a,

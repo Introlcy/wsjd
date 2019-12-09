@@ -2,6 +2,9 @@ package com.authority.dao;
 
 import com.authority.entity.TD0Fund;
 
+/**
+ * @author authority
+ */
 public interface TD0FundDao {
     int deleteByPrimaryKey(Integer id);
 

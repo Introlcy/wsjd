@@ -118,13 +118,13 @@ a:active  {}
 /*头部结构*/
 #header-wrap   { height:82px;}
 #header-box    { height:82px; width:100%;}
-#header        { background:url(../WEB-INF/images/header-bg.jpg) repeat-x 0 0; height:82px; margin:0 auto; position:relative; text-align:center;}
+#header        { background:url(/images/header-bg.jpg) repeat-x 0 0; height:82px; margin:0 auto; position:relative; text-align:center;}
 .logo-title,
 .logout        { position:absolute;}
-.logo-title    { background:url(../WEB-INF/images/header-logo-title.jpg) no-repeat 0 0; height:82px; left:0; top:0; width:750px;}
+.logo-title    { background:url(/images/header-logo-title.jpg) no-repeat 0 0; height:82px; left:0; top:0; width:750px;}
 .logo-title h1 { display:none;}
 .logout        { display:table; height:20px; line-height:20px; right:10px; top:10px; width:auto;}
-.user-icon     { background:url(../WEB-INF/images/user-male.gif) no-repeat 60px 2px;}
+.user-icon     { background:url(/images/user-male.gif) no-repeat 60px 2px;}
 .user-text     { font-weight:bold; padding-left:18px;}
 /*退出链接*/
 .signout-text         { color:#CC0000;}
@@ -138,15 +138,15 @@ a:active  {}
 
 #main-nav  { float:left; width:200px;}
 /*inc-nav.html*/
-.inc-nav-body { background:url(../WEB-INF/images/bg-sidebar.gif) repeat-y 0 0;}
-#nav-box      { background:url(../WEB-INF/images/bg-sidebar-top.gif) no-repeat 0 0; padding:5px; width:190px; min-height:300px; height:100%;}
+.inc-nav-body { background:url(/images/bg-sidebar.gif) repeat-y 0 0;}
+#nav-box      { background:url(/images/bg-sidebar-top.gif) no-repeat 0 0; padding:5px; width:190px; min-height:300px; height:100%;}
 
 #main-content       { margin-left:200px; height:100%;}
 .main-content-width { margin-left:0;}
 
 #main-content-box { height:100%; width:100%;}
-.toggle           { width:6px; background:url(../WEB-INF/images/toggle-close.gif) no-repeat 0 center; cursor:pointer;}
-.toggle-open      { background:url(../WEB-INF/images/toggle-open.gif) no-repeat 0 center;}
+.toggle           { width:6px; background:url(/images/toggle-close.gif) no-repeat 0 center; cursor:pointer;}
+.toggle-open      { background:url(/images/toggle-open.gif) no-repeat 0 center;}
 .toggle-hover     { background-color:#1588cb;}
 .content-wrap     { vertical-align:top; background-color:#fff;}
 #content-box      { width:100%;}
@@ -179,7 +179,7 @@ textarea   { border:1px solid #ccc; padding:2px;}
 .inputTextLong   { width:500px;}
 .inputOthers     { border-width:0 0 1px 0; width:80px;}
 
-.isDate              { background:url(../WEB-INF/images/icon-date.png) no-repeat right 50%; padding-right:18px;} /*给时间选择控件添加日期icon*/
+.isDate              { background:url(/images/icon-date.png) no-repeat right 50%; padding-right:18px;} /*给时间选择控件添加日期icon*/
 .inputTextReadonly   { background-color:#F9F9F9; border:solid #F2F2F2; border-width:1px; color:#CCC;}/*表单元素只读状态样式*/
 
 .content-pages-wrap tr { height:22px; line-height:22px;}
@@ -202,7 +202,7 @@ textarea   { border:1px solid #ccc; padding:2px;}
 /* {常用操作按钮设置
 ------------------*/
 .btnShort, .btnNormal, .btnLong, .btnXLong
-{ background:url(../WEB-INF/images/bg-button.png) no-repeat 0 0; border:none; color:#333;
+{ background:url(/images/bg-button.png) no-repeat 0 0; border:none; color:#333;
   display:block; height:22px; line-height:22px; text-align:center; text-decoration:none;}
 
 .btnShort     { background-position:0 0; width:60px;}/*适合2个字*/
@@ -224,7 +224,7 @@ a.btnIconAuthorization, a.btnIconContact, a.btnIconAdd, a.btnIconDel, a.btnIconD
 a.btnIconTrain, a.btnIconRel, a.btnIconKey, a.btnIconGo, a.btnIconExecute, a.btnIconAssign, a.btnIconReceive, a.btnIconProcess, 
 a.btnIconTransfer, a.btnIconExtension, a.btnIconVerify, a.btnIconProcessAlertA1, a.btnIconProcessAlertA2, a.btnIconPostAlertA1, a.btnIconPostAlertA2,
 a.btnIconResultAdd, a.btnIconShowInfo
-{ background:url(../WEB-INF/images/icon-sprite.png) no-repeat 0 1px; color:#39F; display:block; float:left; height:22px; padding:2px; width:22px;}
+{ background:url(/images/icon-sprite.png) no-repeat 0 1px; color:#39F; display:block; float:left; height:22px; padding:2px; width:22px;}
 
 a.btnIconUpload              { background-position:0 1px;}/*上传*/
 a.btnIconUpload:hover        { background-position:0 -25px;}
@@ -301,7 +301,7 @@ a.btnIconShowInfo:hover      { background-position:-721px -25px;}
 .commonTable th,
 .commonTable td   { background:#fff; border:1px solid #7BB5D7; *border:none; height:22px; line-height:22px; padding:2px;}
 *+html .commonTable td  { border:none;}
-.commonTable th   { text-align:center; background:#f8fcfc url(../WEB-INF/images/bg-table-th.gif) repeat-x 0 0;}
+.commonTable th   { text-align:center; background:#f8fcfc url(/images/bg-table-th.gif) repeat-x 0 0;}
 .commonTable td.title   { background:#C2E4F5; text-align:right;}
 
 
@@ -341,10 +341,10 @@ a.btnIconShowInfo:hover      { background-position:-721px -25px;}
 [5. Pages]
 */
 /*登录页面*/
-body.loginPage           { background:#ecf9ff url(../images/bg-login-body.jpg) repeat-x 0 0;}
-#loginPage-wrap          { background:url(../images/bg-login-wrap-top.jpg) no-repeat center top; padding-top:120px;}
-.loginPage-logo-title    { background:url(../images/login-logo-title.png) no-repeat 50% 50%; height:79px; width:614px; margin:0 auto;}
-.loginPage-main          { background:url(../images/login-main-bg.png) no-repeat 0 0; height:235px; _height:155px;/*for IE6*/ 
+body.loginPage           { background:#ecf9ff url(/imagesbg-login-body.jpg) repeat-x 0 0;}
+#loginPage-wrap          { background:url(/imagesbg-login-wrap-top.jpg) no-repeat center top; padding-top:120px;}
+.loginPage-logo-title    { background:url(/imageslogin-logo-title.png) no-repeat 50% 50%; height:79px; width:614px; margin:0 auto;}
+.loginPage-main          { background:url(/imageslogin-main-bg.png) no-repeat 0 0; height:235px; _height:155px;/*for IE6*/ 
 						   width:534px; margin:0 auto; padding:80px 0 0 80px; overflow:hidden;}
 .loginPage-main td       { color:#0c3f6e;}
 .loginPage-main td input { height:16px; line-height:16px; width:140px; padding:2px; color:#09C;}
@@ -352,7 +352,7 @@ body.loginPage           { background:#ecf9ff url(../images/bg-login-body.jpg) r
 
 
 /*默认欢迎页面*/
-.welcome { background:#fff url(../WEB-INF/images/welcome.jpg) no-repeat center center;}
+.welcome { background:#fff url(/images/welcome.jpg) no-repeat center center;}
 
 /*系统内容页面*/
 .content-pages-body {}
@@ -368,22 +368,22 @@ body.loginPage           { background:#ecf9ff url(../images/bg-login-body.jpg) r
 /*基本TAB切换样式*/
 #commonTab     { height:22px; line-height:22px; padding:14px 0 6px 0;}
 /*---------------导航容器定义*/
-.ui-tabs-nav   { background:url(../WEB-INF/images/bg-tab.gif) repeat-x 0 -60px; display:block; height:30px; line-height:30px; width:100%;}
+.ui-tabs-nav   { background:url(/images/bg-tab.gif) repeat-x 0 -60px; display:block; height:30px; line-height:30px; width:100%;}
 /*---------------默认标签样式*/
 .ui-tabs-nav li              { float:left; height:30px; line-height:30px; margin-right:4px;}
-.ui-tabs-nav li a            { display:block; background:url(../WEB-INF/images/bg-tab.gif) no-repeat 0 -30px;}
-.ui-tabs-nav li a span       { display:block; background:url(../WEB-INF/images/bg-tab.gif) no-repeat right -120px; padding:0 8px; text-align:center;}
-.ui-tabs-nav li a:hover      { background:url(../WEB-INF/images/bg-tab.gif) no-repeat 0 -150px;}
-.ui-tabs-nav li a:hover span { background:url(../WEB-INF/images/bg-tab.gif) no-repeat right -180px;}
+.ui-tabs-nav li a            { display:block; background:url(/images/bg-tab.gif) no-repeat 0 -30px;}
+.ui-tabs-nav li a span       { display:block; background:url(/images/bg-tab.gif) no-repeat right -120px; padding:0 8px; text-align:center;}
+.ui-tabs-nav li a:hover      { background:url(/images/bg-tab.gif) no-repeat 0 -150px;}
+.ui-tabs-nav li a:hover span { background:url(/images/bg-tab.gif) no-repeat right -180px;}
 /*---------------激活的标签样式*/
-.ui-tabs-nav li a.selected      { background:url(../WEB-INF/images/bg-tab.gif) no-repeat 0 0;}
-.ui-tabs-nav li a.selected span { background:url(../WEB-INF/images/bg-tab.gif) no-repeat right -90px;}
+.ui-tabs-nav li a.selected      { background:url(/images/bg-tab.gif) no-repeat 0 0;}
+.ui-tabs-nav li a.selected span { background:url(/images/bg-tab.gif) no-repeat right -90px;}
 /*---------------默认的显示区域样式*/
 .ui-tabs-panel { border:1px solid #cfcfcf; border-width:0 1px 1px 1px; padding:6px;}
 .ui-tabs-hide,
 .ui-hide       { display: none;}
-.tabsTitle     { background:url(../WEB-INF/images/icon-arrow.gif) no-repeat 3px 6px; border:solid #D6EBF3; border-width:0 0 6px 0;
+.tabsTitle     { background:url(/images/icon-arrow.gif) no-repeat 3px 6px; border:solid #D6EBF3; border-width:0 0 6px 0;
 				 color:#999; font-size:14px; font-weight:bold; padding-left:18px; margin-top:6px;}
 /*页面提示信息*/
-#divMsg        { background:url(../images/icon-error.png) no-repeat 3px 50%; border:1px solid #ccc; 
+#divMsg        { background:url(/imagesicon-error.png) no-repeat 3px 50%; border:1px solid #ccc; 
 				 width:auto; height:22px; line-height:22px; padding:0 6px 0 22px; position:absolute; left:40%; top:40%;}
