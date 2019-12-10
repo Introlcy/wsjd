@@ -18,7 +18,7 @@ public class SectionServiceImpl implements SectionService {
     private TD0SectionDao td0SectionDao;
     @Override
     public int deleteByPrimaryKey(Integer id) {
-        return 0;
+        return td0SectionDao.deleteByPrimaryKey(id);
     }
 
     @Override
