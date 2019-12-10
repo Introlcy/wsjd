@@ -21,44 +21,90 @@
 <body>
 <div class="container">
     <h2>编辑信息</h2>
-    <form method="post" action="/office-list">
+    <form method="post" action="/office-list" onsubmit="return check()">
         <input type="hidden" name="_method" value="put">
         <input type="hidden" name="id" value="${section.id}">
 
         <div class="form-group">
             <label for="orgid">机构id:</label>
-            <input  class="form-control" name="orgid" value="${section.orgid}">
+            <input class="form-control" name="orgid" id="orgid" value="${section.orgid}">
         </div>
         <div class="form-group">
             <label for="divcode">科室编码:</label>
-            <input  class="form-control" name="divcode"  value="${section.divcode}">
+            <input class="form-control" name="divcode" id="divcode" value="${section.divcode}">
         </div>
         <div class="form-group">
             <label for="divnamecode">科室名称编码:</label>
-            <input  class="form-control" name="divnamecode"  value="${section.divnamecode}">
+            <input class="form-control" name="divnamecode" id="divnamecode" value="${section.divnamecode}">
         </div>
         <div class="form-group">
             <label for="divname">科室名称代码:</label>
-            <input  class="form-control" name="divname"  value="${section.divname}">
+            <input class="form-control" name="divname" id="divname" value="${section.divname}">
         </div>
         <div class="form-group">
             <label for="ifsub">是否为分所:</label>
-            <input  class="form-control" name="ifsub"  value="${section.ifsub}">
+            <input class="form-control" name="ifsub" id="ifsub" value="${section.ifsub}">
         </div>
         <div class="form-group">
             <label for="dutytel">电话号码:</label>
-            <input  class="form-control" name="dutytel"  value="${section.dutytel}">
+            <input class="form-control" name="dutytel" id="dutytel" value="${section.dutytel}">
         </div>
         <div class="form-group">
             <label for="fax">传真号码:</label>
-            <input  class="form-control" name="fax"  value="${section.fax}">
+            <input class="form-control" name="fax" id="fax" value="${section.fax}">
         </div>
         <div class="form-group">
             <label for="divroomno">门号:</label>
-            <input  class="form-control" name="divroomno"  value="${section.divroomno}">
+            <input class="form-control" name="divroomno" id="divroomno" value="${section.divroomno}">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+
+<script type="text/javascript">
+    function check() {
+        var orgid = $("#orgid").val();
+        var divcode = $("#divcode").val();
+        var divnamecode = $("#divnamecode").val();
+        var divname = $("#divname").val();
+        var ifsub = $("#ifsub").val();
+        var dutytel = $("#dutytel").val();
+        var fax = $("#fax").val();
+        var divroomno = $("#divroomno").val();
+        if ($.trim(orgid) == "" || orgid == null) {
+            alert("机构id不能为空!");
+            return false;
+        }
+        if ($.trim(divcode) == "" || divcode == null) {
+            alert("科室编码不能为空!");
+            return false;
+        }
+        if ($.trim(divnamecode) == "" || divnamecode == null) {
+            alert("科室名称编码不能为空!");
+            return false;
+        }
+        if ($.trim(divname) == "" || divname == null) {
+            alert("科室名称代码不能为空!");
+            return false;
+        }
+        if ($.trim(ifsub) == "" || ifsub == null) {
+            alert("是否为分所不能为空!");
+            return false;
+        }
+        if ($.trim(dutytel) == "" || dutytel == null) {
+            alert("电话号码不能为空!");
+            return false;
+        }
+        if ($.trim(fax) == "" || fax == null) {
+            alert("传真号码不能为空!");
+            return false;
+        }
+        if ($.trim(divroomno) == "" || divroomno == null) {
+            alert("门号不能为空!");
+            return false;
+        }
+        return true;
+    }
+</script>
 </body>
 </html>
