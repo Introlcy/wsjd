@@ -108,4 +108,8 @@
       buildFund = #{buildfund,jdbcType=DECIMAL}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+    <select id="selectAllFund" resultMap="BaseResultMap">
+     SELECT id, orgId,yearly, preFund, businessFund, dutyFund, buildFund FROM t_d0_fund
+    </select>
 </mapper>

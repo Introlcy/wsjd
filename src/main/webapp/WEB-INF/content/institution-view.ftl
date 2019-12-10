@@ -135,7 +135,7 @@
     <!--//commonToolBar-->
     
     <div class="commonToolBar">
-    	<a href="institution-appropriation-creat.html" title="机构创建" class="btnNormal rt1st">添加拨款</a>
+    	<a href="/transf" title="机构创建" class="btnNormal rt1st">添加拨款</a>
     </div>
     <!--//commonToolBar-->
    	<div class="commonTitle">
@@ -150,72 +150,19 @@
             <th width="20%">基本建设资金（万元）</th>
             <th class="editColS">编辑</th>
         </tr>
-        <tr>
-            <td align="center">2010</td>
-            <td align="center">305.26</td>
-            <td align="center">1020.08</td>
-            <td align="center">2089.82</td>
-            <td align="center">6122.37</td>
-            <td align="center">
-            	<a href="institution-appropriation-edit.html" class="btnIconEdit" title="更新"></a>
-                <a href="#" class="btnIconDel" title="删除"></a>
-            </td>
-        </tr>
-        <tr>
-            <td align="center">2009</td>
-            <td align="center">305.26</td>
-            <td align="center">1020.08</td>
-            <td align="center">2089.82</td>
-            <td align="center">6122.37</td>
-            <td align="center">
-            	<a href="institution-appropriation-edit.html" class="btnIconEdit" title="更新"></a>
-                <a href="#" class="btnIconDel" title="删除"></a>
-            </td>
-        </tr>
-        <tr>
-            <td align="center">2008</td>
-            <td align="center">305.26</td>
-            <td align="center">1020.08</td>
-            <td align="center">2089.82</td>
-            <td align="center">6122.37</td>
-            <td align="center">
-            	<a href="institution-appropriation-edit.html" class="btnIconEdit" title="更新"></a>
-                <a href="#" class="btnIconDel" title="删除"></a>
-            </td>
-        </tr>
-        <tr>
-            <td align="center">2007</td>
-            <td align="center">305.26</td>
-            <td align="center">1020.08</td>
-            <td align="center">2089.82</td>
-            <td align="center">6122.37</td>
-            <td align="center">
-            	<a href="institution-appropriation-edit.html" class="btnIconEdit" title="更新"></a>
-                <a href="#" class="btnIconDel" title="删除"></a>
-            </td>
-        </tr>
-        <tr>
-            <td align="center">2006</td>
-            <td align="center">305.26</td>
-            <td align="center">1020.08</td>
-            <td align="center">2089.82</td>
-            <td align="center">6122.37</td>
-            <td align="center">
-            	<a href="institution-appropriation-edit.html" class="btnIconEdit" title="更新"></a>
-                <a href="#" class="btnIconDel" title="删除"></a>
-            </td>
-        </tr>
-        <tr>
-            <td align="center">2005</td>
-            <td align="center">305.26</td>
-            <td align="center">1020.08</td>
-            <td align="center">2089.82</td>
-            <td align="center">6122.37</td>
-            <td align="center">
-            	<a href="institution-appropriation-edit.html" class="btnIconEdit" title="更新"></a>
-                <a href="#" class="btnIconDel" title="删除"></a>
-            </td>
-        </tr>
+        <#list fund as fundall>
+            <tr>
+                <td align="center">${fundall.yearly}</td>
+                <td align="center">${fundall.prefund}</td>
+                <td align="center">${fundall.dutyfund}</td>
+                <td align="center">${fundall.businessfund}</td>
+                <td align="center">${fundall.buildfund}</td>
+                <td align="center">
+                    <a href="institution-appropriation-edit.html" class="btnIconEdit" title="更新"></a>
+                    <a href="#" class="btnIconDel" title="删除"></a>
+                </td>
+            </tr>
+        </#list>
     </table>
     <!--//commonTable-->
     <div id="pagelist">

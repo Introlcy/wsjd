@@ -12,7 +12,7 @@
 <div class="content-pages-wrap">
     <div class="commonTitle"><h2>&gt;&gt; <a href="institution-list.html">机构管理</a> - 机构财政拨款</h2></div>
     <table border="0" cellspacing="1" cellpadding="0" class="commonTable">
-        <form id="institutionCreat" name="institutionCreat" action="" method="post">
+        <form id="institutionCreat" name="institutionCreat" action="/ognzx" method="post">
         <tr>
             <td rowspan="2" align="right"><span class="required">*</span>选择年度：</td>
             <td rowspan="2" align="left"><select name="select" id="select">
@@ -32,17 +32,18 @@
             <td align="right">基本建设资金（万元）：</td>
             <td align="left"><input name="textfield9" type="text" class="inputTextNormal" id="textfield9" /></td>
             </tr>
+            <!--//commonTable-->
+            <div id="formPageButton">
+                <ul>
+                    <li><input type="submit">保存</li>
+                    <li><a href="javascript:window.history.go(-1)" title="返回" class="btnShort">返回</a></li>
+                </ul>
+            </div>
+            <!--//commonToolBar-->
+
+<!--//content pages wrap-->
         </form>
     </table>
-    <!--//commonTable-->
-    <div id="formPageButton">
-    	<ul>
-        	<li><a href="institution-view.html" title="保存" class="btnShort">保存</a></li>
-        	<li><a href="javascript:window.history.go(-1)" title="返回" class="btnShort">返回</a></li>
-        </ul>
-    </div>
-    <!--//commonToolBar-->
 </div>
-<!--//content pages wrap-->
 </body>
 </html>

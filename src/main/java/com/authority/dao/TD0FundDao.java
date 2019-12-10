@@ -2,6 +2,8 @@ package com.authority.dao;
 
 import com.authority.entity.TD0Fund;
 
+import java.util.List;
+
 /**
  * @author authority
  */
@@ -17,4 +19,6 @@ public interface TD0FundDao {
     int updateByPrimaryKeySelective(TD0Fund record);
 
     int updateByPrimaryKey(TD0Fund record);
+
+    List<TD0Fund> selectAllFund();
 }

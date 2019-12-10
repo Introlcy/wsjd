@@ -1,5 +1,8 @@
 package com.authority.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -8,6 +11,7 @@ import java.util.Date;
  * @author 
  */
 public class TD0Organization implements Serializable {
+
     /**
      * id
      */
@@ -46,11 +50,13 @@ public class TD0Organization implements Serializable {
     /**
      * 挂牌日期
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date listingdate;
 
     /**
      * 独立运行日期
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date standalonedate;
 
     /**
@@ -61,6 +67,7 @@ public class TD0Organization implements Serializable {
     /**
      * 编办批文日期
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date zbbdocdate;
 
     /**
