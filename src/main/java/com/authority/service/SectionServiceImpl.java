@@ -38,7 +38,7 @@ public class SectionServiceImpl implements SectionService {
 
     @Override
     public int updateByPrimaryKeySelective(TD0Section record) {
-        return 0;
+        return td0SectionDao.updateByPrimaryKeySelective(record);
     }
 
     @Override

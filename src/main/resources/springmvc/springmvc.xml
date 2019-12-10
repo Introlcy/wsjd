@@ -16,6 +16,8 @@
 
 	<mvc:annotation-driven />
 
+	<!--校验器注入到处理器适配器-->
+	<mvc:annotation-driven validator="validator"/>
 
 	<!--不拦截静态资源-->
 	<mvc:default-servlet-handler/>
@@ -44,5 +46,11 @@
 				<prop key="url_escaping_charset">UTF-8</prop>
 			</props>
 		</property>
+	</bean>
+
+	<!-- 配置springmvc的数据校验器-->
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<!-- 配置hibernate-validator框架中的数据校验器-->
+		<property name="providerClass" value="org.hibernate.validator.HibernateValidator" />
 	</bean>
 </beans>

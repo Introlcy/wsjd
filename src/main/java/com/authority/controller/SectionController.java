@@ -61,7 +61,7 @@ public class SectionController {
      */
     @RequestMapping(value = "/office-list",method = RequestMethod.PUT)
     public String updateByPrimaryKey(TD0Section record){
-        sectionService.updateByPrimaryKey(record);
+        sectionService.updateByPrimaryKeySelective(record);
         return "redirect:/office-list";
     }
 
