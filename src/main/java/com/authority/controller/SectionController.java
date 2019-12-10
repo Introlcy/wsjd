@@ -7,10 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * User: wsq
@@ -28,7 +26,7 @@ public class SectionController {
      * @return
      */
     @RequestMapping(value = "/office-list",method = RequestMethod.GET)
-    public String officeList(Model model){
+    public String queryAllSection(Model model){
         model.addAttribute("sectionlist",sectionService.queryAllSection());
         return "office-list";
     }
@@ -41,6 +39,34 @@ public class SectionController {
     @RequestMapping(value = "/office-list/{id}",method = RequestMethod.DELETE)
     public String deleteByPrimaryKey(@PathVariable("id") Integer id){
         sectionService.deleteByPrimaryKey(id);
+        return "redirect:/office-list";
+    }
+
+    /**
+     * 通过id查询信息
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/office-list/{id}",method = RequestMethod.GET)
+    public String selectByPrimaryKey(@PathVariable("id") Integer id,Model model){
+        TD0Section section=sectionService.selectByPrimaryKey(id);
+        model.addAttribute("section",section);
+        return "office-edit";
+    }
+
+    /**
+     * 更新信息
+     * @param record
+     * @return
+     */
+    @RequestMapping(value = "/office-list",method = RequestMethod.PUT)
+    public String updateByPrimaryKey(TD0Section record){
+        sectionService.updateByPrimaryKey(record);
+        return "redirect:/office-list";
+    }
+
+    public String insert(TD0Section record){
+        sectionService.insert(record);
         return "redirect:/office-list";
     }
 }

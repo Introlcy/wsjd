@@ -30,6 +30,11 @@ public interface SectionService {
 
     int updateByPrimaryKeySelective(TD0Section record);
 
+    /**
+     * 通过主键更新
+     * @param record
+     * @return
+     */
     int updateByPrimaryKey(TD0Section record);
 
     /**

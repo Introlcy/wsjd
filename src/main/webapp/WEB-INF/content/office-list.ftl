@@ -28,10 +28,10 @@
             <th >科室名称编码</th>
             <th>科室名称代码</th>
             <th>是否为分所</th>
-            <th >电话号码</th>
-            <th >传真号码</th>
-            <th >门号</th>
-            <th colspan="2">编辑</th>
+            <th>电话号码</th>
+            <th>传真号码</th>
+            <th>门号</th>
+            <th colspan="2" style="text-align: center">编辑</th>
         </tr>
         <#list sectionlist as section>
             <tr>

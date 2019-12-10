@@ -23,7 +23,7 @@ public class SectionServiceImpl implements SectionService {
 
     @Override
     public int insert(TD0Section record) {
-        return 0;
+        return td0SectionDao.insert(record);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class SectionServiceImpl implements SectionService {
 
     @Override
     public TD0Section selectByPrimaryKey(Integer id) {
-        return null;
+        return td0SectionDao.selectByPrimaryKey(id);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class SectionServiceImpl implements SectionService {
 
     @Override
     public int updateByPrimaryKey(TD0Section record) {
-        return 0;
+        return td0SectionDao.updateByPrimaryKey(record);
     }
 
     @Override
