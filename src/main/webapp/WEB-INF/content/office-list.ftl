@@ -15,6 +15,7 @@
 
     <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/layui/css/layui.css">
 </head>
 <body class="content-pages-body">
 <div class="content-pages-wrap">
@@ -36,7 +37,7 @@
             </tr>
         </form>
     </table>
-    <!--//commonTableSearch-->
+    //commonTableSearch&ndash;&gt;
     <div class="btnBar">
         <ul class="clearfix">
             <li><a href="office-creat.html" title="创建科室" class="btnNormal">创建科室</a></li>
@@ -73,6 +74,6 @@
         </#list>
     </table>
 </div>
-<!--//content pages wrap-->
+
 </body>
 </html>

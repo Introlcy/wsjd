@@ -1,12 +1,15 @@
 package com.authority.controller;
 
+import com.authority.entity.TD0Section;
 import com.authority.service.SectionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * User: wsq
