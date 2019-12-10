@@ -42,13 +42,17 @@
             <a href="javascript:;">人员管理</a>
             <dl class="layui-nav-child">
                 <dd><a onclick="urlTarget('/content/forwardmember');">人员列表</a></dd>
-                <dd><a href="javascript:;">人员授权</a></dd>
-                <dd><a href="javascript:;">被授权人确认</a></dd>
-                <dd><a href="javascript:;">所级领导名录统计表</a></dd>
-                <dd><a href="javascript:;">人员构成情况表</a></dd>
-                <dd><a href="javascript:;">卫生监督员管理信息汇总</a></dd>
-                <dd><a href="javascript:;">专业技术人员基本情况表</a></dd>
-                <dd><a href="javascript:;">行政管理人员基本情况表</a></dd>
+                <dd><a onclick="urlTarget('/content/PersonnelAuthorization');">人员授权</a></dd>
+                <dd><a onclick="urlTarget('/content/AuthorizedPersonConfirms');">被授权人确认</a></dd>
+                <dd><a onclick="urlTarget('/content/StatisticsOfLeadersList');">所级领导名录统计表</a></dd>
+                <dd><a onclick="urlTarget('/content/StaffCompositionTable');">人员构成情况表</a></dd>
+                <!-- Summary of health supervisor management information-->
+                <dd><a onclick="urlTarget('/content/sofhsmi');">卫生监督员管理信息汇总</a></dd>
+                <!--Basic situation of professional and technical personnel-->
+                <dd><a onclick="urlTarget('/content/bsopatp');">专业技术人员基本情况表</a></dd>
+                <!--Basic situation of administrative staff-->
+                <dd><a onclick="urlTarget('/content/bsofas');">行政管理人员基本情况表</a></dd>
+                <dd><a href="javascript:;"></a></dd>
             </dl>
         </li>
         <li class="layui-nav-item">
