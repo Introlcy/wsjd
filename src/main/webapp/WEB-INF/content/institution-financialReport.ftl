@@ -44,62 +44,15 @@
             <td align="center">业务经费（万元）</td>
             <td align="center">基本建设基金（万元）</td>
        </tr>
-		<tr>
-            <td align="center">南京市卫生监督所</td>
-            <td align="center">2</td>
-            <td align="center">45</td>
-            <td align="center">9</td>
-            <td align="center">11</td>
-       </tr>
-		<tr>
-            <td align="center">鼓楼区卫生监督所</td>
-            <td align="center">3</td>
-            <td align="center">34</td>
-			 <td align="center">45</td>
-            <td align="center">9</td>
-       </tr>
-		<tr>
-            <td align="center">秦淮区卫生监督所</td>
-            <td align="center">4</td>
-            <td align="center">3</td>
-			 <td align="center">34</td>
-            <td align="center">45</td>
-       </tr>
-		<tr>
-            <td align="center">六合区卫生监督所</td>
-            <td align="center">5</td>
-            <td align="center">64</td>
-            <td align="center">5</td>
-            <td align="center">34</td>
-       </tr>
-		<tr>
-            <td align="center">六合区二所卫生监督所</td>
-            <td align="center">6</td>
-            <td align="center">34</td>
-            <td align="center">64</td>
-            <td align="center">5</td>
-       </tr>
-		<tr>
-            <td align="center">......卫生监督所</td>
-            <td align="center">7</td>
-            <td align="center">34</td>
-            <td align="center">54</td>
-            <td align="center">64</td>
-       </tr>
-		<tr>
-            <td align="center">......卫生监督所</td>
-            <td align="center">8</td>
-            <td align="center">54</td>
-            <td align="center">54</td>
-            <td align="center">34</td>
-       </tr>
-		<tr>
-            <td align="center">......卫生监督所</td>
-            <td align="center">9</td>
-            <td align="center">35</td>
-            <td align="center">37</td>
-            <td align="center">36</td>
-       </tr>
+         <#list  list as  fund>
+             <tr>
+                 <td align="center">${fund.td0Organization.orgname}</td>
+                 <td align="center">${fund.prefund}</td>
+                 <td align="center">${fund.dutyfund}</td>
+                 <td align="center">${fund.businessfund}</td>
+                 <td align="center">${fund.buildfund}</td>
+             </tr>
+         </#list>
   </table>
 <!--//content pages wrap-->
 </body>

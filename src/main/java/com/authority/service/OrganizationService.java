@@ -4,6 +4,7 @@ import com.authority.entity.OrganizationAndOrgattached;
 import com.authority.entity.TD0Fund;
 import com.authority.entity.TD0Organization;
 import com.authority.entity.TD0Orgattached;
+import com.authority.entity.vo.TD0OrgAndFund;
 
 import java.util.List;
 
@@ -34,4 +35,18 @@ public interface OrganizationService {
      */
     void insertFund(TD0Fund td0Fund);
 
+    /*
+    财政拨款集合
+     */
+    List<TD0OrgAndFund> selectAllOAF();
+
+    /*
+    查询仪器设备集合
+     */
+    List<TD0Orgattached> selectAllOttached();
+
+    /*
+    查询监督机构基本情况
+     */
+    List<OrganizationAndOrgattached> selectAllOAO();
 }

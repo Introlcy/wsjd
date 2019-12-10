@@ -48,25 +48,20 @@
        	</form>
     </table>
     <!--//commonTableSearch-->
-    <div class="btnBar">
-    	<ul class="clearfix">
-        	<li><a href="institution-creat.html" title="创建机构" class="btnNormal">新增</a></li>
-        </ul>
-    </div>
+
 
     <table class="layui-hide" id="test" lay-filter="test"></table>
 
     <script type="text/html" id="toolbarDemo">
         <div class="layui-btn-container">
-            <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
-            <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
-            <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+            <button type="button" class="layui-btn layui-byn-sm" lay-event="add" onclick="openAddUser">增加</button>
         </div>
     </script>
 
     <script type="text/html" id="barDemo">
         <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+        <a class="layui-btn layui-btn-normal" lay-event="sel" >查看详情</a>
     </script>
 
 
@@ -84,6 +79,7 @@
                 ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
                     title: '提示'
                     ,layEvent: 'LAYTABLE_TIPS'
+                    ,cellMinWidth:100
                     ,icon: 'layui-icon-tips'
                 }]
                 ,title: '用户数据表'
@@ -99,6 +95,7 @@
                 ]]
                 ,page: true
             });
+
 
             //头工具栏事件
             table.on('toolbar(test)', function(obj){

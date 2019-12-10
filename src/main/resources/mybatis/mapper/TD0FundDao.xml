@@ -112,4 +112,35 @@
     <select id="selectAllFund" resultMap="BaseResultMap">
      SELECT id, orgId,yearly, preFund, businessFund, dutyFund, buildFund FROM t_d0_fund
     </select>
+
+
+
+  <resultMap id="OAFResultMap" type="com.authority.entity.vo.TD0OrgAndFund">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="orgId" jdbcType="INTEGER" property="orgid" />
+    <result column="yearly" jdbcType="VARCHAR" property="yearly" />
+    <result column="preFund" jdbcType="DECIMAL" property="prefund" />
+    <result column="businessFund" jdbcType="DECIMAL" property="businessfund" />
+    <result column="dutyFund" jdbcType="DECIMAL" property="dutyfund" />
+    <result column="buildFund" jdbcType="DECIMAL" property="buildfund" />
+    <association property="td0Organization" javaType="TD0Organization">
+      <id column="id" jdbcType="INTEGER" property="id" />
+      <result column="orgNo" jdbcType="VARCHAR" property="orgno" />
+      <result column="orgCode" jdbcType="VARCHAR" property="orgcode" />
+      <result column="orgName" jdbcType="VARCHAR" property="orgname" />
+      <result column="exeType" jdbcType="VARCHAR" property="exetype" />
+      <result column="areaCode" jdbcType="VARCHAR" property="areacode" />
+      <result column="linkAdd" jdbcType="VARCHAR" property="linkadd" />
+      <result column="listingDate" jdbcType="TIMESTAMP" property="listingdate" />
+      <result column="standaloneDate" jdbcType="TIMESTAMP" property="standalonedate" />
+      <result column="areaType" jdbcType="VARCHAR" property="areatype" />
+      <result column="zbbdocDate" jdbcType="TIMESTAMP" property="zbbdocdate" />
+      <result column="orgLevel" jdbcType="VARCHAR" property="orglevel" />
+      <result column="orgPro" jdbcType="VARCHAR" property="orgpro" />
+      <result column="zipcode" jdbcType="VARCHAR" property="zipcode" />
+    </association>
+  </resultMap>
+  <select id="selectAllOAF" resultMap="OAFResultMap">
+    SELECT t1.*,t2.orgname FROM t_d0_fund t1 LEFT JOIN t_d0_organization t2 ON t1.orgid=t2.id
+  </select>
 </mapper>

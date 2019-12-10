@@ -58,4 +58,22 @@ public class OrganizationController {
         service.insertFund(td0Fund);
         return "redirect:/ognzx/"+ td0Fund.getOrgid();
     }
+
+    @RequestMapping(value = "/fund",method = RequestMethod.GET)
+    public String selectAllOAF(Model model){
+        model.addAttribute("list",service.selectAllOAF());
+        return "institution-financialReport";
+    }
+
+    @RequestMapping("/ached")
+    public String selectAllOrttached(Model model){
+        model.addAttribute("list",service.selectAllOttached());
+        return "institution-equipmentInfo";
+    }
+
+    @RequestMapping("/oao")
+    public String selectAllOAO(Model model){
+        model.addAttribute("list",service.selectAllOAO());
+        return "institution-oversightBodies";
+    }
 }

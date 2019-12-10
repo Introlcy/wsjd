@@ -58,6 +58,7 @@ public class TD0Fund implements Serializable {
      */
     private BigDecimal buildfund;
 
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {

@@ -3,6 +3,8 @@ package com.authority.dao;
 import com.authority.entity.OrganizationAndOrgattached;
 import com.authority.entity.TD0Orgattached;
 
+import java.util.List;
+
 public interface TD0OrgattachedDao {
     int deleteByPrimaryKey(Integer id);
 
@@ -17,4 +19,8 @@ public interface TD0OrgattachedDao {
     int updateByPrimaryKey(TD0Orgattached record);
 
     OrganizationAndOrgattached selectOneOAO(Integer id);
+
+    List<OrganizationAndOrgattached> selectAllOAO();
+
+    List<TD0Orgattached> selectAllOrgattached();
 }
