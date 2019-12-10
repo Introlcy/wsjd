@@ -62,4 +62,13 @@ public class HumanManageImpl implements HumanManageInter {
     public TD0Stuff getOneStuff(Integer id) {
         return td0StuffDao.selectByPrimaryKey(id);
     }
+
+    @Override
+    public Integer editMember(TD0Stuff td0Stuff) {
+
+
+        return td0StuffDao.updateByPrimaryKeySelective(td0Stuff);
+    }
+
+
 }

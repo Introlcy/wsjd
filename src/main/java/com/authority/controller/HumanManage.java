@@ -57,5 +57,11 @@ public class HumanManage {
         return "member-edit";
     }
 
+    @PutMapping("editMember")
+    public String editPerson(TD0Stuff td0Stuff){
+        humanManageInter.editMember(td0Stuff);
+        return "redirect:/content/forwardmember";
+    }
+
 
 }

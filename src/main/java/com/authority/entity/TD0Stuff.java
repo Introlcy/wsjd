@@ -1,5 +1,7 @@
 package com.authority.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -37,6 +39,7 @@ public class TD0Stuff implements Serializable {
     /**
      * 出生年月
      */
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date birthdate;
 
     /**
@@ -92,6 +95,7 @@ public class TD0Stuff implements Serializable {
     /**
      * 何时参加工作
      */
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date beginworkdate;
 
     /**
@@ -112,6 +116,7 @@ public class TD0Stuff implements Serializable {
     /**
      * 何时进卫生监督所
      */
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date getindate;
 
     /**
@@ -132,6 +137,7 @@ public class TD0Stuff implements Serializable {
     /**
      * 何时取得行政执法证
      */
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date getcarddate;
 
     /**
@@ -142,6 +148,7 @@ public class TD0Stuff implements Serializable {
     /**
      * 何时取得卫生监督员资格
      */
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date getquadate;
 
     /**
@@ -152,6 +159,7 @@ public class TD0Stuff implements Serializable {
     /**
      * 目前所持有效监督员证的有效时间
      */
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date cardday;
 
     /**

@@ -1,15 +1,16 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=7" />
 <title>江苏省卫生监督业务系统</title>
-<link href="../css/main.css" rel="stylesheet" type="text/css" media="all" />
-<script src="../js/jquery-1.4.2.min.js" type="text/javascript"></script>
+<link href="/css/main.css" rel="stylesheet" type="text/css" media="all" />
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="../layui/css/layui.css"  media="all">
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+    <script src="/js/jquery-3.2.1.js"></script>
+    <script src="/layui/layui.js"></script>
 </head>
 
 <body class="content-pages-body">
@@ -27,7 +28,8 @@
             <option value="">职业卫生</option>
             <option value="">放射卫生</option>
             <option value="">其他</option>
-          </select></td>
+          </select>
+          </td>
           <td><div align="right">单位名称（个人）：</div></td>
           <td><input name="textfield6" type="text" class="inputTextNormal" id="textfield6" /></td>
           <td align="right">组织机构代码：</td>
@@ -47,101 +49,83 @@
         </tr>
        	</form>
     </table>
-    <!--//commonTableSearch-->
-
-
-    <table class="layui-hide" id="test" lay-filter="test"></table>
-
-    <script type="text/html" id="toolbarDemo">
-        <div class="layui-btn-container">
-            <button type="button" class="layui-btn layui-byn-sm" lay-event="add" onclick="openAddUser">增加</button>
-        </div>
-    </script>
-
+    <div style="height: 120px;"></div>
+    <table style="height: 100%" id="demo" lay-filter="test"></table>
     <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
         <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
         <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-        <a class="layui-btn layui-btn-normal" lay-event="sel" >查看详情</a>
     </script>
 
-
-    <script src="layui/layui.js" charset="utf-8"></script>
-
-
+    <script src="/layui/layui.js"></script>
     <script>
-        layui.use('table', function(){
-            var table = layui.table;
+        $(function () {
+            layui.use('table', function () {
+                var table = layui.table;
+                //第一个实例
+                table.render({
+                    elem: '#demo'
+                    ,height : 'full-300'
+                    , url: '/ognzx' //数据接口
+                    , page: true //开启分页
+                    ,  cols: [[
+                        , {field: 'orgno', title: '申请单位(个人)'}
+                        , {field: 'orgname', title: '机构名称'}
+                        , {field: 'exetype', title: '专业类别', sort: true}
+                        , {field: 'linkadd', title: '经营地址'}
+                        , {field: 'listingdate', title: '报告日期'}
+                        , {field: 'zbbdocdate', title: '审核状态', sort: true}
+                        , {fixed: 'right', title: '操作', toolbar: '#barDemo'}
+                    ]]
+                    , response: {
+                        code: 'code' //规定数据状态的字段名称，默认：code
+                        , msg: 'msg' //规定状态信息的字段名称，默认：msg
+                        , count: 'count' //规定数据总数的字段名称，默认：count
+                        , data: 'data' //规定数据列表的字段名称，默认：data
+                    }
+                    , parseData: function (res) { //res 即为原始返回的数据
+                        return {
+                            "code": res.code, //解析接口状态
+                            "msg": res.msg, //解析提示文本
+                            "count": res.count, //解析数据长度
+                            "data": res.data//解析数据列表
+                        }
+                    }
+                });
+//监听行工具事件
 
-            table.render({
-                elem: '#test'
-                ,url:'/ognzx'
-                ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
-                ,defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
-                    title: '提示'
-                    ,layEvent: 'LAYTABLE_TIPS'
-                    ,cellMinWidth:100
-                    ,icon: 'layui-icon-tips'
-                }]
-                ,title: '用户数据表'
-                ,cols: [[
-                    ,{field:'orgno', title:'申请单位(个人)'}
-                    ,{field:'orgname', title:'机构名称'}
-                    ,{field:'exetype', title:'专业类别', sort: true}
-                    ,{field:'linkadd', title:'经营地址'}
-                    ,{field:'listingdate', title:'报告日期'}
-                    ,{field:'zbbdocdate', title:'审核状态',  sort: true}
-
-                    ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
-                ]]
-                ,page: true
-            });
-
-
-            //头工具栏事件
-            table.on('toolbar(test)', function(obj){
-                var checkStatus = table.checkStatus(obj.config.id);
-                switch(obj.event){
-                    case 'getCheckData':
-                        var data = checkStatus.data;
-                        layer.alert(JSON.stringify(data));
-                        break;
-                    case 'getCheckLength':
-                        var data = checkStatus.data;
-                        layer.msg('选中了：'+ data.length + ' 个');
-                        break;
-                    case 'isAll':
-                        layer.msg(checkStatus.isAll ? '全选': '未全选');
-                        break;
-
-                    //自定义头工具栏右侧图标 - 提示
-                    case 'LAYTABLE_TIPS':
-                        layer.alert('这是工具栏右侧自定义的一个图标按钮');
-                        break;
-                };
-            });
-
-            //监听行工具事件
-            table.on('tool(test)', function(obj){
-                var data = obj.data;
-                //console.log(obj)
-                if(obj.event === 'del'){
-                    layer.confirm('真的删除行么', function(index){
-                        obj.del();
-                        layer.close(index);
-                    });
-                } else if(obj.event === 'edit'){
-                    layer.prompt({
-                        formType: 2
-                        ,value: data.email
-                    }, function(value, index){
-                        obj.update({
-                            email: value
+                table.on('tool(test)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+                    var data = obj.data //获得当前行数据
+                        ,layEvent = obj.event; //获得 lay-event 对应的值
+                    if(layEvent === 'detail'){
+                        window.location.href = "/qid?id="+data.id;
+                    } else if(layEvent === 'del'){
+                        layer.confirm('真的删除行么', function(index){
+                            obj.del(); //删除对应行（tr）的DOM结构
+                            layer.close(index);
+                            //向服务端发送删除指令
                         });
-                        layer.close(index);
-                    });
-                }
+                    } else if(layEvent === 'edit'){
+                        //  layer.msg('编辑操作');
+                        layer.open({
+                            type: 2 //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+                            ,title: '发起投票'
+                            ,area: ['700px', '450px']
+                            ,maxmin: true  //最大最小化按钮
+                            ,offset: 'auto'   //位置居中
+                            ,content: '/welcome.html' //不出现滚动条   ,'no'
+                            ,btnAlign: 'c'
+
+                        });
+                    }
+                });
+
             });
-        });
+        })
+
     </script>
+
+
+</div>
 </body>
 </html>
