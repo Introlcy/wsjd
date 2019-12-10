@@ -65,8 +65,23 @@ public class SectionController {
         return "redirect:/office-list";
     }
 
+    /**
+     * 添加科室
+     * @param record
+     * @return
+     */
+    @RequestMapping(value = "/office-list", method = RequestMethod.POST)
     public String insert(TD0Section record){
         sectionService.insert(record);
         return "redirect:/office-list";
+    }
+
+    /**
+     * 在list页面向添加数据时，页面跳转用
+     * @return
+     */
+    @RequestMapping(value = "/office-show", method = RequestMethod.GET)
+    public String show(){
+        return "office-create";
     }
 }

@@ -21,6 +21,7 @@
 <body class="content-pages-body">
 <div class="content-pages-wrap">
     <#--待添加功能：分页，搜索，添加-->
+    <a href="/office-show" class="btn btn-primary">添加</a>
     <table  class="table table-bordered">
         <tr>
             <th>机构id</th>

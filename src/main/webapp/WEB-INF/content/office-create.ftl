@@ -19,23 +19,43 @@
 
 </head>
 <body>
-<form method="post" action="office-list">
-    <input type="hidden" name="_method" value="put">
-    <table class="table table-bordered">
-        <tr>
-            <th>机构id<input name="orgid"  value="${section.orgid}"></th>
-            <th>科室编码<input name="divcode"  value="${section.divcode}"></th>
-            <th>科室名称编码<input name="divnamecode"  value="${section.divnamecode}"></th>
-            <th>科室名称代码<input name="divname"  value="${section.divname}"></th>
-            <th>是否为分所<input name="ifsub"  value="${section.ifsub}"></th>
-            <th>电话号码<input name="dutytel"  value="${section.dutytel}"></th>
-            <th>传真号码<input name="fax"  value="${section.fax}"></th>
-            <th>门号<input name="divroomno"  value="${section.divroomno}"></th>
-        </tr>
-    </table>
-    <button class="button btn-info">
-        <input type="submit">
-    </button>
-</form>
+<div class="container">
+    <h2>编辑信息</h2>
+    <form method="post" action="/office-list">
+        <div class="form-group">
+            <label for="orgid">机构id:</label>
+            <input  class="form-control" name="orgid" >
+        </div>
+        <div class="form-group">
+            <label for="divcode">科室编码:</label>
+            <input  class="form-control" name="divcode"  >
+        </div>
+        <div class="form-group">
+            <label for="divnamecode">科室名称编码:</label>
+            <input  class="form-control" name="divnamecode" >
+        </div>
+        <div class="form-group">
+            <label for="divname">科室名称代码:</label>
+            <input  class="form-control" name="divname"  >
+        </div>
+        <div class="form-group">
+            <label for="ifsub">是否为分所:</label>
+            <input  class="form-control" name="ifsub"  >
+        </div>
+        <div class="form-group">
+            <label for="dutytel">电话号码:</label>
+            <input  class="form-control" name="dutytel" >
+        </div>
+        <div class="form-group">
+            <label for="fax">传真号码:</label>
+            <input  class="form-control" name="fax" >
+        </div>
+        <div class="form-group">
+            <label for="divroomno">门号:</label>
+            <input  class="form-control" name="divroomno" >
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
 </body>
 </html>
