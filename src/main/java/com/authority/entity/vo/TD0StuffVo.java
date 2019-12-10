@@ -8,7 +8,7 @@ package com.authority.entity.vo;
 public class TD0StuffVo {
 
     Integer humanCode;
-    String Orgganization;
+    String organization;
     String section;
     String name;
     String sex;
@@ -16,6 +16,14 @@ public class TD0StuffVo {
     String job;
     String grade;
     String major;
+
+    public String getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(String organization) {
+        this.organization = organization;
+    }
 
     public Integer getHumanCode() {
         return humanCode;
@@ -25,13 +33,7 @@ public class TD0StuffVo {
         this.humanCode = humanCode;
     }
 
-    public String getOrgganization() {
-        return Orgganization;
-    }
 
-    public void setOrgganization(String orgganization) {
-        Orgganization = orgganization;
-    }
 
     public String getSection() {
         return section;

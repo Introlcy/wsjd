@@ -1,5 +1,6 @@
 package com.authority.service;
 
+import com.authority.entity.TD0Stuff;
 import com.authority.entity.vo.TD0StuffVo;
 
 import java.util.List;
@@ -12,5 +13,6 @@ import java.util.List;
 public interface HumanManageInter {
 
     List<TD0StuffVo> getAllStuff();
+    TD0Stuff getOneStuff(Integer id);
 
 }
