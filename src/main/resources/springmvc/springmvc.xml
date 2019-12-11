@@ -44,6 +44,9 @@
 				<prop key="whitespace_stripping">true</prop>
 				<prop key="tag_syntax">auto_detect</prop>
 				<prop key="url_escaping_charset">UTF-8</prop>
+                <!--用于解决FreeMarker报空指针问题,兼容模式，如果有页面不想遵守，可以在页面上加上
+                <#setting classic_compatible=false>  -->
+                <prop key="classic_compatible">true</prop>
 			</props>
 		</property>
 	</bean>
