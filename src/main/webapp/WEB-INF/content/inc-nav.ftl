@@ -1,13 +1,11 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=7" />
 <title>江苏省卫生监督业务系统</title>
-<link href="css/main.css" rel="stylesheet" type="text/css" />
-<script src="js/jquery-1.4.2.min.js" type="text/javascript"></script>
-<script src="js/jquery.treeview.js" type="text/javascript"></script>
-<link href="css/jquery.treeview.css" rel="stylesheet" type="text/css" />
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+<script src="/js/jquery-3.2.1.js" type="text/javascript"></script>
 <script src="/layui/layui.js"></script>
 <link rel="stylesheet" href="/layui/css/layui.css">
     <script>
@@ -22,14 +20,37 @@
 		$("#content-box",parent.document.body).attr("src",urls);
 	}
 </script>
+<script type="text/javascript">
+function getMenuList(id) {
 
+    $.ajax({
+        url:'/getMenuList/'+id, //请求的url地址
+
+        type:"get", //请求方式
+        success:function(res){
+            console.log(res)
+        },
+
+    });
+
+}
+
+
+</script>
 </head>
 
 <body class="inc-nav-body">
+
+
+
+
 <div id="nav-box">
     <ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo" style="margin-right: 10px;">
         <li class="layui-nav-item layui-nav-itemed">
-            <a href="javascript:;">机构管理</a>
+
+            <#list menu as m>
+                <a  onclick="getMenutList(${m.resourceid})">${m.resourcesName}</a>
+            </#list>
             <dl class="layui-nav-child">
                 <dd><a onclick="urlTarget('/ts');">机构列表</a></dd>
                 <dd><a onclick="urlTarget('/office');">科室列表</a></dd>

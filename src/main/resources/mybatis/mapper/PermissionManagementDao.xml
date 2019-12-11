@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.authority.dao.PermissionManagementDao">
+
+
+<select id="getPermission" resultType="com.authority.entity.Permission" parameterType="Integer">
+SELECT ts.`id` id,ts.`username` username,ts.`password` PASSWORD,ts.`realname` realname,
+tsr.`id` resourceid,tsr.`resourcesName` resourcesName,tsroles.`id` roleid,tsroles.`roleName` roleName
+FROM t_sys_users AS ts
+LEFT JOIN t_sys_users_roles AS tsu
+ON tsu.`userid`=ts.`id`
+LEFT JOIN t_sys_roles_resources AS tsrr
+ON tsrr.`roleid`=tsu.`roleid`
+LEFT JOIN t_sys_resources AS tsr
+ON tsr.`id`=tsrr.`resourceid`
+LEFT JOIN t_sys_roles AS tsroles
+ON tsroles.`id`=tsu.`roleid`
+WHERE  ts.`id`=#{id}
+</select>
+
+<select id="getMenuList" parameterType="Integer" resultType="com.authority.entity.MenuList">
+    SELECT id,resourcesName,url FROM t_sys_resources WHERE pid=#{id} ORDER BY sort
+</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>
