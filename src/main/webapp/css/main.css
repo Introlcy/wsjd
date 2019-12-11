@@ -137,9 +137,10 @@ a:active  {}
 #siderbar-box { width:200px; height:500px;}
 
 #main-nav  { float:left; width:200px;}
-/*inc-nav.html*/
+/*inc-nav.ftl*/
 .inc-nav-body { background:url(/images/bg-sidebar.gif) repeat-y 0 0;}
-#nav-box      { background:url(/images/bg-sidebar-top.gif) no-repeat 0 0; padding:5px; width:190px; min-height:300px; height:100%;}
+#nav-box      {
+    background:url(/images/bg-sidebar-top.gif);background-repeat:repeat-y;height:100%;}
 
 #main-content       { margin-left:200px; height:100%;}
 .main-content-width { margin-left:0;}
