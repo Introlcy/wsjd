@@ -143,4 +143,8 @@
   <select id="selectAllOAF" resultMap="OAFResultMap">
     SELECT t1.*,t2.orgname FROM t_d0_fund t1 LEFT JOIN t_d0_organization t2 ON t1.orgid=t2.id
   </select>
+
+  <insert id="insertOneFund" >
+    INSERT INTO t_d0_fund (orgId,yearly,preFund,businessFund,dutyFund,buildFund) VALUES (#{orgid},#{yearly},#{prefund},#{businessfund},#{dutyfund},#{buildfund})
+  </insert>
 </mapper>

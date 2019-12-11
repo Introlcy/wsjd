@@ -54,7 +54,8 @@
 
     <script type="text/html" id="toolbarDemo">
         <div class="layui-btn-container">
-            <button type="button" class="layui-btn layui-byn-sm" lay-event="add">增加</button>
+            <button type="button" class="layui-btn layui-byn-sm" lay-event="add" href="/toiav">增加</button>
+
         </div>
     </script>
 
@@ -62,7 +63,7 @@
     <script type="text/html" id="barDemo">
         <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
         <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-       <#-- <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>-->
+       <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="del">拨款</a>
     </script>
 
     <script src="/layui/layui.js"></script>
@@ -103,7 +104,7 @@
 
 
                 //头工具栏事件
-                table.on('toolbar(test)', function(obj){
+               table.on('toolbar(test)', function(obj){
                     var  rowEvent = obj.event;
                     if(rowEvent === 'add'){
                         //  layer.msg('编辑操作');
@@ -137,28 +138,23 @@
 
                         });
                     } else if(layEvent === 'del'){
-                        layer.confirm('真的删除行么', function(index){
-                            $.ajax({
-                                url:'/del/'+data.id, //请求的url地址
+                        layer.open({
+                            type: 2 //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+                            ,title: '增加拨款'
+                            ,area: ['1000px', '700px']
+                            ,maxmin: true  //最大最小化按钮
+                            ,offset: 'auto'   //位置居中
+                            ,content: '/transf/'+data.id//不出现滚动条   ,'no'
+                            ,btnAlign: 'c'
 
-                                type:"get", //请求方式
-                                success:function(){
-                                    obj.del(); //删除对应行（tr）的DOM结构
-                                    layer.close(index);
-                                },
-                                error:function () {
-                                    alert("")
-                                }
-                            });
-
-                            //向服务端发送删除指令
                         });
+
                     } else if(layEvent === 'edit'){
                         //  layer.msg('编辑操作');
                         layer.open({
                             type: 2 //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
                             ,title: '信息修改'
-                            ,area: ['1000px', '600px']
+                            ,area: ['1000px', '700px']
                             ,maxmin: true  //最大最小化按钮
                             ,offset: 'auto'   //位置居中
                             ,content: '/update/'+data.id+'' //不出现滚动条   ,'no'

@@ -19,5 +19,6 @@ public interface TD0OrganizationDao {
 
     List<TD0Organization> selectAll();
 
+    int selectIdByOrgno(String orgno);
 
 }

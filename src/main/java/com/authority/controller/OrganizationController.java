@@ -47,14 +47,15 @@ public class OrganizationController {
         return "institution-view";
     }
 
-    @RequestMapping("/transf")
-    public String transf(){
+    @RequestMapping("/transf/{id}")
+    public String transf(@PathVariable("id") Integer id,Model model){
+        model.addAttribute("id",id);
         return "institution-appropriation-creat";
     }
     @RequestMapping(value = "/ognzx",method = RequestMethod.POST)
     public String insertFund(TD0Fund td0Fund){
         service.insertFund(td0Fund);
-        return "redirect:/ognzx/"+ td0Fund.getOrgid();
+        return "redirect:/ts";
     }
 
     @RequestMapping(value = "/fund",method = RequestMethod.GET)
@@ -93,8 +94,10 @@ public class OrganizationController {
         return "ok";
     }
 
-    @RequestMapping()
-    public String insertOAO(){
+    @RequestMapping("/add")
+    public String insertOAO(OrganizationAndOrgattached oao){
 
+        service.insertOAO(oao);
+        return "redirect:/ts";
     }
 }

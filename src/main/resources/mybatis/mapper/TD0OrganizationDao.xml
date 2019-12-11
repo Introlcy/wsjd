@@ -194,4 +194,8 @@
   <select id="selectAll" resultMap="BaseResultMap">
     SELECT id,orgno,orgname,exetype,linkadd,listingDate,zbbdocDate FROM t_d0_organization
   </select>
+
+  <select id="selectIdByOrgno" resultType="java.lang.Integer">
+    SELECT id FROM t_d0_organization WHERE orgno=#{orgno}
+  </select>
 </mapper>

@@ -441,4 +441,44 @@ public class OrganizationAndOrgattached {
     public void setTd0Organization(TD0Organization td0Organization) {
         this.td0Organization = td0Organization;
     }
+
+    @Override
+    public String toString() {
+        return "OrganizationAndOrgattached{" +
+                "id=" + id +
+                ", orgid=" + orgid +
+                ", orgname='" + orgname + '\'' +
+                ", orgno='" + orgno + '\'' +
+                ", orgcode='" + orgcode + '\'' +
+                ", onworkernum=" + onworkernum +
+                ", supervisornum=" + supervisornum +
+                ", zbbnum=" + zbbnum +
+                ", ifpublicmanage='" + ifpublicmanage + '\'' +
+                ", retirenum=" + retirenum +
+                ", officebuildarea=" + officebuildarea +
+                ", buildingownership='" + buildingownership + '\'' +
+                ", officebuildingarea=" + officebuildingarea +
+                ", businessdivcount=" + businessdivcount +
+                ", fundivcount=" + fundivcount +
+                ", orgcount=" + orgcount +
+                ", equ3count=" + equ3count +
+                ", equ2count=" + equ2count +
+                ", equ1count=" + equ1count +
+                ", buscount=" + buscount +
+                ", rapidtestvehiclecount=" + rapidtestvehiclecount +
+                ", motorcount=" + motorcount +
+                ", cameracount=" + cameracount +
+                ", videocount=" + videocount +
+                ", copycatnum=" + copycatnum +
+                ", computernum=" + computernum +
+                ", notepadnum=" + notepadnum +
+                ", servercount=" + servercount +
+                ", pbxcount=" + pbxcount +
+                ", faxcount=" + faxcount +
+                ", ohpcount=" + ohpcount +
+                ", yearly='" + yearly + '\'' +
+                ", vrcount=" + vrcount +
+                ", td0Organization=" + td0Organization +
+                '}';
+    }
 }

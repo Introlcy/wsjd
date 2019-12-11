@@ -4,14 +4,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=7" />
 <title>江苏省卫生监督业务系统</title>
-<link href="../css/main.css" rel="stylesheet" type="text/css" media="all" />
-<script src="../js/jquery-1.4.2.min.js" type="text/javascript"></script>
+<link href="/css/main.css" rel="stylesheet" type="text/css" media="all" />
+<script src="/js/jquery-1.4.2.min.js" type="text/javascript"></script>
 </head>
 
 <body class="content-pages-body">
 <div class="content-pages-wrap">
     <div class="commonTitle">
-    <h2>&gt;&gt; <a href="institution-list.html">机构管理</a> - 机构信息</h2></div>
+    <h2>&gt;&gt; <td >机构管理</td> - 机构信息</h2></div>
     <table border="0" cellspacing="1" cellpadding="0" class="commonTable">
         <form id="institutionCreat" name="institutionCreat" action="" method="post">
 	  <tr>
@@ -128,15 +128,12 @@
     <!--//commonTable-->
     <div id="formPageButton">
     	<ul>
-        	<li><a href="/update/${orgattached.id}" title="修改" class="btnShort">修改</a></li>
         	<li><a onclick="f()" title="返回" class="btnShort">返回</a></li>
         </ul>
     </div>
     <!--//commonToolBar-->
     
-    <div class="commonToolBar">
-    	<a href="/transf" title="机构创建" class="btnNormal rt1st">添加拨款</a>
-    </div>
+
     <!--//commonToolBar-->
    	<div class="commonTitle">
     	    <h2>&gt;&gt; 机构财政拨款</h2></div>
@@ -158,7 +155,7 @@
                 <td align="center">${fundall.businessfund}</td>
                 <td align="center">${fundall.buildfund}</td>
                 <td align="center">
-                    <a href="institution-appropriation-edit.html" class="btnIconEdit" title="更新"></a>
+
                     <a href="#" class="btnIconDel" title="删除"></a>
                 </td>
             </tr>

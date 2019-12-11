@@ -1,5 +1,6 @@
 package com.authority.service;
 
+import com.alibaba.druid.sql.dialect.oracle.ast.stmt.OracleCreateTableStatement;
 import com.authority.dao.TD0FundDao;
 import com.authority.dao.TD0OrganizationDao;
 import com.authority.dao.TD0OrgattachedDao;
@@ -12,7 +13,10 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -46,8 +50,9 @@ public class OrganizationServiceImpl implements OrganizationService {
     }
 
     @Override
+    @Transactional
     public void insertFund(TD0Fund td0Fund) {
-        td0FundDao.insert(td0Fund);
+        td0FundDao.insertOneFund(td0Fund);
     }
 
     @Override
@@ -73,6 +78,58 @@ public class OrganizationServiceImpl implements OrganizationService {
     @Override
     @Transactional
     public void insertOAO(OrganizationAndOrgattached oao) {
-        td0OrgattachedDao.insertOAO(oao);
+        TD0Organization oon = new TD0Organization();
+        oon.setOrgno(oao.getOrgno());
+        oon.setOrgname(oao.getTd0Organization().getOrgname());
+        oon.setOrgcode(oao.getOrgcode());
+        oon.setExetype(oao.getTd0Organization().getExetype());
+        oon.setAreacode(oao.getTd0Organization().getAreacode());
+        oon.setLinkadd(oao.getTd0Organization().getLinkadd());
+        oon.setListingdate(oao.getTd0Organization().getListingdate());
+        oon.setStandalonedate(oao.getTd0Organization().getStandalonedate());
+        oon.setAreatype(oao.getTd0Organization().getAreatype());
+        oon.setZbbdocdate(oao.getTd0Organization().getZbbdocdate());
+        oon.setOrglevel(oao.getTd0Organization().getOrglevel());
+        oon.setOrgpro(oao.getTd0Organization().getOrgpro());
+        oon.setZipcode(oao.getTd0Organization().getZipcode());
+        td0OrganizationDao.insertSelective(oon);
+        Integer id = td0OrganizationDao.selectIdByOrgno(oao.getOrgno());
+        TD0Orgattached od = new TD0Orgattached();
+        od.setOrgid(id);
+        od.setOrgname(oao.getTd0Organization().getOrgname());
+        od.setOrgno(oao.getOrgno());
+        od.setOrgcode(oao.getOrgcode());
+        od.setOnworkernum(oao.getOnworkernum());
+        od.setSupervisornum(oao.getSupervisornum());
+        od.setZbbnum(oao.getZbbnum());
+        od.setIfpublicmanage(oao.getIfpublicmanage());
+        od.setRetirenum(oao.getRetirenum());
+        od.setOfficebuildarea(oao.getOfficebuildarea());
+        od.setBuildingownership(oao.getBuildingownership());
+        od.setOfficebuildingarea(oao.getOfficebuildingarea());
+        od.setBusinessdivcount(oao.getBusinessdivcount());
+        od.setFundivcount(oao.getFundivcount());
+        od.setOrgcount(oao.getOrgcount());
+        od.setEqu3count(oao.getEqu3count());
+        od.setEqu2count(oao.getEqu2count());
+        od.setEqu1count(oao.getEqu1count());
+        od.setBuscount(oao.getBuscount());
+        od.setRapidtestvehiclecount(oao.getRapidtestvehiclecount());
+        od.setMotorcount(oao.getMotorcount());
+        od.setCameracount(oao.getCameracount());
+        od.setVideocount(oao.getVideocount());
+        od.setCopycatnum(oao.getCopycatnum());
+        od.setComputernum(oao.getComputernum());
+        od.setNotepadnum(oao.getNotepadnum());
+        od.setServercount(oao.getServercount());
+        od.setPbxcount(oao.getPbxcount());
+        od.setFaxcount(oao.getFaxcount());
+        od.setOhpcount(oao.getOhpcount());
+        SimpleDateFormat data1 = new SimpleDateFormat("yyyy");
+        Date date = new Date();
+        String d = data1.format(date);
+        od.setYearly(d);
+        od.setVrcount(oao.getVrcount());
+        td0OrgattachedDao.insertSelective(od);
     }
 }

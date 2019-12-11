@@ -53,4 +53,5 @@ public interface OrganizationService {
     void deleteOneOrganization(Integer id);
 
     void insertOAO(OrganizationAndOrgattached oao);
+
 }
