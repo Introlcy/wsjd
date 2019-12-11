@@ -49,4 +49,8 @@ public interface OrganizationService {
     查询监督机构基本情况
      */
     List<OrganizationAndOrgattached> selectAllOAO();
+
+    void deleteOneOrganization(Integer id);
+
+    void insertOAO(OrganizationAndOrgattached oao);
 }

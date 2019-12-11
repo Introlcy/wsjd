@@ -5,11 +5,9 @@ import com.authority.entity.TD0Fund;
 import com.authority.entity.vo.TD0Orgation;
 import com.authority.service.OrganizationService;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -37,7 +35,7 @@ public class OrganizationController {
         t.setData(service.selectAllOrganization(page,limit));
         t.setCode(0);
         t.setMsg("");
-        t.setCount(service.selectAllOrganization(1,100000).size());
+        t.setCount(service.selectAllOrganization(1,1000).size());
         return t;
     }
 
@@ -75,5 +73,28 @@ public class OrganizationController {
     public String selectAllOAO(Model model){
         model.addAttribute("list",service.selectAllOAO());
         return "institution-oversightBodies";
+    }
+
+    @RequestMapping("/toiav")
+    public String transfInstiAddView(){
+        return "institution-creat";
+    }
+
+    @RequestMapping("/update/{id}")
+    public String transfInstiUpdateView(@PathVariable("id")Integer id,Model model){
+        model.addAttribute("orgattached",service.selectOneOrgattached(id));
+        return "institution-update";
+    }
+
+    @RequestMapping("/del/{id}")
+    @ResponseBody
+    public String delOneOrganization(@PathVariable("id") Integer id){
+        service.deleteOneOrganization(id);
+        return "ok";
+    }
+
+    @RequestMapping()
+    public String insertOAO(){
+
     }
 }

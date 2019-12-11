@@ -18,4 +18,6 @@ public interface TD0OrganizationDao {
     int updateByPrimaryKey(TD0Organization record);
 
     List<TD0Organization> selectAll();
+
+
 }

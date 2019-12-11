@@ -9,6 +9,7 @@ import com.authority.entity.TD0Stuff;
 import com.authority.entity.vo.TD0StuffVo;
 import com.authority.service.HumanManageInter;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -64,6 +65,7 @@ public class HumanManageImpl implements HumanManageInter {
     }
 
     @Override
+    @Transactional
     public Integer editMember(TD0Stuff td0Stuff) {
 
 

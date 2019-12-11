@@ -10,6 +10,7 @@ import com.authority.entity.TD0Orgattached;
 import com.authority.entity.vo.TD0OrgAndFund;
 import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -62,5 +63,16 @@ public class OrganizationServiceImpl implements OrganizationService {
     @Override
     public List<OrganizationAndOrgattached> selectAllOAO() {
         return td0OrgattachedDao.selectAllOAO();
+    }
+
+    @Override
+    public void deleteOneOrganization(Integer id) {
+        td0OrganizationDao.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    @Transactional
+    public void insertOAO(OrganizationAndOrgattached oao) {
+        td0OrgattachedDao.insertOAO(oao);
     }
 }

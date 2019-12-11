@@ -49,12 +49,20 @@
         </tr>
        	</form>
     </table>
-    <div style="height: 120px;"></div>
+
+    <table class="layui-hide" id="test" lay-filter="test"></table>
+
+    <script type="text/html" id="toolbarDemo">
+        <div class="layui-btn-container">
+            <button type="button" class="layui-btn layui-byn-sm" lay-event="add">增加</button>
+        </div>
+    </script>
+
     <table style="height: 100%" id="demo" lay-filter="test"></table>
     <script type="text/html" id="barDemo">
         <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
         <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+       <#-- <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>-->
     </script>
 
     <script src="/layui/layui.js"></script>
@@ -65,17 +73,17 @@
                 //第一个实例
                 table.render({
                     elem: '#demo'
-                    ,height : 'full-300'
+                    ,toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
                     , url: '/ognzx' //数据接口
                     , page: true //开启分页
                     ,  cols: [[
-                        , {field: 'orgno', title: '申请单位(个人)'}
+                        , {field: 'orgno', title: '申请单位(个人)',}
                         , {field: 'orgname', title: '机构名称'}
                         , {field: 'exetype', title: '专业类别', sort: true}
                         , {field: 'linkadd', title: '经营地址'}
                         , {field: 'listingdate', title: '报告日期'}
                         , {field: 'zbbdocdate', title: '审核状态', sort: true}
-                        , {fixed: 'right', title: '操作', toolbar: '#barDemo'}
+                        , {fixed: 'right', title: '操作', toolbar: '#barDemo',align: 'center'}
                     ]]
                     , response: {
                         code: 'code' //规定数据状态的字段名称，默认：code
@@ -92,28 +100,68 @@
                         }
                     }
                 });
-//监听行工具事件
+
+
+                //头工具栏事件
+                table.on('toolbar(test)', function(obj){
+                    var  rowEvent = obj.event;
+                    if(rowEvent === 'add'){
+                        //  layer.msg('编辑操作');
+                        layer.open({
+                            type: 2 //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+                            ,title: '添加'
+                            ,area: ['1000px', '600px']
+                            ,maxmin: true  //最大最小化按钮
+                            ,offset: 'auto'   //位置居中
+                            ,content: '/toiav' //不出现滚动条   ,'no'
+                            ,btnAlign: 'c'
+                        })
+                    }
+                });
+
+                //监听行工具事件
 
                 table.on('tool(test)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
                     var data = obj.data //获得当前行数据
                         ,layEvent = obj.event; //获得 lay-event 对应的值
+
                     if(layEvent === 'detail'){
-                        window.location.href = "/qid?id="+data.id;
+                        layer.open({
+                            type: 2 //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+                            ,title: '详情信息'
+                            ,area: ['1000px', '600px']
+                            ,maxmin: true  //最大最小化按钮
+                            ,offset: 'auto'   //位置居中
+                            ,content: '/ognzx/'+data.id//不出现滚动条   ,'no'
+                            ,btnAlign: 'c'
+
+                        });
                     } else if(layEvent === 'del'){
                         layer.confirm('真的删除行么', function(index){
-                            obj.del(); //删除对应行（tr）的DOM结构
-                            layer.close(index);
+                            $.ajax({
+                                url:'/del/'+data.id, //请求的url地址
+
+                                type:"get", //请求方式
+                                success:function(){
+                                    obj.del(); //删除对应行（tr）的DOM结构
+                                    layer.close(index);
+                                },
+                                error:function () {
+                                    alert("")
+                                }
+                            });
+
                             //向服务端发送删除指令
                         });
                     } else if(layEvent === 'edit'){
                         //  layer.msg('编辑操作');
                         layer.open({
                             type: 2 //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
-                            ,title: '发起投票'
-                            ,area: ['700px', '450px']
+                            ,title: '信息修改'
+                            ,area: ['1000px', '600px']
                             ,maxmin: true  //最大最小化按钮
                             ,offset: 'auto'   //位置居中
-                            ,content: '/welcome.html' //不出现滚动条   ,'no'
+                            ,content: '/update/'+data.id+'' //不出现滚动条   ,'no'
                             ,btnAlign: 'c'
 
                         });

@@ -23,4 +23,6 @@ public interface TD0OrgattachedDao {
     List<OrganizationAndOrgattached> selectAllOAO();
 
     List<TD0Orgattached> selectAllOrgattached();
+
+    void insertOAO(OrganizationAndOrgattached oao);
 }

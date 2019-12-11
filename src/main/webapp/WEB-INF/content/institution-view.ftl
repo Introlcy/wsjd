@@ -128,8 +128,8 @@
     <!--//commonTable-->
     <div id="formPageButton">
     	<ul>
-        	<li><a href="institution-creat.html" title="修改" class="btnShort">修改</a></li>
-        	<li><a href="javascript:window.history.go(-1)" title="返回" class="btnShort">返回</a></li>
+        	<li><a href="/update/${orgattached.id}" title="修改" class="btnShort">修改</a></li>
+        	<li><a onclick="f()" title="返回" class="btnShort">返回</a></li>
         </ul>
     </div>
     <!--//commonToolBar-->
@@ -165,19 +165,15 @@
         </#list>
     </table>
     <!--//commonTable-->
-    <div id="pagelist">
-    	<ul class="clearfix">
-        	<li><a href="#">首页</a></li>
-            <li><a href="#">上页</a></li>
-            <li class="current">1</li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">下页</a></li>
-            <li><a href="#">尾页</a></li>
-            <li class="pageinfo">第1页</li>
-            <li class="pageinfo">共2页</li>
-        </ul>
-    </div>
+
 </div>
-<!--//content pages wrap-->
+
+
+<script>
+    function f() {
+        var index = parent.layer.getFrameIndex(window.name);
+        parent.layer.close(index);
+    }
+</script>
 </body>
 </html>
