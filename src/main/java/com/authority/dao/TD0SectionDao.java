@@ -31,5 +31,5 @@ public interface TD0SectionDao {
      * 查询所有科室
      * @return
      */
-    List<TD0Section> queryAllSection();
+    List<TD0Section> queryAllSection(Integer page,Integer limit);
 }
