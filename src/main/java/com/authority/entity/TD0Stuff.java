@@ -1,5 +1,6 @@
 package com.authority.entity;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
@@ -13,6 +14,30 @@ public class TD0Stuff implements Serializable {
     /**
      * id
      */
+
+    private  String orgId;
+
+    private String divNa;
+
+    public String getOrgId() {
+        return orgId;
+    }
+
+    public void setOrgId(String orgId) {
+        this.orgId = orgId;
+    }
+
+    public String getDivNa() {
+        return divNa;
+    }
+
+    public void setDivNa(String divNa) {
+        this.divNa = divNa;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
     private Integer id;
 

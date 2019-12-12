@@ -44,10 +44,53 @@ public class HumanManageImpl implements HumanManageInter {
             TD0Organization td0Organization= td0OrganizationDao.selectByPrimaryKey(td0Section.getOrgid());
             td0StuffVo.setDegree(td0Stuff.getEdu());
             td0StuffVo.setSection(td0Section.getDivname());
-            td0StuffVo.setGrade(td0Stuff.getJoblevel());
-            td0StuffVo.setSex(td0Stuff.getGender());
+           String joblevel= td0Stuff.getJoblevel();
+           switch (joblevel){
+               case "1": joblevel="省部级正职";break;
+               case "2": joblevel="省部级副职";break;
+               case "3": joblevel="厅局级正职";break;
+               case "4": joblevel="厅局级副职";break;
+               case "5": joblevel="乡科级正职";break;
+               case "6": joblevel="乡科级副职";break;
+               case "7": joblevel="县处级正职";break;
+               case "8": joblevel="县处级副职";break;
+               case "9": joblevel="科办员";break;
+               case "": joblevel="无";break;
+            }
+
+            td0StuffVo.setGrade(joblevel);
+           String sex= td0Stuff.getGender();
+           if(sex.equals("1")){
+               sex="男";
+           }
+            if(sex.equals("0")){
+                sex="女";
+            }
+            td0StuffVo.setSex(sex);
             td0StuffVo.setHumanCode(td0Stuff.getId());
-            td0StuffVo.setJob(td0Stuff.getManagejob());
+            String job=td0Stuff.getManagejob();
+            if(job.equals("1")){
+                job="所长";
+            }
+            if(job.equals("2")){
+                job="书记";
+            }
+            if(job.equals("3")){
+                job="副所长";
+            }
+            if(job.equals("4")){
+                job="副书记";
+            }
+            if(job.equals("5")){
+                job="主任";
+            }
+            if(job.equals("6")){
+                job="副主任";
+            }
+            if(job.equals("")){
+                job="无";
+            }
+            td0StuffVo.setJob(job);
             td0StuffVo.setMajor(td0Stuff.getEdu());
             td0StuffVo.setName(td0Stuff.getRepmanname());
             td0StuffVo.setOrganization(td0Organization.getOrgname());
@@ -71,6 +114,11 @@ public class HumanManageImpl implements HumanManageInter {
 
 
         return td0StuffDao.updateByPrimaryKeySelective(td0Stuff);
+    }
+    @Override
+    public Integer addMember(TD0Stuff td0Stuff){
+
+        return td0StuffDao.insertSelective(td0Stuff);
     }
 
 

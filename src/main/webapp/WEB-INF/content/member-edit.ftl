@@ -83,15 +83,15 @@
             <td align="right">学历：</td>
             <td align="left"><select name="edu" id="select">
                     <option <#if person.edu=="">selected="selected"</#if> value="">请选择</option>
-                    <option <#if person.edu=="博士">selected="selected"</#if> value="博士">博士</option>
-                    <option <#if person.edu=="硕士">selected="selected"</#if> value="硕士">硕士</option>
-                    <option <#if person.edu=="本科">selected="selected"</#if>value="本科">本科</option>
-                    <option <#if person.edu=="大专">selected="selected"</#if> value="大专">大专</option>
-                    <option <#if person.edu=="中专">selected="selected"</#if> value="中专">中专</option>
-                    <option <#if person.edu=="高中">selected="selected"</#if> value="高中">高中</option>
-                    <option <#if person.edu=="初中">selected="selected"</#if> value="初中">初中</option>
-                    <option <#if person.edu=="无学历">selected="selected"</#if> value="无学历">无学历</option>
-                    <option <#if person.edu=="不详">selected="selected"</#if> value="不详">不详</option>
+                    <option <#if person.edu=="1">selected="selected"</#if> value="1">博士</option>
+                    <option <#if person.edu=="2">selected="selected"</#if> value="2">硕士</option>
+                    <option <#if person.edu=="3">selected="selected"</#if>value="3">本科</option>
+                    <option <#if person.edu=="4">selected="selected"</#if> value="4">大专</option>
+                    <option <#if person.edu=="5">selected="selected"</#if> value="5">中专</option>
+                    <option <#if person.edu=="6">selected="selected"</#if> value="6">高中</option>
+                    <option <#if person.edu=="7">selected="selected"</#if> value="7">初中</option>
+                    <option <#if person.edu=="8">selected="selected"</#if> value="8">无学历</option>
+                    <option <#if person.edu=="9">selected="selected"</#if> value="9">不详</option>
                 </select></td>
             <td align="right">毕业学校：</td>
             <td align="left"><input name="gracollege" type="text" class="inputTextNormal" id="textfield28" value="${person.gracollege}" /></td>
@@ -192,9 +192,9 @@
         </tr>
         <tr>
             <td align="right">是否为在编人员：</td>
-            <td align="left"><input type="radio" name="idstaffper" id="radio1" value="radio1" />
+            <td align="left"><input type="radio" name="ifstaffper" id="radio1" value="radio1" />
                 是
-                <input type="radio" name="radio" id="radio2" value="radio2" />
+                <input type="radio" name="ifstaffper" id="radio2" value="radio2" />
                 否</td>
             <td align="right"></td>
             <td align="left"></td>

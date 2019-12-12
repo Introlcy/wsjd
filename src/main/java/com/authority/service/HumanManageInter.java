@@ -15,4 +15,5 @@ public interface HumanManageInter {
     List<TD0StuffVo> getAllStuff();
     TD0Stuff getOneStuff(Integer id);
     Integer editMember(TD0Stuff td0Stuff);
+    Integer addMember(TD0Stuff td0Stuff);
 }

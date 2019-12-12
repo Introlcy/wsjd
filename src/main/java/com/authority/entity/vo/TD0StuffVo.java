@@ -52,6 +52,7 @@ public class TD0StuffVo {
     }
 
     public String getSex() {
+
         return sex;
     }
 

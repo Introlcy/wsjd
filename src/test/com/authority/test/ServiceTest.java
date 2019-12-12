@@ -41,4 +41,15 @@ public class ServiceTest {
         List<MenuList> permissionVo= humanManageInter.getMenuList(1);
         System.out.println(permissionVo.get(1));
     }
+    @Test
+    public void sertest3(){
+        int[][] arr=new int [301][301];
+
+        for (int i=0;i<301;i++){
+           // for ()
+        }
+
+    }
+
+
 }

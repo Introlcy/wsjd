@@ -1,6 +1,7 @@
 package com.authority.controller;
 
 import com.authority.entity.TD0Stuff;
+import com.authority.entity.vo.ResultJson;
 import com.authority.entity.vo.TD0StuffVo;
 import com.authority.service.HumanManageInter;
 import com.authority.service.impl.HumanManageImpl;
@@ -27,9 +28,13 @@ public class HumanManage {
     HumanManageInter humanManageInter;
 
     @GetMapping("members")
-    public @ResponseBody List<TD0StuffVo> getAllStuff(){
+    public @ResponseBody ResultJson getAllStuff(){
+        ResultJson resultJson=new ResultJson();
        List<TD0StuffVo> td0StuffVos= humanManageInter.getAllStuff();
-       return td0StuffVos;
+       resultJson.setCode(0);
+       resultJson.setCount(td0StuffVos.size());
+       resultJson.setData(td0StuffVos);
+       return resultJson;
     }
 
 
@@ -60,6 +65,11 @@ public class HumanManage {
     @PutMapping("editMember")
     public String editPerson(TD0Stuff td0Stuff){
         humanManageInter.editMember(td0Stuff);
+        return "redirect:/content/forwardmember";
+    }
+    @PostMapping("addMember")
+    public String addPerson(TD0Stuff td0Stuff){
+        humanManageInter.addMember(td0Stuff);
         return "redirect:/content/forwardmember";
     }
 
