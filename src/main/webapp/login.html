@@ -13,29 +13,29 @@
     <link rel="stylesheet" type="text/css" href="/css/login.css">
     <script type="text/javascript" src="/js/jquery-3.2.1.js"></script>
     <script type="text/javascript">
-        function reloadVerifyCode(){
-            var timenow = new Date().getTime() ;
-            document.getElementById("safeCodeImg").src="/resources/images/imagecode.jpg?d="+timenow ;
+        function reloadVerifyCode() {
+            var timenow = new Date().getTime();
+            $("#safeCodeImg").attr("google.jpg?a=" + timenow);
         }
 
-        function checkPass(s, _minLength){
-            if(_minLength == undefined || _minLength == null){
+        function checkPass(s, _minLength) {
+            if (_minLength == undefined || _minLength == null) {
                 _minLength = 6;
             }
-            if(s.length<_minLength){
+            if (s.length < _minLength) {
                 return 0;
             }
             var ls = 0;
-            if(s.match(/([a-z])+/)){
+            if (s.match(/([a-z])+/)) {
                 ls++;
             }
-            if(s.match(/([0-9])+/)){
+            if (s.match(/([0-9])+/)) {
                 ls++;
             }
-            if(s.match(/([A-Z])+/)){
+            if (s.match(/([A-Z])+/)) {
                 ls++;
             }
-            if(s.match(/[^a-zA-Z0-9]+/)){
+            if (s.match(/[^a-zA-Z0-9]+/)) {
                 ls++;
             }
 
@@ -53,14 +53,16 @@
         </div>
         <div class="kit-login-form">
             <h4 class="kit-login-title" style="font-size:23px">登录</h4>
-            <form class="layui-form" id="loginForm" action="/j_spring_security_check" method="post" >
+            <form class="layui-form" id="loginForm" action="/j_spring_security_check" method="post">
                 <input type="hidden" name="j_username">
                 <input type="hidden" name="j_password">
                 <div class="kit-login-row">
                     <div class="kit-login-col">
                         <i class="layui-icon">&#xe612;</i>
                         <span class="kit-login-input">
-								<input type="text" class="securityCls" name="j_username_encrypt" id="j_username" lay-verify="required" placeholder="用户名" autocomplete="off" autofocus="autofocus"/>
+								<input type="text" class="securityCls" name="j_username_encrypt" id="j_username"
+                                       lay-verify="required" placeholder="用户名" autocomplete="off"
+                                       autofocus="autofocus"/>
 							</span>
                     </div>
                     <div class="kit-login-col"></div>
@@ -68,7 +70,8 @@
                 <div class="kit-login-row">
                     <div class="kit-login-col">
                         <i class="layui-icon">&#xe64c;</i> <span class="kit-login-input">
-								<input type="password" class="securityCls" name="j_password_encrypt" id="j_password" autocomplete="off" lay-verify="required" placeholder="密码" />
+								<input type="password" class="securityCls" name="j_password_encrypt" id="j_password"
+                                       autocomplete="off" lay-verify="required" placeholder="密码"/>
 							</span>
                     </div>
                     <div class="kit-login-col"></div>
@@ -77,19 +80,25 @@
                     <div class="kit-login-col-inline" style="width: 220px;">
                         <i class="layui-icon">&#xe679;</i>
                         <span class="kit-login-input">
-								<input type="text" id="j_image_code" name="j_image_code" autocomplete="off" lay-verify="required" placeholder="请输入验证码" />
+								<input type="text" id="j_image_code" name="j_image_code" autocomplete="off"
+                                       lay-verify="required" placeholder="请输入验证码"/>
 							</span>
                     </div>
                     <div class="kit-login-col-inline img-code">
-                        <img id="safeCodeImg" onclick="reloadVerifyCode();" src="/resources/images/imagecode.jpg" title="点击刷新验证码" alt="点击刷新验证码">
+                        <img id="safeCodeImg" onclick="reloadVerifyCode();" src="/resources/images/imagecode.jpg"
+                             title="点击刷新验证码" alt="点击刷新验证码">
                     </div>
                 </div>
                 <div class="kit-login-row" style="flex-direction: row;">
                     <div class="kit-login-col-inline" style="width: 200px;">
-                        <button class="layui-btn kit-login-btn" id="submitBt" lay-submit="submit" lay-filter="login_hash">登录</button>
+                        <button class="layui-btn kit-login-btn" id="submitBt" lay-submit="submit"
+                                lay-filter="login_hash">登录
+                        </button>
                     </div>
-                    <div class="kit-login-col-inline" >
-                        <a href="/download.html" target="_blank" style="color: rgb(153, 153, 153); text-decoration: none; font-family: 微软雅黑;line-height: 32px;margin-left: 40px;" id="forgot">安装插件</a>
+                    <div class="kit-login-col-inline">
+                        <a href="/download.html" target="_blank"
+                           style="color: rgb(153, 153, 153); text-decoration: none; font-family: 微软雅黑;line-height: 32px;margin-left: 40px;"
+                           id="forgot">安装插件</a>
                     </div>
                 </div>
                 <div class="kit-login-row" style="margin-bottom: 0;color: #FB0000;font-weight: bold;font-family: 微软雅黑;">
@@ -102,11 +111,11 @@
 
 <script src="/layui/layui.js"></script>
 <script type="text/javascript">
-    layui.use(['layer', 'form'], function() {
+    layui.use(['layer', 'form'], function () {
         var form = layui.form;
 
         var tempdata = layui.data('tempdata');
-        if(tempdata&&tempdata.data1){
+        if (tempdata && tempdata.data1) {
             $("#j_username").val(tempdata.data1);
         }
 
