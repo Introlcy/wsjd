@@ -50,4 +50,9 @@ public class SectionServiceImpl implements SectionService {
     public List<TD0Section> queryAllSection(Integer page,Integer limit) {
         return td0SectionDao.queryAllSection(page,limit);
     }
+
+    @Override
+    public List<TD0Section> querySectionByOrgId(Integer id) {
+        return td0SectionDao.querySectionByOrgId(id);
+    }
 }

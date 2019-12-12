@@ -42,4 +42,6 @@ public interface SectionService {
      * @return
      */
     List<TD0Section> queryAllSection(Integer page,Integer limit);
+
+    List<TD0Section> querySectionByOrgId(Integer id);
 }

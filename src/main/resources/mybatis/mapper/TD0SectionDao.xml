@@ -136,4 +136,11 @@
     <include refid="Base_Column_List" />
     from t_d0_section
   </select>
+
+  <select id="querySectionByOrgId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_d0_section
+    where orgId=#{orgid,jdbcType=INTEGER}
+  </select>
 </mapper>
