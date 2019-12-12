@@ -40,7 +40,7 @@
             <!--//commonTable-->
             <div id="formPageButton">
                 <ul>
-                    <li><input type="submit" value="提交"  class="btnShort"></li>
+                    <li><input type="submit" value="提交"  class="btnShort" onclick="f()"></li>
                     <li><a onclick="f()" title="返回" class="btnShort">返回</a></li>
                 </ul>
             </div>
@@ -79,5 +79,12 @@
     }
 </script>
 
+
+<script>
+    function f() {
+        var index = parent.layer.getFrameIndex(window.name);
+        parent.layer.close(index);
+    }
+</script>
 </body>
 </html>
