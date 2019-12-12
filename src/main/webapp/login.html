@@ -13,10 +13,7 @@
     <link rel="stylesheet" type="text/css" href="/css/login.css">
     <script type="text/javascript" src="/js/jquery-3.2.1.js"></script>
     <script type="text/javascript">
-        function reloadVerifyCode() {
-            var timenow = new Date().getTime();
-            $("#safeCodeImg").attr("google.jpg?a=" + timenow);
-        }
+
 
         function checkPass(s, _minLength) {
             if (_minLength == undefined || _minLength == null) {
@@ -85,7 +82,7 @@
 							</span>
                     </div>
                     <div class="kit-login-col-inline img-code">
-                        <img id="safeCodeImg" onclick="reloadVerifyCode();" src="/resources/images/imagecode.jpg"
+                        <img id="safeCodeImg" onclick="reloadVerifyCode();" src="/google.jpg"
                              title="点击刷新验证码" alt="点击刷新验证码">
                     </div>
                 </div>
@@ -121,7 +118,10 @@
 
     });
 
-
+    function reloadVerifyCode() {
+        var timenow = new Date().getTime();
+        $("#safeCodeImg").attr("src","google.jpg?a=" + timenow);
+    }
 </script>
 </body>
 
