@@ -178,7 +178,7 @@
                                 <td align="right"></td>
                                 <td align="left"></td>
                             </tr>
-                            <input type="submit">Tijiao</input>
+
                         </form>
                     </table>
                     <!--//commonTable-->

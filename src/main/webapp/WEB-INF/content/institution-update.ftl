@@ -42,9 +42,9 @@
                                 <td align="right"><span class="required">*</span>行政区划：</td>
                                 <td align="left"><input name="td0Organization.areacode" type="text" class="inputTextNormal"  value="${orgattached.td0Organization.areacode}"/></td>
                                 <td align="right">挂牌日期：</td>
-                                <td align="left"><input name="td0Organization.listingdate" type="text" class="inputTextNormal"value="${orgattached.td0Organization.listingdate?string('yyyy-MM-dd HH:mm:ss')}"/></td>
+                                <td align="left"><input name="td0Organization.listingdate" type="date" class="inputTextNormal"value="${orgattached.td0Organization.listingdate?string('yyyy-MM-dd HH:mm:ss')}"/></td>
                                 <td align="right">独立运行日期：</td>
-                                <td align="left"><input name="td0Organization.standalonedate" type="text" class="inputTextNormal" id="textfield7" value="${orgattached.td0Organization.standalonedate?string('yyyy-MM-dd HH:mm:ss')}" /></td>
+                                <td align="left"><input name="td0Organization.standalonedate" type="date" class="inputTextNormal" id="textfield7" value="${orgattached.td0Organization.standalonedate?string('yyyy-MM-dd HH:mm:ss')}" /></td>
                             </tr>
                             <tr>
                                 <td align="right"><span class="required">*</span>行政区类别：</td>

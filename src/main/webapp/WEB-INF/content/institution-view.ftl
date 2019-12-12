@@ -155,8 +155,7 @@
                 <td align="center">${fundall.businessfund}</td>
                 <td align="center">${fundall.buildfund}</td>
                 <td align="center">
-
-                    <a href="#" class="btnIconDel" title="删除"></a>
+                    <a href="/delfund/${fundall.id}/${orgattached.orgid}" class="btnIconDel" title="删除"></a>
                 </td>
             </tr>
         </#list>

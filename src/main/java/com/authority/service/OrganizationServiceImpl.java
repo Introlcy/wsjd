@@ -50,6 +50,11 @@ public class OrganizationServiceImpl implements OrganizationService {
     }
 
     @Override
+    public List<TD0Fund> selectFundByid(Integer id) {
+        return td0FundDao.selectFundByid(id);
+    }
+
+    @Override
     @Transactional
     public void insertFund(TD0Fund td0Fund) {
         td0FundDao.insertOneFund(td0Fund);
@@ -131,5 +136,11 @@ public class OrganizationServiceImpl implements OrganizationService {
         od.setYearly(d);
         od.setVrcount(oao.getVrcount());
         td0OrgattachedDao.insertSelective(od);
+    }
+
+    @Override
+    @Transactional
+    public void deleteOneFundById(Integer id) {
+        td0FundDao.deleteByPrimaryKey(id);
     }
 }

@@ -166,7 +166,7 @@
                             , area: ['1000px', '650px']
                             , maxmin: true  //最大最小化按钮
                             , offset: 'auto'   //位置居中
-                            , content: '/update/' + data.id + '' //不出现滚动条   ,'no'
+                            , content: '/update/' + data.id  //不出现滚动条   ,'no'
                             , btnAlign: 'c'
 
                         });
@@ -187,14 +187,14 @@
         <div class="layui-from-item">
             <div class="layui-inline">
                 <div class="content-pages-wrap">
-                    <div class="commonTitle"><h2>&gt;&gt; <a href="institution-list.html">机构管理</a> - 机构创建</h2></div>
-                    <table border="0" cellspacing="1" cellpadding="0" class="commonTable">
+                    <div class="commonTitle"><h2>&gt;&gt; <td>机构管理</td> - 机构创建</h2></div>
+                    <table border="0" cellspacing="1" cellpadding="0" class="commonTable" onsubmit="return check()">
                         <form id="institutionCreat" name="institutionCreat" action="/add" method="post">
                             <tr>
                                 <td align="right"><span class="required">*</span>机构编码：</td>
-                                <td align="left"><input name="orgno" type="text" class="inputTextMiddle"/></td>
+                                <td align="left"><input name="orgno" type="text" class="inputTextMiddle" id="orgno"/></td>
                                 <td align="right"><span class="required">*</span>机构代码：</td>
-                                <td align="left" colspan="3"><input name="orgcode" type="text" class="inputTextMiddle"/>
+                                <td align="left" colspan="3"><input name="orgcode" type="text" class="inputTextMiddle" id="orgcode"/>
                                 </td>
                             </tr>
                             <tr>
@@ -353,20 +353,44 @@
                                 <td align="right"></td>
                                 <td align="left"></td>
                             </tr>
-                            <input type="submit">Tijiao</input>
+                            <div id="formPageButton">
+                                <ul>
+                                    <li><input type="submit"  title="提交" class="btnShort"></li>
+                                   <#-- <li><a onclick="f()" title="返回" class="btnShort">返回</a></li>-->
+                                </ul>
+                            </div>
                         </form>
                     </table>
                     <!--//commonTable-->
-                    <div id="formPageButton">
-                        <ul>
-                            <li><a onclick="a()" title="提交" class="btnShort">提交</a></li>
-                            <li><a onclick="f()" title="返回" class="btnShort">返回</a></li>
-                        </ul>
-                    </div>
+
                 </div>
             </div>
         </div>
     </from>
 </div>
+
+<script type="text/javascript">
+    function check() {
+        var orgno = $("#orgno").val();
+        var orgcode = $("#orgcode").val();
+
+        if ($.trim(orgno) == "" || orgno == null) {
+            alert("机构编码不能为空!");
+            return false;
+        }
+        if ($.trim(orgcode) == "" || orgcode == null) {
+            alert("机构代码不能为空!");
+            return false;
+        }
+        return true;
+    }
+</script>
+
+<script>
+    function f() {
+        var index = layer.getFrameIndex(window.name);
+        layer.close(index);
+    }
+</script>
 </body>
 </html>

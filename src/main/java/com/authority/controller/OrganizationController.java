@@ -43,7 +43,7 @@ public class OrganizationController {
     public String selectOneOrg(@PathVariable("id")Integer id,Model model){
         OrganizationAndOrgattached t = service.selectOneOrgattached(id);
         model.addAttribute("orgattached",t);
-        model.addAttribute("fund",service.selectAllFund());
+        model.addAttribute("fund",service.selectFundByid(id));
         return "institution-view";
     }
 
@@ -98,5 +98,11 @@ public class OrganizationController {
     public String insertOAO(OrganizationAndOrgattached oao){
         service.insertOAO(oao);
         return "redirect:/ts";
+    }
+
+    @RequestMapping("/delfund/{id}/{orgid}")
+    public String deleteFundById(@PathVariable("id") Integer id,@PathVariable("orgid") Integer orgid){
+        service.deleteOneFundById(id);
+        return "redirect:/ognzx/"+orgid+"";
     }
 }

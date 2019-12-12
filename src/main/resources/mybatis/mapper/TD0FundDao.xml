@@ -147,4 +147,9 @@
   <insert id="insertOneFund" >
     INSERT INTO t_d0_fund (orgId,yearly,preFund,businessFund,dutyFund,buildFund) VALUES (#{orgid},#{yearly},#{prefund},#{businessfund},#{dutyfund},#{buildfund})
   </insert>
+
+  <select id="selectFundByid" resultMap="BaseResultMap">
+    SELECT * FROM t_d0_fund WHERE orgid = #{orgid}
+  </select>
+
 </mapper>

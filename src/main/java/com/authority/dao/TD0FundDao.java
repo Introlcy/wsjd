@@ -26,4 +26,7 @@ public interface TD0FundDao {
     List<TD0OrgAndFund> selectAllOAF();
 
     void insertOneFund(TD0Fund fund);
+
+    List<TD0Fund> selectFundByid(Integer id);
+
 }

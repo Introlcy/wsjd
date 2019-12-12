@@ -31,6 +31,11 @@ public interface OrganizationService {
     List<TD0Fund> selectAllFund();
 
     /*
+    根据机构id查财政拨款
+     */
+    List<TD0Fund> selectFundByid(Integer id);
+
+    /*
     添加财政拨款
      */
     void insertFund(TD0Fund td0Fund);
@@ -51,7 +56,13 @@ public interface OrganizationService {
     List<OrganizationAndOrgattached> selectAllOAO();
 
     void deleteOneOrganization(Integer id);
-
+    /*
+    添加机构和详细信息
+     */
     void insertOAO(OrganizationAndOrgattached oao);
+    /*
+    根据id删除财政拨款
+     */
+    void deleteOneFundById(Integer id);
 
 }
