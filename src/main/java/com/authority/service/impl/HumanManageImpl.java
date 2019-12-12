@@ -59,6 +59,7 @@ public class HumanManageImpl implements HumanManageInter {
         return td0StuffVoList;
     }
 
+
     @Override
     public TD0Stuff getOneStuff(Integer id) {
         return td0StuffDao.selectByPrimaryKey(id);
