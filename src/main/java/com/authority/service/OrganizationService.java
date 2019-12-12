@@ -1,9 +1,6 @@
 package com.authority.service;
 
-import com.authority.entity.OrganizationAndOrgattached;
-import com.authority.entity.TD0Fund;
-import com.authority.entity.TD0Organization;
-import com.authority.entity.TD0Orgattached;
+import com.authority.entity.*;
 import com.authority.entity.vo.TD0OrgAndFund;
 import com.authority.entity.vo.TD0OrgAndLeader;
 
@@ -70,6 +67,10 @@ public interface OrganizationService {
      */
     List<TD0Organization> selectOrgan();
 
-    List<TD0OrgAndLeader> selectAllOAL();
+    List<TD0OrgAndLeader> selectAllOAL(Integer page,Integer limit);
+
+    void insertOneLeader(TD0Leader leader);
+
+    void deleteLeaderById(Integer id);
 
 }

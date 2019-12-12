@@ -78,6 +78,7 @@ public class OrganizationServiceImpl implements OrganizationService {
     }
 
     @Override
+    @Transactional
     public void deleteOneOrganization(Integer id) {
         td0OrganizationDao.deleteByPrimaryKey(id);
     }
@@ -152,7 +153,20 @@ public class OrganizationServiceImpl implements OrganizationService {
     }
 
     @Override
-    public List<TD0OrgAndLeader> selectAllOAL() {
+    public List<TD0OrgAndLeader> selectAllOAL(Integer page,Integer limit) {
+        PageHelper.startPage(page,limit);
         return td0LeaderDao.queryAOL();
+    }
+
+    @Override
+    @Transactional
+    public void insertOneLeader(TD0Leader leader) {
+        td0LeaderDao.insertSelective(leader);
+    }
+
+    @Override
+    @Transactional
+    public void deleteLeaderById(Integer id) {
+        td0LeaderDao.deleteByPrimaryKey(id);
     }
 }

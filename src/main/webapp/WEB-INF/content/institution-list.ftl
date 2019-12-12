@@ -42,8 +42,7 @@
 
     <script type="text/html" id="toolbarDemo">
         <div class="layui-btn-container">
-            <button type="button" class="layui-btn layui-byn-sm" lay-event="add" href="/toiav">增加</button>
-
+            <button type="button" class="layui-btn layui-btn-sm" lay-event="add" >增加</button>
         </div>
     </script>
 
@@ -335,7 +334,7 @@
                             <div id="formPageButton">
                                 <ul>
                                     <li><input type="submit"  title="提交" class="btnShort"></li>
-                                   <#-- <li><a onclick="f()" title="返回" class="btnShort">返回</a></li>-->
+                                   <li><a onclick="f()" title="返回" class="btnShort">返回</a></li>
                                 </ul>
                             </div>
                         </form>
@@ -367,8 +366,7 @@
 
 <script>
     function f() {
-        var index = layer.getFrameIndex(window.name);
-        layer.close(index);
+        layer.closeAll('page');
     }
 </script>
 </body>

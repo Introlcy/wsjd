@@ -1,6 +1,8 @@
 package com.authority.entity.vo;
 
 import com.authority.entity.TD0Organization;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -39,6 +41,8 @@ public class TD0OrgAndLeader {
     /**
      * 出生年月
      */
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date birthdate;
 
     /**
@@ -74,11 +78,15 @@ public class TD0OrgAndLeader {
     /**
      * 任职日期
      */
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date serdate;
 
     /**
      * 离职日期
      */
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date leavedate;
 
     /**

@@ -2,6 +2,7 @@ package com.authority.controller;
 
 import com.authority.entity.OrganizationAndOrgattached;
 import com.authority.entity.TD0Fund;
+import com.authority.entity.TD0Leader;
 import com.authority.entity.TD0Organization;
 import com.authority.entity.vo.TD0OrgAndLeader;
 import com.authority.entity.vo.TD0Orgation;
@@ -122,12 +123,24 @@ public class OrganizationController {
     }
     @RequestMapping("/ol")
     @ResponseBody
-    public List<TD0OrgAndLeader> selectAllOAL(){
+    public TD0OrgleaderJson selectAllOAL(Integer page,Integer limit){
         TD0OrgleaderJson json = new TD0OrgleaderJson();
-        json.setData(service.selectAllOAL());
+        json.setData(service.selectAllOAL(page, limit));
         json.setCode(0);
         json.setMsg("");
-        json.setCount(service.selectAllOAL().size());
-        return service.selectAllOAL();
+        json.setCount(service.selectAllOAL(1,200).size());
+        return json;
+    }
+
+    @RequestMapping("/addleader")
+    public String insertLeader(TD0Leader leader){
+        System.out.println(leader);
+        service.insertOneLeader(leader);
+        return "redirect:/toleader";
+    }
+
+    @RequestMapping(value = "/delleader/{id}",method = RequestMethod.DELETE)
+    public void delLeaderByid(@PathVariable("id") Integer id){
+        service.deleteLeaderById(id);
     }
 }
