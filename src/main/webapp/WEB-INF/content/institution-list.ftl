@@ -21,37 +21,16 @@
     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="commonTableSearch">
         <form id="form-search" name="form-search" action="" method="post">
             <tr>
-                <th align="right">专业类别：</th>
-                <td><select name="select" id="select">
-                        <option value="">公共场所</option>
-                        <option value="">生活饮用水</option>
-                        <option value="">职业卫生</option>
-                        <option value="">放射卫生</option>
-                        <option value="">其他</option>
-                    </select>
-                </td>
+
                 <td>
                     <div align="right">单位名称（个人）：</div>
                 </td>
                 <td><input name="textfield6" type="text" class="inputTextNormal" id="textfield6"/></td>
                 <td align="right">组织机构代码：</td>
                 <td align="right"><input name="textfield62" type="text" class="inputTextNormal" id="textfield62"/></td>
-                <td align="right">身份证号码：</td>
-                <td align="right"><input name="textfield622" type="text" class="inputTextNormal" id="textfield622"/>
-                </td>
+
             </tr>
             <tr>
-                <th align="right">行政区划：</th>
-                <td><input name="textfield63" type="text" class="inputTextNormal" id="textfield63" value="用地址进行后台匹配"/>
-                </td>
-                <td>
-                    <div align="right">报告单位：</div>
-                </td>
-                <td><input name="textfield64" type="text" class="inputTextNormal" id="textfield64"/></td>
-                <td align="right">报告人：</td>
-                <td align="right"><input name="textfield642" type="text" class="inputTextNormal" id="textfield642"/>
-                </td>
-                <td align="right">&nbsp;</td>
                 <td align="right">
                     <button>检索</button>
                 </td>

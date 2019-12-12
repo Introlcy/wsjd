@@ -65,4 +65,6 @@ public interface OrganizationService {
      */
     void deleteOneFundById(Integer id);
 
+    List<TD0Organization> selectOrgan();
+
 }

@@ -2,6 +2,7 @@ package com.authority.controller;
 
 import com.authority.entity.OrganizationAndOrgattached;
 import com.authority.entity.TD0Fund;
+import com.authority.entity.TD0Organization;
 import com.authority.entity.vo.TD0Orgation;
 import com.authority.service.OrganizationService;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * User: Introlcy
@@ -104,5 +106,11 @@ public class OrganizationController {
     public String deleteFundById(@PathVariable("id") Integer id,@PathVariable("orgid") Integer orgid){
         service.deleteOneFundById(id);
         return "redirect:/ognzx/"+orgid+"";
+    }
+
+    @RequestMapping("/find")
+    @ResponseBody
+    public List<TD0Organization> selectOrganization(){
+        return service.selectOrgan();
     }
 }

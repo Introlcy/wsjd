@@ -36,6 +36,7 @@ public class OrganizationServiceImpl implements OrganizationService {
     @Override
     public List<TD0Organization> selectAllOrganization(Integer page,Integer limit) {
         PageHelper.startPage(page,limit);
+
         return td0OrganizationDao.selectAll();
     }
 
@@ -142,5 +143,10 @@ public class OrganizationServiceImpl implements OrganizationService {
     @Transactional
     public void deleteOneFundById(Integer id) {
         td0FundDao.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public List<TD0Organization> selectOrgan() {
+        return td0OrganizationDao.selectAll();
     }
 }
