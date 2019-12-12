@@ -1,6 +1,7 @@
 package com.authority.controller;
 
 
+import com.authority.entity.TD0Section;
 import com.authority.entity.vo.TD0SectionVo;
 import com.authority.service.SectionService;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * User: wsq
@@ -47,4 +49,10 @@ public class SectionController1 {
     }
 
 
+    @RequestMapping(value = "/querySectionByOrgId",method = RequestMethod.GET)
+    @ResponseBody
+    public List<TD0Section> querySectionByOrgId(Integer id){
+        List<TD0Section> sectionList=sectionService.querySectionByOrgId(id);
+        return sectionList;
+    }
 }
