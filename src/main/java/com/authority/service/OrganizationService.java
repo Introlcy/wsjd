@@ -5,6 +5,7 @@ import com.authority.entity.TD0Fund;
 import com.authority.entity.TD0Organization;
 import com.authority.entity.TD0Orgattached;
 import com.authority.entity.vo.TD0OrgAndFund;
+import com.authority.entity.vo.TD0OrgAndLeader;
 
 import java.util.List;
 
@@ -64,7 +65,11 @@ public interface OrganizationService {
     根据id删除财政拨款
      */
     void deleteOneFundById(Integer id);
-
+    /*
+    查询机构部分信息
+     */
     List<TD0Organization> selectOrgan();
+
+    List<TD0OrgAndLeader> selectAllOAL();
 
 }

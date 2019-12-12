@@ -3,7 +3,9 @@ package com.authority.controller;
 import com.authority.entity.OrganizationAndOrgattached;
 import com.authority.entity.TD0Fund;
 import com.authority.entity.TD0Organization;
+import com.authority.entity.vo.TD0OrgAndLeader;
 import com.authority.entity.vo.TD0Orgation;
+import com.authority.entity.vo.TD0OrgleaderJson;
 import com.authority.service.OrganizationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -112,5 +114,20 @@ public class OrganizationController {
     @ResponseBody
     public List<TD0Organization> selectOrganization(){
         return service.selectOrgan();
+    }
+
+    @RequestMapping("/toleader")
+    public String  transfleader(){
+        return "leadership-list";
+    }
+    @RequestMapping("/ol")
+    @ResponseBody
+    public List<TD0OrgAndLeader> selectAllOAL(){
+        TD0OrgleaderJson json = new TD0OrgleaderJson();
+        json.setData(service.selectAllOAL());
+        json.setCode(0);
+        json.setMsg("");
+        json.setCount(service.selectAllOAL().size());
+        return service.selectAllOAL();
     }
 }

@@ -2,13 +2,12 @@ package com.authority.service;
 
 import com.alibaba.druid.sql.dialect.oracle.ast.stmt.OracleCreateTableStatement;
 import com.authority.dao.TD0FundDao;
+import com.authority.dao.TD0LeaderDao;
 import com.authority.dao.TD0OrganizationDao;
 import com.authority.dao.TD0OrgattachedDao;
-import com.authority.entity.OrganizationAndOrgattached;
-import com.authority.entity.TD0Fund;
-import com.authority.entity.TD0Organization;
-import com.authority.entity.TD0Orgattached;
+import com.authority.entity.*;
 import com.authority.entity.vo.TD0OrgAndFund;
+import com.authority.entity.vo.TD0OrgAndLeader;
 import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,6 +31,8 @@ public class OrganizationServiceImpl implements OrganizationService {
     private TD0OrgattachedDao td0OrgattachedDao;
     @Resource
     private TD0FundDao td0FundDao;
+    @Resource
+    private TD0LeaderDao td0LeaderDao;
 
     @Override
     public List<TD0Organization> selectAllOrganization(Integer page,Integer limit) {
@@ -148,5 +149,10 @@ public class OrganizationServiceImpl implements OrganizationService {
     @Override
     public List<TD0Organization> selectOrgan() {
         return td0OrganizationDao.selectAll();
+    }
+
+    @Override
+    public List<TD0OrgAndLeader> selectAllOAL() {
+        return td0LeaderDao.queryAOL();
     }
 }

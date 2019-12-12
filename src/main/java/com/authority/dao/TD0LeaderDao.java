@@ -1,6 +1,9 @@
 package com.authority.dao;
 
 import com.authority.entity.TD0Leader;
+import com.authority.entity.vo.TD0OrgAndLeader;
+
+import java.util.List;
 
 /**
  * @author admin
@@ -17,4 +20,6 @@ public interface TD0LeaderDao {
     int updateByPrimaryKeySelective(TD0Leader record);
 
     int updateByPrimaryKey(TD0Leader record);
+
+    List<TD0OrgAndLeader> queryAOL();
 }

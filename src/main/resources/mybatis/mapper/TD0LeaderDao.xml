@@ -225,4 +225,32 @@
       linkTel = #{linktel,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <resultMap id="aol" type="com.authority.entity.vo.TD0OrgAndLeader">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="orgId" jdbcType="INTEGER" property="orgid" />
+    <result column="leaderName" jdbcType="VARCHAR" property="leadername" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="folk" jdbcType="VARCHAR" property="folk" />
+    <result column="birthDate" jdbcType="TIMESTAMP" property="birthdate" />
+    <result column="pol" jdbcType="VARCHAR" property="pol" />
+    <result column="edu" jdbcType="VARCHAR" property="edu" />
+    <result column="degree" jdbcType="VARCHAR" property="degree" />
+    <result column="manageJob" jdbcType="VARCHAR" property="managejob" />
+    <result column="jobLevel" jdbcType="VARCHAR" property="joblevel" />
+    <result column="memo" jdbcType="VARCHAR" property="memo" />
+    <result column="serDate" jdbcType="TIMESTAMP" property="serdate" />
+    <result column="leaveDate" jdbcType="TIMESTAMP" property="leavedate" />
+    <result column="yearly" jdbcType="VARCHAR" property="yearly" />
+    <result column="formFillingMan" jdbcType="VARCHAR" property="formfillingman" />
+    <result column="linkTel" jdbcType="VARCHAR" property="linktel" />
+    <association property="td0Organization" javaType="TD0Organization">
+      <id column="id" jdbcType="INTEGER" property="id" />
+      <result column="orgNo" jdbcType="VARCHAR" property="orgno" />
+      <result column="orgName" jdbcType="VARCHAR" property="orgname" />
+    </association>
+  </resultMap>
+  <select id="queryAOL" resultMap="aol">
+        SELECT t1.*,t2.id,t2.orgname FROM t_d0_leader t1 LEFT JOIN t_d0_organization t2 ON t1.orgid=t2.id
+  </select>
 </mapper>
