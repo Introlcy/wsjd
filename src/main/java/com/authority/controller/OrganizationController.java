@@ -96,7 +96,6 @@ public class OrganizationController {
 
     @RequestMapping("/add")
     public String insertOAO(OrganizationAndOrgattached oao){
-
         service.insertOAO(oao);
         return "redirect:/ts";
     }
