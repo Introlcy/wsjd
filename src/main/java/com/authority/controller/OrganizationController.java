@@ -146,13 +146,18 @@ public class OrganizationController {
 
     @RequestMapping("/leadername")
     @ResponseBody
-    public TD0OrgleaderJson selectOALByname(Integer page,Integer limit,String leadername){
+    public TD0OrgleaderJson selectOALByname(Integer page,Integer limit,String orgName){
         TD0OrgleaderJson json = new TD0OrgleaderJson();
-        json.setData(service.selectLeaderByname(page, limit,leadername));
+        json.setData(service.selectLeaderByname(page, limit,orgName));
         json.setCode(0);
         json.setMsg("");
         json.setCount(service.selectAllOAL(1,200).size());
         return json;
     }
 
+    @RequestMapping("/update")
+    public String updataOrg(OrganizationAndOrgattached oao,@PathVariable Integer orgid,@PathVariable Integer id){
+        service.updateOAO(oao,orgid,id);
+        return "redirect:/ts";
+    }
 }
