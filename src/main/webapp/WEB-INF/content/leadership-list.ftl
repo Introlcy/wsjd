@@ -19,6 +19,15 @@
     </div>
     <!--//commonTableSearch-->
 
+
+    <div class="demoTable">
+        领导姓名：
+        <div class="layui-inline">
+            <input class="layui-input" name="id" id="demoReload" autocomplete="off">
+        </div>
+        <button class="layui-btn" data-type="reload">搜索</button>
+    </div>
+
     <table class="layui-hide" id="test" lay-filter="test"></table>
 
     <script type="text/html" id="toolbarDemo">
@@ -51,8 +60,7 @@
                         , {field: 'birthdate', title: '出生年月'}
                         , {field: 'pol', title: '政治面貌'}
                         , {field: 'edu', title: '学历'}
-                        , {field: 'pol', title: '政治面貌'}
-                        , {field: 'managejob', title: '职务'}
+                        , {field: 'orgname', title: '所属机构'}
                         , {fixed: 'right', title: '操作', toolbar: '#barDemo', align: 'center'}
                     ]]
                     , response: {
@@ -75,17 +83,53 @@
                 table.on('toolbar(test)', function (obj) {
                     var rowEvent = obj.event;
                     if (rowEvent === 'add') {
+                        $("#selectOrg").empty();
+                        $.ajax({
+                            url: "/find",
+                            type: "post",
+                            success: function (sre) {
+                                var htmladd="";
+                                for(var key in sre){
+                                    var name= sre[key].orgname;
+                                    var val=sre[key].id;
+                                    htmladd +='<option value='+'"'+val+'"'+"onclick='console.log(1)'"+'>';
+                                    htmladd +=name;
+                                    htmladd +=' </option>';
+                                }
+                                $("#selectOrg").append(htmladd);
+                                console.log($("#selectOrg").html());
+                                console.log(htmladd);
+                                //  layer.msg('编辑操作');
+                                layer.open({
+                                    type: 1 //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+                                    , title: '添加'
+                                    , area: ['700px', '300px']
+                                    , maxmin: true  //最大最小化按钮
+                                    , offset: 'auto'   //位置居中
+                                    , content: $("#creatleader") //不出现滚动条   ,'no'
+                                    , btnAlign: 'c'
+                                })
+
+                            },
+                        });
                         //  layer.msg('编辑操作');
-                        layer.open({
-                            type: 1 //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
-                            , title: '添加'
-                            , area: ['700px', '300px']
-                            , maxmin: true  //最大最小化按钮
-                            , offset: 'auto'   //位置居中
-                            , content: $("#creatleader") //不出现滚动条   ,'no'
-                            , btnAlign: 'c'
-                        })
+
                     }
+                });
+
+                $('.layui-btn').on('click', function () {
+                    // 搜索条件
+                    var send_name = $("#demoReload").val();
+                    table.reload('test', {
+                        method: 'POST'
+                        ,where :{
+                            orgName:send_name
+                        }
+                        ,url: '/leadername'
+                        , page: {
+                            curr: 1
+                        }
+                    });
                 });
 
                 //监听行工具事件
@@ -129,13 +173,13 @@
             <div class="commonTitle">
                 <h2>&gt;&gt; 所级领导名录管理 - 添加领导名录信息</h2>
             </div>
-            <table border="0" cellspacing="1" cellpadding="0" class="commonTable">
+            <table border="0" cellspacing="1" cellpadding="0" class="commonTable" onsubmit="return check()">
                 <form id="memberCreat" name="memberCreat" action="/addleader" method="post">
                     <tr>
                         <td width="12%" align="right"><span class="required">*</span>姓名：</td>
                         <td width="21%" align="left"><input name="leadername" type="text" class="inputTextNormal" id="leadername" /></td>
                         <td width="12%" align="right"><span class="required">*</span>性别</td>
-                        <td width="21%" align="left"><input type="radio" name="gender" id="radio" value="男" />
+                        <td width="21%" align="left"><input type="radio" name="gender" id="gender" value="男" />
                             男
                             <input type="radio" name="gender" id="radio3" value="女" />
                             女</td>
@@ -166,7 +210,7 @@
                         <td width="12%" align="right">学位：</td>
                         <td width="21%" align="left"><input name="edu" type="text" class="inputTextNormal" id="edu" /></td>
                         <td width="12%" align="right">职务：</td>
-                        <td width="21%" align="left"><input name="manageJob" type="text" class="inputTextNormal" id="manageJob" /></td>
+                        <td width="21%" align="left"><input name="managejob" type="text" class="inputTextNormal" id="manageJob" /></td>
                         <td width="12%" align="right">职级：</td>
                         <td align="left"><input name="title" type="text" class="inputTextNormal" id="title" /></td>
                     </tr>
@@ -175,8 +219,11 @@
                         <td align="left"><input name="serdate" type="date" class="inputTextNormal" id="serdate" /></td>
                         <td align="right">离任日期：</td>
                         <td align="left"><input name="leavedate" type="date" class="inputTextNormal" id="leavedate" /></td>
-                        <td align="right"></td>
-                        <td align="left"></td>
+                        <td align="right">所属机构：</td>
+                        <td align="left">
+                            <select name="orgid" id="selectOrg" onchange="getSection()">
+                                <option  value="">请选择</option>
+                            </select></td>
                     </tr>
                     <div id="formPageButton">
                         <ul>
@@ -186,9 +233,25 @@
                     </div>
                 </form>
             </table>
-            <!--//commonTable-->
-
         </div>
+
+<script type="text/javascript">
+    function check() {
+        var leadername = $("#leadername").val();
+        var gender = $("#gender").val();
+
+        if ($.trim(leadername) == "" || leadername == null) {
+            alert("领导姓名不能为空!");
+            return false;
+        }
+        if ($.trim(gender) == "" || gender == null) {
+            alert("性别不能为空!");
+            return false;
+        }
+        return true;
+    }
+</script>
+
 
 <script>
     function f() {

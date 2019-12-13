@@ -18,6 +18,8 @@ public interface OrganizationService {
      */
     List<TD0Organization> selectAllOrganization(Integer page,Integer limit);
 
+    List<TD0Organization> selectAllOrganization();
+
     /*
     根据id查询机构详细信息
      */
@@ -72,5 +74,7 @@ public interface OrganizationService {
     void insertOneLeader(TD0Leader leader);
 
     void deleteLeaderById(Integer id);
+
+    List<TD0OrgAndLeader> selectLeaderByname(Integer page,Integer limit,String leadername);
 
 }

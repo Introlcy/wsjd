@@ -22,4 +22,6 @@ public interface TD0LeaderDao {
     int updateByPrimaryKey(TD0Leader record);
 
     List<TD0OrgAndLeader> queryAOL();
+
+    List<TD0OrgAndLeader> queryByname(String leadername);
 }

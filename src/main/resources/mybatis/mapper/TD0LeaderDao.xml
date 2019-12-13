@@ -253,4 +253,8 @@
   <select id="queryAOL" resultMap="aol">
         SELECT t1.*,t2.id,t2.orgname FROM t_d0_leader t1 LEFT JOIN t_d0_organization t2 ON t1.orgid=t2.id
   </select>
+
+  <select id="queryByname" resultMap="aol">
+    SELECT t1.*,t2.id,t2.orgname FROM t_d0_leader t1 LEFT JOIN t_d0_organization t2 ON t1.orgid=t2.id WHERE t1.leaderName LIKE '%${leadername}%'
+  </select>
 </mapper>

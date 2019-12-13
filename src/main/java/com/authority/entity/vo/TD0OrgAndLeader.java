@@ -104,7 +104,17 @@ public class TD0OrgAndLeader {
      */
     private String linktel;
 
+    private  String orgname;
+
     private TD0Organization td0Organization;
+
+    public String getOrgname() {
+        return td0Organization.getOrgname();
+    }
+
+    public void setOrgname(String orgname) {
+        this.orgname = td0Organization.getOrgname();
+    }
 
     public Integer getId() {
         return id;

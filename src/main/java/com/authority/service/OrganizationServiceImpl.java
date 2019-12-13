@@ -42,6 +42,11 @@ public class OrganizationServiceImpl implements OrganizationService {
     }
 
     @Override
+    public List<TD0Organization> selectAllOrganization() {
+        return td0OrganizationDao.selectAll();
+    }
+
+    @Override
     public OrganizationAndOrgattached selectOneOrgattached(Integer id) {
         return td0OrgattachedDao.selectOneOAO(id);
     }
@@ -168,5 +173,11 @@ public class OrganizationServiceImpl implements OrganizationService {
     @Transactional
     public void deleteLeaderById(Integer id) {
         td0LeaderDao.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public List<TD0OrgAndLeader> selectLeaderByname(Integer page, Integer limit,String leadername) {
+        PageHelper.startPage(page,limit);
+        return td0LeaderDao.queryByname(leadername);
     }
 }

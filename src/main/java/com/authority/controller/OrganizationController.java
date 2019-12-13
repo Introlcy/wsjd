@@ -143,4 +143,16 @@ public class OrganizationController {
     public void delLeaderByid(@PathVariable("id") Integer id){
         service.deleteLeaderById(id);
     }
+
+    @RequestMapping("/leadername")
+    @ResponseBody
+    public TD0OrgleaderJson selectOALByname(Integer page,Integer limit,String leadername){
+        TD0OrgleaderJson json = new TD0OrgleaderJson();
+        json.setData(service.selectLeaderByname(page, limit,leadername));
+        json.setCode(0);
+        json.setMsg("");
+        json.setCount(service.selectAllOAL(1,200).size());
+        return json;
+    }
+
 }
