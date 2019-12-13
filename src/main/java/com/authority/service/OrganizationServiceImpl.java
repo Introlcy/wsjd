@@ -176,9 +176,9 @@ public class OrganizationServiceImpl implements OrganizationService {
     }
 
     @Override
-    public List<TD0OrgAndLeader> selectLeaderByname(Integer page, Integer limit,String leadername) {
+    public List<TD0OrgAndLeader> selectLeaderByname(Integer page, Integer limit,DimSearch dimSearch) {
         PageHelper.startPage(page,limit);
-        return td0LeaderDao.queryByname(leadername);
+        return td0LeaderDao.queryByname(dimSearch);
     }
 
     @Override

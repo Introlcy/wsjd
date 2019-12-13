@@ -1,9 +1,14 @@
 package com.authority.controller;
 
+import com.authority.dao.TD0OrganizationDao;
+import com.authority.entity.TD0Organization;
+import com.authority.entity.TD0Section;
 import com.authority.entity.TD0Stuff;
 import com.authority.entity.vo.ResultJson;
+import com.authority.entity.vo.StuffAndSidAndOid;
 import com.authority.entity.vo.TD0StuffVo;
 import com.authority.service.HumanManageInter;
+import com.authority.service.OrganizationService;
 import com.authority.service.impl.HumanManageImpl;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +33,9 @@ public class HumanManage {
     @Autowired
     HumanManageInter humanManageInter;
 
+    @Autowired
+    OrganizationService organizationService;
+
     @GetMapping("members")
     public @ResponseBody ResultJson getAllStuff(){
         ResultJson resultJson=new ResultJson();
@@ -37,6 +45,13 @@ public class HumanManage {
        resultJson.setData(td0StuffVos);
        return resultJson;
     }
+
+    @GetMapping("member/{id}")
+    public @ResponseBody TD0Section getOneStuff(@PathVariable("id") Integer id){
+        return  humanManageInter.getOneInfo(id);
+    }
+
+
 
 
     @GetMapping("forwardmember")
@@ -59,6 +74,18 @@ public class HumanManage {
     public String editOne(@PathVariable("id") Integer id,Model model){
 
         TD0Stuff oldStuff= humanManageInter.getOneStuffNotChange(id);
+
+        ArrayList<StuffAndSidAndOid> list=new ArrayList<>();
+        List<TD0Organization>  td0Organizations= organizationService.selectAllOrganization();
+        for (TD0Organization td0Organization : td0Organizations) {
+            StuffAndSidAndOid stuffAndSidAndOid=new StuffAndSidAndOid();
+            stuffAndSidAndOid.setId(td0Organization.getId());
+            stuffAndSidAndOid.setName(td0Organization.getOrgname());
+            list.add(stuffAndSidAndOid);
+
+        }
+
+        oldStuff.setOrg(list);
         model.addAttribute("person",oldStuff);
         return "member-edit";
     }

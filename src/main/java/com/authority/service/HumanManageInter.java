@@ -1,6 +1,8 @@
 package com.authority.service;
 
+import com.authority.entity.TD0Section;
 import com.authority.entity.TD0Stuff;
+import com.authority.entity.vo.StuffAndSidAndOid;
 import com.authority.entity.vo.TD0StuffVo;
 
 import java.util.List;
@@ -18,4 +20,5 @@ public interface HumanManageInter {
     Integer editMember(TD0Stuff td0Stuff);
     Integer addMember(TD0Stuff td0Stuff);
     Integer deleteById(Integer id);
+    TD0Section getOneInfo(Integer id);
 }

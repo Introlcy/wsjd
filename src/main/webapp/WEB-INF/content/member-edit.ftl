@@ -26,12 +26,15 @@
     <form id="memberCreat" name="memberCreat" action="/content/editMember" method="post">
   <table border="0" cellspacing="1" cellpadding="0" class="commonTable">
         <input type="hidden" name="_method" value="PUT">
-        <input type="hidden" name="id" value="${person.id}">
+        <input type="hidden" name="id" id="personid" value="${person.id}">
         <tr>
             <td align="right">所属机构：</td>
             <td align="left">
                 <select name="orgId" id="selectOrg" onchange="getSection()">
                     <option  value="">请选择</option>
+                    <#list person.org as la>
+                        <option value="${la.id}" <#if person.orgId=="${la.id}">selected="selected"</#if>>${la.name}</option>
+                    </#list>
                 </select></td>
             <td width="12%" align="right"><span class="required">*</span>姓名：</td>
             <td width="21%" align="left">
@@ -48,7 +51,12 @@
         <tr>
             <td width="12%" align="right"><span class="required">*</span>所属科室：</td>
             <td width="21%" align="left">
-                <select id="divNa" name="sectionid"></select>
+                <select id="divNa" name="sectionid">
+                    <#list person.sec as se>
+                        <option value="${se.id}" <#if person.sectionId=="${se.id}">selected="selected"</#if>>${se.name}</option>
+                    </#list>
+
+                </select>
             </td>
             <td align="right">民族：</td>
             <td align="left">
@@ -230,33 +238,6 @@
         var index = parent.layer.getFrameIndex(window.name);
         parent.layer.close(index);
     }
-$(function () {
-    $("#selectOrg").empty();
-    $.ajax({
-        url: "/find",
-        type: "post",
-        success: function (sre) {
-            var htmladd="<option value=''>请选择</option>";
-            for(var key in sre){
-                var name= sre[key].orgname;
-                var val=sre[key].id;
-                htmladd +='<option value='+'"'+val+'"'+"onclick='console.log(1)'"+'>';
-                htmladd +=name;
-                htmladd +=' </option>';
-            }
-            $("#selectOrg").append(htmladd);
-            console.log($("#selectOrg").html());
-            console.log(htmladd);
-            //  layer.msg('编辑操作');
-        },
-    });
-
-
-
-
-
-
-})
 function getSection() {
     var section=  $("#selectOrg").val();
     $("#divNa").empty();
@@ -264,7 +245,27 @@ function getSection() {
         url: "/querySectionByOrgId?id="+section+"",
         type: "get",
         success: function (sre) {
-            console.log(sre)
+            <#--console.log($("#personid").val());-->
+            <#--$.ajax({-->
+            <#--    url: "/find",-->
+            <#--    type: "post",-->
+            <#--    success: function (sre) {-->
+            <#--        $("#selectOrg").empty();-->
+            <#--        var htmladd="<option value=''>请选择</option>";-->
+            <#--        for(var key in sre){-->
+            <#--            console.log(${person.birthday});-->
+            <#--            var name= sre[key].orgname;-->
+            <#--            var val=sre[key].id;-->
+            <#--            htmladd +='<option value='+'"'+val+'"'+"onclick='console.log(1)'"+'>';-->
+            <#--            htmladd +=name;-->
+            <#--            htmladd +=' </option>';-->
+            <#--        }-->
+            <#--        $("#selectOrg").append(htmladd);-->
+
+            <#--        //  layer.msg('编辑操作');-->
+            <#--    },-->
+            <#--});-->
+
             var htmladd="";
             for(var key in sre){
                 var val= sre[key].id;

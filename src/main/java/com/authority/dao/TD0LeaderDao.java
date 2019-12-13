@@ -1,5 +1,6 @@
 package com.authority.dao;
 
+import com.authority.entity.DimSearch;
 import com.authority.entity.TD0Leader;
 import com.authority.entity.vo.TD0OrgAndLeader;
 
@@ -23,5 +24,5 @@ public interface TD0LeaderDao {
 
     List<TD0OrgAndLeader> queryAOL();
 
-    List<TD0OrgAndLeader> queryByname(String leadername);
+    List<TD0OrgAndLeader> queryByname(DimSearch leadername);
 }

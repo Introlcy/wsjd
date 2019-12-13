@@ -6,6 +6,8 @@ import com.authority.dao.TD0StuffDao;
 import com.authority.entity.TD0Organization;
 import com.authority.entity.TD0Section;
 import com.authority.entity.TD0Stuff;
+import com.authority.entity.vo.SectionIdAndName;
+import com.authority.entity.vo.StuffAndSidAndOid;
 import com.authority.entity.vo.TD0StuffVo;
 import com.authority.service.HumanManageInter;
 import com.authority.util.NumToWord;
@@ -88,7 +90,20 @@ public class HumanManageImpl implements HumanManageInter {
 
     @Override
     public TD0Stuff getOneStuffNotChange(Integer id) {
-        return td0StuffDao.selectByPrimaryKey(id);
+       TD0Stuff td0Stuff= td0StuffDao.selectByPrimaryKey(id);
+       TD0Section td0Section=td0SectionDao.selectByPrimaryKey(td0Stuff.getSectionid());
+       td0Stuff.setOrgId(td0Section.getOrgid());
+       List<TD0Section> td0Sections=td0SectionDao.querySectionByOrgId(td0Section.getOrgid());
+
+       ArrayList<SectionIdAndName> list=new ArrayList<>();
+        for (TD0Section section : td0Sections) {
+            SectionIdAndName sectionIdAndName=new SectionIdAndName();
+            sectionIdAndName.setId(section.getId());
+            sectionIdAndName.setName(section.getDivname());
+            list.add(sectionIdAndName);
+        }
+        td0Stuff.setSec(list);
+        return td0Stuff;
     }
 
     @Override
@@ -107,6 +122,15 @@ public class HumanManageImpl implements HumanManageInter {
     @Override
     public Integer deleteById(Integer id) {
         return td0StuffDao.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public TD0Section getOneInfo(Integer id) {
+
+        StuffAndSidAndOid stuffAndSidAndOid=new StuffAndSidAndOid();
+        TD0Stuff td0Stuff=td0StuffDao.selectByPrimaryKey(id);
+        TD0Section td0Section=td0SectionDao.selectByPrimaryKey(td0Stuff.getSectionid());
+        return td0Section;
     }
 
 

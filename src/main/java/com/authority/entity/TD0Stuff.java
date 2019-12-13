@@ -1,10 +1,13 @@
 package com.authority.entity;
 
+import com.authority.entity.vo.SectionIdAndName;
+import com.authority.entity.vo.StuffAndSidAndOid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * t_d0_stuff
@@ -15,15 +18,36 @@ public class TD0Stuff implements Serializable {
      * id
      */
 
-    private  String orgId;
+
+    private  Integer orgId;
 
     private String divNa;
 
-    public String getOrgId() {
+    private List<StuffAndSidAndOid> org;
+
+    private List<SectionIdAndName> sec;
+
+    public List<SectionIdAndName> getSec() {
+        return sec;
+    }
+
+    public void setSec(List<SectionIdAndName> sec) {
+        this.sec = sec;
+    }
+
+    public List<StuffAndSidAndOid> getOrg() {
+        return org;
+    }
+
+    public void setOrg(List<StuffAndSidAndOid> org) {
+        this.org = org;
+    }
+
+    public Integer getOrgId() {
         return orgId;
     }
 
-    public void setOrgId(String orgId) {
+    public void setOrgId(Integer orgId) {
         this.orgId = orgId;
     }
 

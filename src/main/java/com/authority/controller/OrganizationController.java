@@ -1,9 +1,6 @@
 package com.authority.controller;
 
-import com.authority.entity.OrganizationAndOrgattached;
-import com.authority.entity.TD0Fund;
-import com.authority.entity.TD0Leader;
-import com.authority.entity.TD0Organization;
+import com.authority.entity.*;
 import com.authority.entity.vo.TD0OrgAndLeader;
 import com.authority.entity.vo.TD0Orgation;
 import com.authority.entity.vo.TD0OrgleaderJson;
@@ -148,7 +145,9 @@ public class OrganizationController {
     @ResponseBody
     public TD0OrgleaderJson selectOALByname(Integer page,Integer limit,String orgName){
         TD0OrgleaderJson json = new TD0OrgleaderJson();
-        json.setData(service.selectLeaderByname(page, limit,orgName));
+        DimSearch dimSearch=new DimSearch();
+        dimSearch.setLeaderName(orgName);
+        json.setData(service.selectLeaderByname(page, limit,dimSearch));
         json.setCode(0);
         json.setMsg("");
         json.setCount(service.selectAllOAL(1,200).size());

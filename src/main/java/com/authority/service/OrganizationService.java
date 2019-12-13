@@ -75,7 +75,7 @@ public interface OrganizationService {
 
     void deleteLeaderById(Integer id);
 
-    List<TD0OrgAndLeader> selectLeaderByname(Integer page,Integer limit,String leadername);
+    List<TD0OrgAndLeader> selectLeaderByname(Integer page,Integer limit,DimSearch dimSearch);
 
     void updateOAO(OrganizationAndOrgattached oao,Integer orgid,Integer id);
 
