@@ -198,4 +198,8 @@
   <select id="selectIdByOrgno" resultType="java.lang.Integer">
     SELECT id FROM t_d0_organization WHERE orgno=#{orgno}
   </select>
+
+  <select id="selectOrgByname" parameterType="DimSearch" resultMap="BaseResultMap">
+    SELECT id,orgno,orgname,exetype,linkadd,listingDate,zbbdocDate FROM t_d0_organization WHERE orgname LIKE '%${organization}%'
+  </select>
 </mapper>

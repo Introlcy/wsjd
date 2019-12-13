@@ -9,6 +9,8 @@ public class DimSearch {
 
     String leaderName;
 
+    String organization;
+
 
     public String getLeaderName() {
         return leaderName;
@@ -16,5 +18,13 @@ public class DimSearch {
 
     public void setLeaderName(String leaderName) {
         this.leaderName = leaderName;
+    }
+
+    public String getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(String organization) {
+        this.organization = organization;
     }
 }

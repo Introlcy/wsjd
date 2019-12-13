@@ -77,6 +77,8 @@ public interface OrganizationService {
 
     List<TD0OrgAndLeader> selectLeaderByname(Integer page,Integer limit,DimSearch dimSearch);
 
-    void updateOAO(OrganizationAndOrgattached oao,Integer orgid,Integer id);
+    void updateOAO(OrganizationAndOrgattached oao);
+
+    List<TD0Organization> selectByorgname(Integer page,Integer limit,DimSearch dimSearch);
 
 }

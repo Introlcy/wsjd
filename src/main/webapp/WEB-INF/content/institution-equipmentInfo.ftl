@@ -11,29 +11,11 @@
 <body class="content-pages-body">
 <div class="content-pages-wrap">
     <div class="commonTitle">
-    <h2>&gt;&gt; 机构管理 - 
-
-
- 
-
-
+    <h2>&gt;&gt; 机构管理 -
  仪器设备配置情况表
 
 </h2>
-</div> 
-  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="commonTableSearch">
-       	<form id="form-search" name="form-search" action="" method="post">
-        <tr>
-            <th align="right">监督机构：</th>
-            <td><select name="select" id="select">
-			 <option value="">请选择</option>
-			 <option value="">全部</option>
-			 <option value="">全省各个监督机构</option>
-			</select></td>
-            <td align="right"><button>检索</button>&nbsp;&nbsp;&nbsp;<button>导出</button></td>
-        </tr>
-       	</form>
-</table>
+</div>
      <table border="0" align="center" cellpadding="0" cellspacing="1" class="commonTable">
 		<tr>
             <td width="14%" rowspan="2" align="center">单位</td>

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -155,8 +156,22 @@ public class OrganizationController {
     }
 
     @RequestMapping("/update")
-    public String updataOrg(OrganizationAndOrgattached oao,@PathVariable Integer orgid,@PathVariable Integer id){
-        service.updateOAO(oao,orgid,id);
+    public String updataOrg(OrganizationAndOrgattached oao){
+
+        service.updateOAO(oao);
         return "redirect:/ts";
+    }
+
+    @RequestMapping("/oname")
+    @ResponseBody
+    public TD0Orgation selectAllByname(Integer page,Integer limit,String organization){
+        TD0Orgation t = new TD0Orgation() ;
+        DimSearch dimSearch=new DimSearch();
+        dimSearch.setOrganization(organization);
+        t.setData(service.selectByorgname(page,limit,dimSearch));
+        t.setCode(0);
+        t.setMsg("");
+        t.setCount(service.selectAllOrganization(1,1000).size());
+        return t;
     }
 }

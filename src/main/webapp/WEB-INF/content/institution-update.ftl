@@ -14,7 +14,7 @@
                 <div class="content-pages-wrap">
                     <div class="commonTitle"><h2>&gt;&gt; <td>机构管理</td> - 机构创建</h2></div>
                     <table border="0" cellspacing="1" cellpadding="0" class="commonTable">
-                        <form id="institutionCreat" name="institutionCreat" action="/update" method="post">
+                        <form id="institutionCreat" name="institutionCreat" action="/update" method="post" onclick="f()">
                             <input type="hidden" name="id" value="${orgattached.id}">
                             <input name="orgid" type="hidden" value="${orgattached.orgid}">
                             <tr>
@@ -66,20 +66,20 @@
                                 <td align="right"><span class="required">*</span>机构行政级别 ：</td>
                                 <td align="left"><select name="td0Organization.orglevel" >
                                         <option value="">请选择</option>
-                                        <option <#if td0Organization.orglevel=="1">selected="selected"</#if> value="1">处级</option>
-                                        <option <#if td0Organization.orglevel=="2">selected="selected"</#if> value="2">副处级</option>
-                                        <option <#if td0Organization.orglevel=="3">selected="selected"</#if> value="3">科级</option>
-                                        <option <#if td0Organization.orglevel=="4">selected="selected"</#if> value="4">副科级</option>
-                                        <option <#if td0Organization.orglevel=="5">selected="selected"</#if> value="5">乡级及以下</option>
+                                        <option <#if orgattached.td0Organization.orglevel=="1">selected="selected"</#if> value="1">处级</option>
+                                        <option <#if orgattached.td0Organization.orglevel=="2">selected="selected"</#if> value="2">副处级</option>
+                                        <option <#if orgattached.td0Organization.orglevel=="3">selected="selected"</#if> value="3">科级</option>
+                                        <option <#if orgattached.td0Organization.orglevel=="4">selected="selected"</#if> value="4">副科级</option>
+                                        <option <#if orgattached.td0Organization.orglevel=="5">selected="selected"</#if> value="5">乡级及以下</option>
                                     </select></td>
                                 <td align="right"><span class="required">*</span>机构性质：</td>
                                 <td align="left"><select name="td0Organization.orgpro" id="select5">
                                         <option value="0">请选择</option>
-                                        <option <#if td0Organization.orgpro=="1">selected="selected"</#if> value="1">行政机构</option>
-                                        <option <#if td0Organization.orgpro=="2">selected="selected"</#if> value="2">全额拔款事业单位</option>
-                                        <option <#if td0Organization.orgpro=="3">selected="selected"</#if> value="3">差额拔款事业单位</option>
-                                        <option <#if td0Organization.orgpro=="4">selected="selected"</#if> value="4">自收自支事业单位</option>
-                                        <option <#if td0Organization.orgpro=="5">selected="selected"</#if> value="5">其他</option>
+                                        <option <#if orgattached.td0Organization.orgpro=="1">selected="selected"</#if> value="1">行政机构</option>
+                                        <option <#if orgattached.td0Organization.orgpro=="2">selected="selected"</#if> value="2">全额拔款事业单位</option>
+                                        <option <#if orgattached.td0Organization.orgpro=="3">selected="selected"</#if> value="3">差额拔款事业单位</option>
+                                        <option <#if orgattached.td0Organization.orgpro=="4">selected="selected"</#if> value="4">自收自支事业单位</option>
+                                        <option <#if orgattached.td0Organization.orgpro=="5">selected="selected"</#if> value="5">其他</option>
                                     </select></td>
                                 <td align="right">编办批文日期：</td>
                                 <td align="left"><input name="td0Organization.zbbdocdate" type="text" class="inputTextNormal" id="textfield936" value="${orgattached.td0Organization.zbbdocdate?string('yyyy-MM-dd')}"/></td>

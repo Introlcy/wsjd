@@ -18,25 +18,13 @@
     <div class="commonTitle">
         <h2>&gt;&gt;建设项目审查</h2>
     </div>
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="commonTableSearch">
-        <form id="form-search" name="form-search" action="" method="post">
-            <tr>
-
-                <td>
-                    <div align="right">单位名称（个人）：</div>
-                </td>
-                <td><input name="textfield6" type="text" class="inputTextNormal" id="textfield6"/></td>
-                <td align="right">组织机构代码：</td>
-                <td align="right"><input name="textfield62" type="text" class="inputTextNormal" id="textfield62"/></td>
-
-            </tr>
-            <tr>
-                <td align="right">
-                    <button>检索</button>
-                </td>
-            </tr>
-        </form>
-    </table>
+    <div class="demoTable">
+        机构名称：
+        <div class="layui-inline">
+            <input class="layui-input" name="id" id="demoReload" autocomplete="off">
+        </div>
+        <button class="layui-btn" data-type="reload">搜索</button>
+    </div>
 
     <table class="layui-hide" id="test" lay-filter="test"></table>
 
@@ -105,6 +93,22 @@
                             , btnAlign: 'c'
                         })
                     }
+                });
+
+
+                $('.layui-btn').on('click', function () {
+                    // 搜索条件
+                    var send_name = $("#demoReload").val();
+                    table.reload('demo', {
+                        method: 'POST'
+                        ,where :{
+                            organization:send_name
+                        }
+                        ,url: '/oname'
+                        , page: {
+                            curr: 1
+                        }
+                    });
                 });
 
                 //监听行工具事件

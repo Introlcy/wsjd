@@ -1,5 +1,6 @@
 package com.authority.dao;
 
+import com.authority.entity.DimSearch;
 import com.authority.entity.TD0Organization;
 
 import java.util.List;
@@ -20,5 +21,7 @@ public interface TD0OrganizationDao {
     List<TD0Organization> selectAll();
 
     int selectIdByOrgno(String orgno);
+
+    List<TD0Organization> selectOrgByname(DimSearch orgname);
 
 }

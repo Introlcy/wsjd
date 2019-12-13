@@ -182,9 +182,9 @@ public class OrganizationServiceImpl implements OrganizationService {
     }
 
     @Override
-    public void updateOAO(OrganizationAndOrgattached oao,Integer orgid,Integer id) {
+    public void updateOAO(OrganizationAndOrgattached oao) {
         TD0Organization oon = new TD0Organization();
-        oon.setId(orgid);
+        oon.setId(oao.getOrgid());
         oon.setOrgno(oao.getOrgno());
         oon.setOrgname(oao.getTd0Organization().getOrgname());
         oon.setOrgcode(oao.getOrgcode());
@@ -200,8 +200,8 @@ public class OrganizationServiceImpl implements OrganizationService {
         oon.setZipcode(oao.getTd0Organization().getZipcode());
         td0OrganizationDao.updateByPrimaryKeySelective(oon);
         TD0Orgattached od = new TD0Orgattached();
-        od.setId(id);
-        od.setOrgid(orgid);
+        od.setId(oao.getId());
+        od.setOrgid(oao.getOrgid());
         od.setOrgname(oao.getTd0Organization().getOrgname());
         od.setOrgno(oao.getOrgno());
         od.setOrgcode(oao.getOrgcode());
@@ -237,5 +237,11 @@ public class OrganizationServiceImpl implements OrganizationService {
         od.setYearly(d);
         od.setVrcount(oao.getVrcount());
         td0OrgattachedDao.updateByPrimaryKeySelective(od);
+    }
+
+    @Override
+    public List<TD0Organization> selectByorgname(Integer page,Integer limit,DimSearch dimSearch) {
+        PageHelper.startPage(page,limit);
+        return td0OrganizationDao.selectOrgByname(dimSearch);
     }
 }
