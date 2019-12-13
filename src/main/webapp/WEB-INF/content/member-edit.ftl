@@ -175,11 +175,11 @@
                     <option <#if person.perpro=="5">selected="selected"</#if> value="5">其他</option>
                 </select></td>
             <td align="right">类别：</td>
-            <td align="left"><input type="radio" name="radio" id="radio1" value="radio1" checked  onclick="jdy_show()"/>
+            <td align="left"><input type="radio" name="radio" id="radio1" value="1" checked  onclick="jdy_show()"/>
                 监督人员
-                <input type="radio" name="radio" id="radio2" value="radio2"  onclick="jdy_hide()"/>
+                <input type="radio" name="radio" id="radio2" value="2"  onclick="jdy_hide()"/>
                 协查人员
-                <input type="radio" name="radio" id="radio2" value="radio2" onclick="jdy_hide()"/>
+                <input type="radio" name="radio" id="radio2" value="3" onclick="jdy_hide()"/>
                 不详</td>
         </tr>
         <tr>
@@ -192,9 +192,9 @@
         </tr>
         <tr>
             <td align="right">是否为在编人员：</td>
-            <td align="left"><input type="radio" name="ifstaffper" id="radio1" value="radio1" />
+            <td align="left"><input type="radio" name="ifstaffper" id="radio1" value="是" />
                 是
-                <input type="radio" name="ifstaffper" id="radio2" value="radio2" />
+                <input type="radio" name="ifstaffper" id="radio2" value="否" />
                 否</td>
             <td align="right"></td>
             <td align="left"></td>

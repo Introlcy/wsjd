@@ -158,7 +158,7 @@
                             url: "/find",
                             type: "post",
                             success: function (sre) {
-                                var htmladd="";
+                                var htmladd="<option value=''>请选择</option>";
                                 for(var key in sre){
                                     var name= sre[key].orgname;
                                     var val=sre[key].id;
