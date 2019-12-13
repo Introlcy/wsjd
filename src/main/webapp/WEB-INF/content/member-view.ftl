@@ -4,7 +4,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=7" />
 <title>江苏省卫生监督业务系统</title>
 <link href="/css/main.css" rel="stylesheet" type="text/css" media="all" />
-<script src="/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+    <script src="/js/jquery-3.2.1.js"></script>
+    <script src="/layui/layui.js"></script>
+</head>
 </head>
 
 <body class="content-pages-body">
@@ -97,12 +100,20 @@
     <!--//commonTable-->
     <div id="formPageButton">
     	<ul>
-        	<li><a href="/content/editMemberforward/${person.id}" title="修改" class="btnShort">修改</a></li>
-        	<li><a href="javascript:window.history.go(-1)" title="返回" class="btnShort">返回</a></li>
+        	<li><a onclick="f()" title="返回" class="btnShort">返回</a></li>
         </ul>
     </div>
     <!--//commonToolBar-->
 </div>
+<script>
+
+    function f() {
+        var index = parent.layer.getFrameIndex(window.name);
+        parent.layer.close(index);
+    }
+
+
+</script>
 <!--//content pages wrap-->
 </body>
 </html>

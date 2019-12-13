@@ -8,6 +8,7 @@ import com.authority.entity.TD0Section;
 import com.authority.entity.TD0Stuff;
 import com.authority.entity.vo.TD0StuffVo;
 import com.authority.service.HumanManageInter;
+import com.authority.util.NumToWord;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,56 +43,22 @@ public class HumanManageImpl implements HumanManageInter {
             TD0StuffVo td0StuffVo=new TD0StuffVo();
             TD0Section td0Section=td0SectionDao.selectByPrimaryKey(td0Stuff.getSectionid());
             TD0Organization td0Organization= td0OrganizationDao.selectByPrimaryKey(td0Section.getOrgid());
-            td0StuffVo.setDegree(td0Stuff.getEdu());
+            String edu=td0Stuff.getEdu();
+
+            td0StuffVo.setDegree(NumToWord.Edu(edu));
+
             td0StuffVo.setSection(td0Section.getDivname());
            String joblevel= td0Stuff.getJoblevel();
-           switch (joblevel){
-               case "1": joblevel="省部级正职";break;
-               case "2": joblevel="省部级副职";break;
-               case "3": joblevel="厅局级正职";break;
-               case "4": joblevel="厅局级副职";break;
-               case "5": joblevel="乡科级正职";break;
-               case "6": joblevel="乡科级副职";break;
-               case "7": joblevel="县处级正职";break;
-               case "8": joblevel="县处级副职";break;
-               case "9": joblevel="科办员";break;
-               case "": joblevel="无";break;
-            }
+           td0StuffVo.setGrade(NumToWord.JobLevel(joblevel));
+            String sex= td0Stuff.getGender();
+            td0StuffVo.setSex(NumToWord.Sex(sex));
 
-            td0StuffVo.setGrade(joblevel);
-           String sex= td0Stuff.getGender();
-           if(sex.equals("1")){
-               sex="男";
-           }
-            if(sex.equals("0")){
-                sex="女";
-            }
-            td0StuffVo.setSex(sex);
+
             td0StuffVo.setHumanCode(td0Stuff.getId());
             String job=td0Stuff.getManagejob();
-            if(job.equals("1")){
-                job="所长";
-            }
-            if(job.equals("2")){
-                job="书记";
-            }
-            if(job.equals("3")){
-                job="副所长";
-            }
-            if(job.equals("4")){
-                job="副书记";
-            }
-            if(job.equals("5")){
-                job="主任";
-            }
-            if(job.equals("6")){
-                job="副主任";
-            }
-            if(job.equals("")){
-                job="无";
-            }
-            td0StuffVo.setJob(job);
-            td0StuffVo.setMajor(td0Stuff.getEdu());
+            td0StuffVo.setJob(NumToWord.Job(job));
+            String spe=td0Stuff.getSpe();
+            td0StuffVo.setMajor(NumToWord.Spe(spe));
             td0StuffVo.setName(td0Stuff.getRepmanname());
             td0StuffVo.setOrganization(td0Organization.getOrgname());
 
@@ -105,6 +72,22 @@ public class HumanManageImpl implements HumanManageInter {
 
     @Override
     public TD0Stuff getOneStuff(Integer id) {
+        TD0Stuff td0Stuff=td0StuffDao.selectByPrimaryKey(id);
+        td0Stuff.setFolk(NumToWord.Folk(td0Stuff.getFolk()));
+        td0Stuff.setGender(NumToWord.Sex(td0Stuff.getGender()));
+        td0Stuff.setPol(NumToWord.Pol(td0Stuff.getPol()));
+        td0Stuff.setEdu(NumToWord.Edu(td0Stuff.getEdu()));
+
+        td0Stuff.setManagejob(NumToWord.Job(td0Stuff.getManagejob()));
+        td0Stuff.setJoblevel(NumToWord.JobLevel(td0Stuff.getJoblevel()));
+        td0Stuff.setTitle(NumToWord.Title(td0Stuff.getTitle()));
+        td0Stuff.setPerpro(NumToWord.PerPro(td0Stuff.getPerpro()));
+        td0Stuff.setPertype(NumToWord.PerType(td0Stuff.getPertype()));
+        return td0Stuff;
+    }
+
+    @Override
+    public TD0Stuff getOneStuffNotChange(Integer id) {
         return td0StuffDao.selectByPrimaryKey(id);
     }
 
@@ -119,6 +102,11 @@ public class HumanManageImpl implements HumanManageInter {
     public Integer addMember(TD0Stuff td0Stuff){
 
         return td0StuffDao.insertSelective(td0Stuff);
+    }
+
+    @Override
+    public Integer deleteById(Integer id) {
+        return td0StuffDao.deleteByPrimaryKey(id);
     }
 
 

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -57,7 +58,7 @@ public class HumanManage {
     @GetMapping("editMemberforward/{id}")
     public String editOne(@PathVariable("id") Integer id,Model model){
 
-        TD0Stuff oldStuff= humanManageInter.getOneStuff(id);
+        TD0Stuff oldStuff= humanManageInter.getOneStuffNotChange(id);
         model.addAttribute("person",oldStuff);
         return "member-edit";
     }
@@ -71,6 +72,20 @@ public class HumanManage {
     public String addPerson(TD0Stuff td0Stuff){
         humanManageInter.addMember(td0Stuff);
         return "redirect:/content/forwardmember";
+    }
+    @DeleteMapping("deleteMember/{id}")
+    @ResponseBody
+    public String deleteById(@PathVariable("id") Integer id){
+
+        Integer num=humanManageInter.deleteById(id);
+        if (num.equals(1)){
+            return "ok";
+        }
+
+        else{
+            return "error";
+        }
+
     }
 
 

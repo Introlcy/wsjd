@@ -4,7 +4,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=7" />
 <title>江苏省卫生监督业务系统</title>
 <link href="/css/main.css" rel="stylesheet" type="text/css" media="all" />
-<script src="/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+    <script src="/js/jquery-3.2.1.js"></script>
+    <script src="/layui/layui.js"></script>
 </head>
 <script type="text/javascript">
  function jdy_hide(){
@@ -26,9 +28,11 @@
         <input type="hidden" name="_method" value="PUT">
         <input type="hidden" name="id" value="${person.id}">
         <tr>
-            <td width="12%" align="right"><span class="required">*</span>人员编码：</td>
-            <td width="21%" align="left">
-                <input name="percode" type="text" class="inputTextNormal" id="textfield" value="${person.percode}" /></td>
+            <td align="right">所属机构：</td>
+            <td align="left">
+                <select name="orgId" id="selectOrg" onchange="getSection()">
+                    <option  value="">请选择</option>
+                </select></td>
             <td width="12%" align="right"><span class="required">*</span>姓名：</td>
             <td width="21%" align="left">
                 <input name="repmanname" type="text" class="inputTextNormal" id="textfield2"  value="${person.repmanname}"/></td>
@@ -42,9 +46,10 @@
                 女</td>
         </tr>
         <tr>
-            <td align="right">出生年月：</td>
-            <td align="left">
-                <input name="birthdate" type="date" class="inputTextNormal" id="textfield3" value="${person.birthdate?string('yyyy-MM-dd')}" /></td>
+            <td width="12%" align="right"><span class="required">*</span>所属科室：</td>
+            <td width="21%" align="left">
+                <select id="divNa" name="sectionid"></select>
+            </td>
             <td align="right">民族：</td>
             <td align="left">
                 <select  name="folk" id="select">
@@ -175,11 +180,11 @@
                     <option <#if person.perpro=="5">selected="selected"</#if> value="5">其他</option>
                 </select></td>
             <td align="right">类别：</td>
-            <td align="left"><input type="radio" name="radio" id="radio1" value="radio1" checked  onclick="jdy_show()"/>
+            <td align="left"><input type="radio" name="radio" id="radio1" value="1" checked  onclick="jdy_show()"/>
                 监督人员
-                <input type="radio" name="radio" id="radio2" value="radio2"  onclick="jdy_hide()"/>
+                <input type="radio" name="radio" id="radio2" value="2"  onclick="jdy_hide()"/>
                 协查人员
-                <input type="radio" name="radio" id="radio2" value="radio2" onclick="jdy_hide()"/>
+                <input type="radio" name="radio" id="radio2" value="3" onclick="jdy_hide()"/>
                 不详</td>
         </tr>
         <tr>
@@ -191,15 +196,17 @@
             <td align="left"><input name="healthperno" type="text" class="inputTextNormal" id="textfield3"  value="${person.healthperno}"/></td>
         </tr>
         <tr>
+            <td width="12%" align="right"><span class="required">*</span>人员编码：</td>
+            <td width="21%" align="left">
+                <input name="percode" type="text" class="inputTextNormal" id="textfield" value="${person.percode}" /></td>
             <td align="right">是否为在编人员：</td>
-            <td align="left"><input type="radio" name="ifstaffper" id="radio1" value="radio1" />
+            <td align="left"><input type="radio" name="ifstaffper" id="radio1" value="是" />
                 是
-                <input type="radio" name="ifstaffper" id="radio2" value="radio2" />
+                <input type="radio" name="ifstaffper" id="radio2" value="否" />
                 否</td>
-            <td align="right"></td>
-            <td align="left"></td>
-            <td align="right">&nbsp;</td>
-            <td align="left">&nbsp;</td>
+            <td align="right">出生年月：</td>
+            <td align="left">
+                <input name="birthdate" type="date" class="inputTextNormal" id="textfield3" value="${person.birthdate?string('yyyy-MM-dd')}" /></td>
         </tr>
 
 
@@ -208,12 +215,75 @@
   <!--//commonTable--> 
   <div id="formPageButton"> 
     <ul> 
-      <li><a  onclick="document.getElementById('memberCreat').submit();" class="btnShort">保存</a></li>
+      <li><a  onclick="editsubmit()" class="btnShort">保存</a></li>
       <li><a href="javascript:window.history.go(-1)" title="返回" class="btnShort">返回</a></li> 
     </ul> 
   </div> 
   <!--//commonToolBar--> 
-</div> 
+</div>
+
+
+
+<script>
+    function editsubmit(){
+        document.getElementById('memberCreat').submit();
+        var index = parent.layer.getFrameIndex(window.name);
+        parent.layer.close(index);
+    }
+$(function () {
+    $("#selectOrg").empty();
+    $.ajax({
+        url: "/find",
+        type: "post",
+        success: function (sre) {
+            var htmladd="<option value=''>请选择</option>";
+            for(var key in sre){
+                var name= sre[key].orgname;
+                var val=sre[key].id;
+                htmladd +='<option value='+'"'+val+'"'+"onclick='console.log(1)'"+'>';
+                htmladd +=name;
+                htmladd +=' </option>';
+            }
+            $("#selectOrg").append(htmladd);
+            console.log($("#selectOrg").html());
+            console.log(htmladd);
+            //  layer.msg('编辑操作');
+        },
+    });
+
+
+
+
+
+
+})
+function getSection() {
+    var section=  $("#selectOrg").val();
+    $("#divNa").empty();
+    $.ajax({
+        url: "/querySectionByOrgId?id="+section+"",
+        type: "get",
+        success: function (sre) {
+            console.log(sre)
+            var htmladd="";
+            for(var key in sre){
+                var val= sre[key].id;
+                var name=sre[key].divname;
+                htmladd +='<option value='+'"'+val+'"'+'>';
+                htmladd +=name;
+                htmladd +=' </option>';
+            }
+            $("#divNa").append(htmladd);
+        },
+    });
+
+
+
+}
+
+
+
+</script>
 <!--//content pages wrap--> 
 </body>
 </html>
