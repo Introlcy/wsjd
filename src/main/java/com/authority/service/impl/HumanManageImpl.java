@@ -88,7 +88,7 @@ public class HumanManageImpl implements HumanManageInter {
 
     @Override
     public TD0Stuff getOneStuffNotChange(Integer id) {
-        return null;
+        return td0StuffDao.selectByPrimaryKey(id);
     }
 
     @Override
@@ -102,6 +102,11 @@ public class HumanManageImpl implements HumanManageInter {
     public Integer addMember(TD0Stuff td0Stuff){
 
         return td0StuffDao.insertSelective(td0Stuff);
+    }
+
+    @Override
+    public Integer deleteById(Integer id) {
+        return td0StuffDao.deleteByPrimaryKey(id);
     }
 
 

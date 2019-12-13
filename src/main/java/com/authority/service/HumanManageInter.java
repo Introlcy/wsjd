@@ -17,4 +17,5 @@ public interface HumanManageInter {
     TD0Stuff getOneStuffNotChange(Integer id);
     Integer editMember(TD0Stuff td0Stuff);
     Integer addMember(TD0Stuff td0Stuff);
+    Integer deleteById(Integer id);
 }

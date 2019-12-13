@@ -207,15 +207,24 @@
 
                         });
                     } else if (layEvent === 'del') {
-                        layer.open({
-                            type: 2 //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
-                            , title: '增加拨款'
-                            , area: ['1000px', '650px']
-                            , maxmin: true  //最大最小化按钮
-                            , offset: 'auto'   //位置居中
-                            , content: '/transf/' + data.id//不出现滚动条   ,'no'
-                            , btnAlign: 'c'
+                        var id=data.humanCode;
+                        console.log(id);
+                        layer.confirm('真的删除行么', function(index){
+                            obj.del();
+                            $.ajax({
+                                url: "/content/deleteMember/"+id,
+                                type: "delete",
+                                contentType:"application/x-www-form-urlencoded",
+                                success: function (sre) {
+                                    console.log(sre)
 
+                                },
+                            });
+
+
+
+
+                            layer.close(index);
                         });
 
                     } else if (layEvent === 'edit') {
