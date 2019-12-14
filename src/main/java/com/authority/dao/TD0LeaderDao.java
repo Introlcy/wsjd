@@ -25,4 +25,6 @@ public interface TD0LeaderDao {
     List<TD0OrgAndLeader> queryAOL();
 
     List<TD0OrgAndLeader> queryByname(DimSearch leadername);
+
+    TD0OrgAndLeader selectLeaderByid(Integer id);
 }

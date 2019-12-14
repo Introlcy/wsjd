@@ -14,7 +14,7 @@
                 <div class="content-pages-wrap">
                     <div class="commonTitle"><h2>&gt;&gt; <td>机构管理</td> - 机构创建</h2></div>
                     <table border="0" cellspacing="1" cellpadding="0" class="commonTable">
-                        <form id="institutionCreat" name="institutionCreat" action="/update" method="post" onclick="f()">
+                        <form id="institutionCreat" name="institutionCreat" action="/update" method="post" >
                             <input type="hidden" name="id" value="${orgattached.id}">
                             <input name="orgid" type="hidden" value="${orgattached.orgid}">
                             <tr>
@@ -96,9 +96,9 @@
                                 <td align="right"><span class="required">*</span>房屋所有权 ：</td>
                                 <td align="left"><select name="buildingownership" id="select">
                                         <option value="">请选择</option>
-                                        <option <#if buildingownership=="自有">selected="selected"</#if> value="自有">自有</option>
-                                        <option <#if buildingownership=="借">selected="selected"</#if> value="借">借</option>
-                                        <option <#if buildingownership=="租">selected="selected"</#if> value="租">租</option>
+                                        <option <#if orgattached.buildingownership=="自有">selected="selected"</#if> value="自有">自有</option>
+                                        <option <#if orgattached.buildingownership=="借">selected="selected"</#if> value="借">借</option>
+                                        <option <#if orgattached.buildingownership=="租">selected="selected"</#if> value="租">租</option>
                                     </select></td>
                                 <td align="right"> 办公用房在建面积（平方米） ：</td>
                                 <td align="left"><input name="officebuildingarea" type="text" class="inputTextNormal" value="${orgattached.officebuildingarea}"/></td>
@@ -159,16 +159,16 @@
                                 <td align="right"> </td>
                                 <td align="left"></td>
                             </tr>
-                            <div id="formPageButton">
-                                <ul>
-                                    <li><input type="submit" title="提交" class="btnShort"></li>
-                                    <li><a onclick="f()" title="返回" class="btnShort">返回</a></li>
-                                </ul>
-                            </div>
+
                         </form>
                     </table>
                     <!--//commonTable-->
-
+                    <div id="formPageButton">
+                        <ul>
+                            <li><a  title="提交" class="btnShort" onclick="editsubmit()">提交</a></li>
+                            <li><a onclick="f()" title="返回" class="btnShort">返回</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -176,6 +176,12 @@
 </div>
 <script>
     function f() {
+        var index = parent.layer.getFrameIndex(window.name);
+        parent.layer.close(index);
+    }
+
+    function editsubmit(){
+        document.getElementById('institutionCreat').submit();
         var index = parent.layer.getFrameIndex(window.name);
         parent.layer.close(index);
     }

@@ -244,4 +244,16 @@ public class OrganizationServiceImpl implements OrganizationService {
         PageHelper.startPage(page,limit);
         return td0OrganizationDao.selectOrgByname(dimSearch);
     }
+
+    @Override
+    public TD0OrgAndLeader selectLeaderByid(Integer id) {
+        return td0LeaderDao.selectLeaderByid(id);
+    }
+
+    @Override
+    public void updateLeaderByid(TD0Leader leader) {
+        td0LeaderDao.updateByPrimaryKeySelective(leader);
+    }
+
+
 }

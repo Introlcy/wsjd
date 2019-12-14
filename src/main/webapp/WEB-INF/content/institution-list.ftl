@@ -53,7 +53,7 @@
                     , url: '/ognzx' //数据接口
                     , page: true //开启分页
                     , cols: [[
-                        {field: 'orgno', title: '申请单位(个人)',}
+                        {field: 'orgno', title: '机构编码',}
                         , {field: 'orgname', title: '机构名称'}
                         , {field: 'exetype', title: '专业类别', sort: true}
                         , {field: 'linkadd', title: '经营地址'}

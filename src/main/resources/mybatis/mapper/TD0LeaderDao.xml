@@ -257,4 +257,8 @@
   <select id="queryByname" resultMap="aol" parameterType="DimSearch">
     SELECT t1.*,t2.id,t2.orgname FROM t_d0_leader t1 LEFT JOIN t_d0_organization t2 ON t1.orgid=t2.id WHERE t1.leaderName LIKE '%${leaderName}%'
   </select>
+
+  <select id="selectLeaderByid" resultMap="aol">
+    SELECT t1.*,t2.id,t2.orgname FROM t_d0_leader t1 LEFT JOIN t_d0_organization t2 ON t1.orgid=t2.id where t1.id = #{id}
+  </select>
 </mapper>

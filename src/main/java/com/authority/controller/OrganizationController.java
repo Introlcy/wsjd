@@ -157,7 +157,6 @@ public class OrganizationController {
 
     @RequestMapping("/update")
     public String updataOrg(OrganizationAndOrgattached oao){
-
         service.updateOAO(oao);
         return "redirect:/ts";
     }
@@ -173,5 +172,18 @@ public class OrganizationController {
         t.setMsg("");
         t.setCount(service.selectAllOrganization(1,1000).size());
         return t;
+    }
+
+    @RequestMapping("/upleader/{id}")
+    public String updateLeader(@PathVariable("id") Integer id,Model model){
+        model.addAttribute("list",service.selectLeaderByid(id));
+        model.addAttribute("org",service.selectAllOrganization());
+        return "leadership-update";
+    }
+
+    @RequestMapping("/updateleader")
+    public String updateLeaderByid(TD0Leader leader){
+        service.updateLeaderByid(leader);
+        return "redirect:/toleader";
     }
 }

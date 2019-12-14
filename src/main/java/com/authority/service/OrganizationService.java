@@ -81,4 +81,8 @@ public interface OrganizationService {
 
     List<TD0Organization> selectByorgname(Integer page,Integer limit,DimSearch dimSearch);
 
+    TD0OrgAndLeader selectLeaderByid(Integer id);
+
+    void updateLeaderByid(TD0Leader leader);
+
 }

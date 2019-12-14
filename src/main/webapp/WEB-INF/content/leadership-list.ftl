@@ -157,7 +157,7 @@
                             , area: ['1000px', '650px']
                             , maxmin: true  //最大最小化按钮
                             , offset: 'auto'   //位置居中
-                            , content: '/121/' + data.id  //不出现滚动条   ,'no'
+                            , content: '/upleader/' + data.id  //不出现滚动条   ,'no'
                             , btnAlign: 'c'
 
                         });
@@ -205,11 +205,11 @@
                                 <option value="群众">群众</option>
                             </select></td>
                         <td align="right">学历：</td>
-                        <td align="left"><input name="textfield4" type="text" class="inputTextNormal" id="textfield4" /></td>
+                        <td align="left"><input name="edu" type="text" class="inputTextNormal" id="textfield4" /></td>
                     </tr>
                     <tr>
                         <td width="12%" align="right">学位：</td>
-                        <td width="21%" align="left"><input name="edu" type="text" class="inputTextNormal" id="edu" /></td>
+                        <td width="21%" align="left"><input name="degree" type="text" class="inputTextNormal" id="edu" /></td>
                         <td width="12%" align="right">职务：</td>
                         <td width="21%" align="left"><input name="managejob" type="text" class="inputTextNormal" id="manageJob" /></td>
                         <td width="12%" align="right">职级：</td>
