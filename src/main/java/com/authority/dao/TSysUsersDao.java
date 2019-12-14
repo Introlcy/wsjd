@@ -2,6 +2,8 @@ package com.authority.dao;
 
 import com.authority.entity.TSysUsers;
 
+import java.util.List;
+
 public interface TSysUsersDao {
     int deleteByPrimaryKey(Integer id);
 
@@ -16,4 +18,5 @@ public interface TSysUsersDao {
     int updateByPrimaryKey(TSysUsers record);
 
     TSysUsers selectByUserName(String username);
+    List<TSysUsers> getAllUser();
 }

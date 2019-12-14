@@ -2,6 +2,8 @@ package com.authority.dao;
 
 import com.authority.entity.TSysResources;
 
+import java.util.List;
+
 public interface TSysResourcesDao {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,5 @@ public interface TSysResourcesDao {
     int updateByPrimaryKeySelective(TSysResources record);
 
     int updateByPrimaryKey(TSysResources record);
+    List<TSysResources> getAllRoles();
 }
