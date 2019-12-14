@@ -23,7 +23,7 @@
 </script>
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-xs layui-btn-primary" lay-event="detail">查看</a>
-    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="edit" onclick="query()">编辑</a>
     <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
 </script>
 
@@ -109,6 +109,95 @@
     </div>
 </div>
 
+
+<div id="edit" style="display: none">
+    <form class="layui-form" method="post">
+        <div class="layui-form-item">
+            <label class="layui-form-label">id</label>
+            <div class="layui-input-block">
+                <input type="text" name="id" id="id"
+                       readonly class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">机构id</label>
+            <div class="layui-input-block">
+                <input type="text" name="orgid" id="orgid"
+                       autocomplete="off" placeholder="请输入组织机构id"
+                       class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">科室编码</label>
+            <div class="layui-input-block">
+                <input type="text" name="divcode" id="divcode"
+                       autocomplete="off" placeholder="请输入科室编码"
+                       class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">科室名称编码</label>
+            <div class="layui-input-block">
+                <input type="number" name="divnamecode" id="divnamecode"
+                       autocomplete="off" placeholder="请输入科室名称编码"
+                       class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">科室名称代码</label>
+            <div class="layui-input-block">
+                <input type="text" name="divname" id="divname"
+                       autocomplete="off" placeholder="请输入科室名称"
+                       class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">是否为分所</label>
+            <div class="layui-input-block">
+                <select name="ifsub" id="ifsub">
+                    <option value="0" selected="">否</option>
+                    <option value="1">是</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">电话号码</label>
+                <div class="layui-input-inline">
+                    <input type="tel" name="dutytel" id="dutytel" lay-verify="required|phone"
+                           autocomplete="off" class="layui-input" placeholder="请输入电话号码">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">传真号码</label>
+                <div class="layui-input-inline">
+                    <input type="tel" name="fax" id="fax" lay-verify="required|phone"
+                           autocomplete="off" class="layui-input" placeholder="请输入传真号码">
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">门  号</label>
+                <div class="layui-input-inline">
+                    <input type="tel" name="divroomno" id="divroomno" lay-verify="required|number"
+                           autocomplete="off" class="layui-input" placeholder="请输入门号">
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="layui-form-item">
+        <button type="submit" class="layui-btn btn-primary" onclick="editSection()">提交</button>
+        <button type="button" class="layui-btn">关闭</button>
+    </div>
+</div>
 <script>
     layui.use('table', function () {
         var table = layui.table;
@@ -175,29 +264,37 @@
             var data = obj.data //获得当前行数据
                 , layEvent = obj.event; //获得 lay-event 对应的值
 
-            if (layEvent === 'detail') {
-                layer.open({
-                    type: 2 //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
-                    , title: '详情信息'
-                    , area: 'auto'
-                    , maxmin: true  //最大最小化按钮
-                    , offset: 'auto'   //位置居中
-                    , area: ['500px', '520px']
-                    , content: $("#addOrUpdate")
-                    , scrollbar: false //不出现滚动条   ,'no'
-                    , btnAlign: 'c'
-                    , shadeClose: 'true' //点击空白区域关闭
+            if (layEvent === 'edit') {
+                //通过id查询数据
+                $.ajax({
+                    url: "/office/" + data.id,
+                    type: "get",
+                    // 查询成功后将数据放入表单中。data是返回的JSON对象
+                    success: function showQuery(data) {
+                        console.log(data);
+                        $("#id").val(data.id);
+                        $("#orgid").val(data.orgid);
+                        $("#divcode").val(data.divcode);
+                        $("#divnamecode").val(data.divnamecode);
+                        $("#divname").val(data.divname);
+                        $("#ifsub").val(data.ifsub);
+                        $("#dutytel").val(data.dutytel);
+                        $("#fax").val(data.fax);
+                        $("#divroomno").val(data.divroomno);
+                    },
+                    error: function () {
+                        alert("请求失败!");
+                    },
+                    dataType: "json"
                 });
-            } else if (layEvent === 'edit') {
                 //  layer.msg('编辑操作');
                 layer.open({
-                    type: 2 //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+                    type: 1 //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
                     , title: '信息修改'
                     , area: 'auto'
                     , maxmin: true  //最大最小化按钮
                     , offset: 'auto'   //位置居中
-                    , area: ['500px', '520px']
-                    , content: $("#addOrUpdate")
+                    , content: $("#edit")
                     , scrollbar: false //不出现滚动条   ,'no'
                     , btnAlign: 'c'
                     , shadeClose: 'true' //点击空白区域关闭
@@ -210,7 +307,7 @@
                     , maxmin: true  //最大最小化按钮
                     , offset: 'auto'   //位置居中
                     , area: ['500px', '520px']
-                    , content: $("#")
+                    , content: $("#") + data.id
                     , scrollbar: false //不出现滚动条   ,'no'
                     , btnAlign: 'c'
                     , shadeClose: 'true' //点击空白区域关闭
@@ -219,6 +316,59 @@
             }
         });
     });
+
+    //检查编辑数据不能为空
+    function check() {
+        var orgid = $("#orgid").val();
+        var divcode = $("#divcode").val();
+        var divnamecode = $("#divnamecode").val();
+        var divname = $("#divname").val();
+        var ifsub = $("#ifsub").val();
+        var dutytel = $("#dutytel").val();
+        var fax = $("#fax").val();
+        var divroomno = $("#divroomno").val();
+        if ($.trim(orgid) == "" || orgid == null) {
+            alert("机构id不能为空!");
+            $("#orgid").focus();
+            return false;
+        }
+        if ($.trim(divcode) == "" || divcode == null) {
+            alert("科室编码不能为空!");
+            $("#divcode").focus();
+            return false;
+        }
+        if ($.trim(divnamecode) == "" || divnamecode == null) {
+            alert("科室名称编码不能为空!");
+            $("#divnamecode").focus();
+            return false;
+        }
+        if ($.trim(divname) == "" || divname == null) {
+            alert("科室名称代码不能为空!");
+            $("#divname").focus();
+            return false;
+        }
+        if ($.trim(ifsub) == "" || ifsub == null) {
+            alert("是否为分所不能为空!");
+            $("#ifsub").focus();
+            return false;
+        }
+        if ($.trim(dutytel) == "" || dutytel == null) {
+            alert("电话号码不能为空!");
+            $("#dutytel").focus();
+            return false;
+        }
+        if ($.trim(fax) == "" || fax == null) {
+            alert("传真号码不能为空!");
+            $("#fax").focus();
+            return false;
+        }
+        if ($.trim(divroomno) == "" || divroomno == null) {
+            alert("门号不能为空!");
+            $("#divroomno").focus();
+            return false;
+        }
+        return true;
+    }
 
     //检查添加数据不能为空
     function check1() {
@@ -300,12 +450,52 @@
                 },
                 success: function () {
                     alert("添加成功！");
+                    parent.location.reload();
                 },
                 error: function () {
                     alert("添加失败！");
                 }
             });
             window.location.reload();
+        }
+    }
+
+    //提交编辑后的数据
+    function editSection() {
+        var id = $("#id").val();
+        var orgid = $("#orgid").val();
+        var divcode = $("#divcode").val();
+        var divnamecode = $("#divnamecode").val();
+        var divname = $("#divname").val();
+        var ifsub = $("#ifsub").val();
+        var dutytel = $("#dutytel").val();
+        var fax = $("#fax").val();
+        var divroomno = $("#divroomno").val();
+        console.log(orgid, divcode, divnamecode, divname, ifsub, dutytel, fax, divroomno, id);
+        if (check() == true) {
+            $.ajax({
+                url: "/office-edit",
+                type: "post",
+                data: {
+                    'id': id,
+                    'orgid': orgid,
+                    'divcode': divcode,
+                    'divnamecode': divnamecode,
+                    'divname': divname,
+                    'ifsub': ifsub,
+                    'dutytel': dutytel,
+                    'fax': fax,
+                    'divroomno': divroomno,
+                    'id': id
+                },
+                success: function () {
+                    alert("编辑成功！");
+                    parent.location.reload();
+                },
+                error: function () {
+                    alert("编辑失败！");
+                }
+            });
         }
     }
 </script>

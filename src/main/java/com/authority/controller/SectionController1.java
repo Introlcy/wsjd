@@ -83,14 +83,13 @@ public class SectionController1 {
 
 
     /**
-     * 添加科室
+     * 添加科室,异步方式
      *
      * @param
      * @return
      */
     @RequestMapping(value = "/office-add", method = RequestMethod.POST)
     public String insert(HttpServletRequest request, TD0Section section) {
-        //System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         Integer orgid = Integer.valueOf(request.getParameter("orgid"));
         String divcode = request.getParameter("divcode");
         String divnamecode = request.getParameter("divnamecode");
@@ -110,6 +109,50 @@ public class SectionController1 {
 
         System.out.println(section.toString());
         sectionService.insert(section);
-        return "redirect:/office-list";
+        return "redirect:/office";
+    }
+
+    /**
+     * 更新信息
+     *
+     * @param
+     * @return
+     */
+    @RequestMapping(value = "/office-edit", method = RequestMethod.POST)
+    public String updateByPrimaryKey(HttpServletRequest request, TD0Section section) {
+        Integer id = Integer.valueOf(request.getParameter("id"));
+        Integer orgid = Integer.valueOf(request.getParameter("orgid"));
+        String divcode = request.getParameter("divcode");
+        String divnamecode = request.getParameter("divnamecode");
+        String divname = request.getParameter("divname");
+        String ifsub = request.getParameter("ifsub");
+        String dutytel = request.getParameter("dutytel");
+        String fax = request.getParameter("fax");
+        String divroomno = request.getParameter("divroomno");
+        section.setId(id);
+        section.setOrgid(orgid);
+        section.setDivcode(divcode);
+        section.setDivnamecode(divnamecode);
+        section.setDivname(divname);
+        section.setIfsub(ifsub);
+        section.setDutytel(dutytel);
+        section.setFax(fax);
+        section.setDivroomno(divroomno);
+        System.out.println(section.toString());
+        sectionService.updateByPrimaryKey(section);
+        return "redirect:/office";
+    }
+
+
+    /**
+     * 通过id删除用户
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/office-del/{id}", method = RequestMethod.DELETE)
+    public String deleteByPrimaryKey(@PathVariable("id") Integer id) {
+        sectionService.deleteByPrimaryKey(id);
+        return "redirect:/office";
     }
 }
