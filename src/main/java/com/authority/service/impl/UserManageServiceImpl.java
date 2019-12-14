@@ -1,8 +1,10 @@
 package com.authority.service.impl;
 
 import com.authority.dao.TSysResourcesDao;
+import com.authority.dao.TSysRolesDao;
 import com.authority.dao.TSysUsersDao;
 import com.authority.entity.TSysResources;
+import com.authority.entity.TSysRoles;
 import com.authority.entity.TSysUsers;
 import com.authority.service.UserManageService;
 import org.springframework.stereotype.Service;
@@ -23,7 +25,7 @@ public class UserManageServiceImpl implements UserManageService {
     TSysUsersDao tSysUsersDao;
 
     @Resource
-    TSysResourcesDao tSysResourcesDao;
+    TSysRolesDao tSysRolesDao;
 
 
 
@@ -34,7 +36,7 @@ public class UserManageServiceImpl implements UserManageService {
     }
 
     @Override
-    public List<TSysResources> getAllRoles() {
-        return tSysResourcesDao.getAllRoles();
+    public List<TSysRoles> getAllRoles() {
+        return tSysRolesDao.getAllRoles();
     }
 }

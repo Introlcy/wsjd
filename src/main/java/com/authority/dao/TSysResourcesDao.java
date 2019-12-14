@@ -16,5 +16,5 @@ public interface TSysResourcesDao {
     int updateByPrimaryKeySelective(TSysResources record);
 
     int updateByPrimaryKey(TSysResources record);
-    List<TSysResources> getAllRoles();
+
 }

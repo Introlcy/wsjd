@@ -1,5 +1,6 @@
 package com.authority.controller;
 
+import com.authority.entity.TSysRoles;
 import com.authority.entity.TSysUsers;
 import com.authority.entity.vo.ResultJson;
 import com.authority.service.UserManageService;
@@ -43,7 +44,18 @@ public class UserController {
     public String userManage(){
         return "login-user";
     }
+    @ResponseBody
+    @GetMapping("/getAllRoles")
+    public ResultJson getAllRoles(){
 
+        ResultJson resultJson=new ResultJson();
+        List<TSysRoles> list= userManageService.getAllRoles();
+        resultJson.setCode(0);
+        resultJson.setMsg("");
+        resultJson.setCount(list.size());
+        resultJson.setData(list);
+        return resultJson;
+    }
 
 
 
