@@ -63,7 +63,12 @@ public class PermissionController {
         return "login";
     }
 
-
+    @RequestMapping("/logout")
+    public String logout(HttpSession session){
+        session.removeAttribute("sb");
+        session.invalidate();
+        return "redirect:/login.html";
+    }
 
     @RequestMapping("/content.html/{id}")
     public String getPermission(@PathVariable("id") Integer id, Model model){

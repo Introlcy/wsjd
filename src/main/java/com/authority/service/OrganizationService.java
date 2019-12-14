@@ -1,6 +1,7 @@
 package com.authority.service;
 
 import com.authority.entity.*;
+import com.authority.entity.vo.ResultJson;
 import com.authority.entity.vo.TD0OrgAndFund;
 import com.authority.entity.vo.TD0OrgAndLeader;
 
@@ -84,5 +85,7 @@ public interface OrganizationService {
     TD0OrgAndLeader selectLeaderByid(Integer id);
 
     void updateLeaderByid(TD0Leader leader);
+
+    ResultJson selectResources();
 
 }
