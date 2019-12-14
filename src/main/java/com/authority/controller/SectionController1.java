@@ -150,7 +150,7 @@ public class SectionController1 {
      * @param id
      * @return
      */
-    @RequestMapping(value = "/office-del/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/office/{id}", method = RequestMethod.DELETE)
     public String deleteByPrimaryKey(@PathVariable("id") Integer id) {
         sectionService.deleteByPrimaryKey(id);
         return "redirect:/office";

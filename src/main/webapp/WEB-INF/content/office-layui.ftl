@@ -22,7 +22,6 @@
     </div>
 </script>
 <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-xs layui-btn-primary" lay-event="detail">查看</a>
     <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="edit" onclick="query()">编辑</a>
     <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
 </script>
@@ -300,20 +299,23 @@
                     , shadeClose: 'true' //点击空白区域关闭
                 });
             } else if (layEvent === 'del') {
-                layer.open({
-                    type: 2 //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
-                    , title: '删除'
-                    , area: 'auto'
-                    , maxmin: true  //最大最小化按钮
-                    , offset: 'auto'   //位置居中
-                    , area: ['500px', '520px']
-                    , content: $("#") + data.id
-                    , scrollbar: false //不出现滚动条   ,'no'
-                    , btnAlign: 'c'
-                    , shadeClose: 'true' //点击空白区域关闭
-                });
-
+                //通过id删除数据
+                var id = data.id;
+                if (confirm("你确定要删除该条记录吗?")) {
+                    $.ajax({
+                        url: "/office/"+id,
+                        type: "delete",
+                        success: function () {
+                            alert("删除成功!");
+                        },
+                        error: function () {
+                            alert("删除失败!");
+                        },
+                    });
+                    obj.del();
+                }
             }
+
         });
     });
 
@@ -498,6 +500,8 @@
             });
         }
     }
+
+
 </script>
 </body>
 </html>
