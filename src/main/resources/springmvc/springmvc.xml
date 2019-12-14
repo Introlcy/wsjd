@@ -19,6 +19,19 @@
 	<!--校验器注入到处理器适配器-->
 	<mvc:annotation-driven validator="validator"/>
 
+	<mvc:interceptors>
+		<mvc:interceptor>
+
+			<mvc:mapping path="/**"/>
+			<!--配置不会拦截的路径-->
+			<mvc:exclude-mapping path="/login.html"/>
+			<mvc:exclude-mapping path="/login"/>
+			<mvc:exclude-mapping path="/google.jpg"/>
+
+			<bean class="com.authority.util.LoginInterceptor"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
 	<!--不拦截静态资源-->
 	<mvc:default-servlet-handler/>
 
@@ -87,6 +100,8 @@
 						<prop key="kaptcha.noise.color">black</prop>
 						<!-- 验证码文本字符间距 -->
 						<prop key="kaptcha.textproducer.char.space">3</prop>
+						<prop key="kaptcha.background.clear.to">yellow</prop>
+						<prop key="kaptcha.background.clear.from">green</prop>
 						<!-- 图片样式 :阴影-->
 						<prop key="kaptcha.obscurificator.impl">com.google.code.kaptcha.impl.ShadowGimpy</prop>
 					</props>

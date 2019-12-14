@@ -46,6 +46,8 @@ public class PermissionController {
          int id=permissionManage.getUserId(user.getJ_username_encrypt(), user.getJ_password_encrypt());
          if (tip==1){
 
+             HttpSession session1= request.getSession();
+             session1.setAttribute("sb","loginok");
              return "redirect:/content.html/"+id;
          }
          if(tip==3){

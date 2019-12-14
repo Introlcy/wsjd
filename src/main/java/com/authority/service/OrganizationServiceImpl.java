@@ -182,6 +182,7 @@ public class OrganizationServiceImpl implements OrganizationService {
     }
 
     @Override
+    @Transactional
     public void updateOAO(OrganizationAndOrgattached oao) {
         TD0Organization oon = new TD0Organization();
         oon.setId(oao.getOrgid());
@@ -251,6 +252,7 @@ public class OrganizationServiceImpl implements OrganizationService {
     }
 
     @Override
+    @Transactional
     public void updateLeaderByid(TD0Leader leader) {
         td0LeaderDao.updateByPrimaryKeySelective(leader);
     }
