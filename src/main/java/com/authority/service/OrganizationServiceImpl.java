@@ -1,11 +1,9 @@
 package com.authority.service;
 
 import com.alibaba.druid.sql.dialect.oracle.ast.stmt.OracleCreateTableStatement;
-import com.authority.dao.TD0FundDao;
-import com.authority.dao.TD0LeaderDao;
-import com.authority.dao.TD0OrganizationDao;
-import com.authority.dao.TD0OrgattachedDao;
+import com.authority.dao.*;
 import com.authority.entity.*;
+import com.authority.entity.vo.ResultJson;
 import com.authority.entity.vo.TD0OrgAndFund;
 import com.authority.entity.vo.TD0OrgAndLeader;
 import com.github.pagehelper.PageHelper;
@@ -33,6 +31,8 @@ public class OrganizationServiceImpl implements OrganizationService {
     private TD0FundDao td0FundDao;
     @Resource
     private TD0LeaderDao td0LeaderDao;
+    @Resource
+    private TSysResourcesDao tSysResourcesDao;
 
     @Override
     public List<TD0Organization> selectAllOrganization(Integer page,Integer limit) {
@@ -182,6 +182,7 @@ public class OrganizationServiceImpl implements OrganizationService {
     }
 
     @Override
+    @Transactional
     public void updateOAO(OrganizationAndOrgattached oao) {
         TD0Organization oon = new TD0Organization();
         oon.setId(oao.getOrgid());
@@ -251,8 +252,19 @@ public class OrganizationServiceImpl implements OrganizationService {
     }
 
     @Override
+    @Transactional
     public void updateLeaderByid(TD0Leader leader) {
         td0LeaderDao.updateByPrimaryKeySelective(leader);
+    }
+
+    @Override
+    public ResultJson selectResources() {
+        ResultJson t = new ResultJson();
+        t.setCode(0);
+        t.setMsg("");
+        t.setData(tSysResourcesDao.selectResource());
+        t.setCount(100);
+        return t;
     }
 
 

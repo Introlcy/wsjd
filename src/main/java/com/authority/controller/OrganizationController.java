@@ -1,6 +1,7 @@
 package com.authority.controller;
 
 import com.authority.entity.*;
+import com.authority.entity.vo.ResultJson;
 import com.authority.entity.vo.TD0OrgAndLeader;
 import com.authority.entity.vo.TD0Orgation;
 import com.authority.entity.vo.TD0OrgleaderJson;
@@ -185,5 +186,15 @@ public class OrganizationController {
     public String updateLeaderByid(TD0Leader leader){
         service.updateLeaderByid(leader);
         return "redirect:/toleader";
+    }
+
+    @RequestMapping("/tores")
+    public String transfres(){
+        return "resource";
+    }
+    @RequestMapping("/queryres")
+    @ResponseBody
+    public ResultJson queryresource(){
+        return service.selectResources();
     }
 }

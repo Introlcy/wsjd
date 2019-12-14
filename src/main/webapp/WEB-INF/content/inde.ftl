@@ -58,7 +58,7 @@
             <h1>江苏省卫生监督业务系统</h1>
         </div>
         <div class="logout user-icon">
-            欢迎登录，<span class="user-text">管理员</span> [<span class="signout-text"><a href="javascript:void(0);" onclick="window.opener=null; window.parent.close();" title="退出系统">退出系统</a></span>]
+            欢迎登录，<span class="user-text">管理员</span> [<span class="signout-text"><a href="/logout"  title="退出系统">退出系统</a></span>]
         </div>
     </div>
 </div>
