@@ -50,7 +50,7 @@
         </div>
         <div class="kit-login-form">
             <h4 class="kit-login-title" style="font-size:23px">登录</h4>
-            <form class="layui-form" id="loginForm" action="/j_spring_security_check" method="post">
+            <form class="layui-form" id="loginForm" action="/login" method="post">
                 <input type="hidden" name="j_username">
                 <input type="hidden" name="j_password">
                 <div class="kit-login-row">
@@ -91,11 +91,6 @@
                         <button class="layui-btn kit-login-btn" id="submitBt" lay-submit="submit"
                                 lay-filter="login_hash">登录
                         </button>
-                    </div>
-                    <div class="kit-login-col-inline">
-                        <a href="/download.html" target="_blank"
-                           style="color: rgb(153, 153, 153); text-decoration: none; font-family: 微软雅黑;line-height: 32px;margin-left: 40px;"
-                           id="forgot">安装插件</a>
                     </div>
                 </div>
                 <div class="kit-login-row" style="margin-bottom: 0;color: #FB0000;font-weight: bold;font-family: 微软雅黑;">

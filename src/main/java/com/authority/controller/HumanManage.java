@@ -1,6 +1,7 @@
 package com.authority.controller;
 
 import com.authority.dao.TD0OrganizationDao;
+import com.authority.entity.DimSearch;
 import com.authority.entity.TD0Organization;
 import com.authority.entity.TD0Section;
 import com.authority.entity.TD0Stuff;
@@ -36,6 +37,27 @@ public class HumanManage {
     @Autowired
     OrganizationService organizationService;
 
+
+    @PostMapping("dimsearch")
+    @ResponseBody
+    public ResultJson dimSearch(@RequestParam(name="sendname" ,required = false) String sendname,
+                                @RequestParam(name="sendorg",required = false)String sendorg,
+                                @RequestParam(name="page")Integer page,
+                                @RequestParam(name="limit")Integer limit){
+        ResultJson resultJson=new ResultJson();
+        DimSearch dimSearch=new DimSearch();
+        dimSearch.setOrg(sendorg);
+        dimSearch.setName(sendname);
+        List<TD0StuffVo> list= humanManageInter.dimSearch(dimSearch);
+        resultJson.setData(list);
+        resultJson.setCount(list.size());
+        resultJson.setCode(0);
+        return resultJson;
+    }
+
+
+
+
     @GetMapping("members")
     public @ResponseBody ResultJson getAllStuff(){
         ResultJson resultJson=new ResultJson();
@@ -57,6 +79,8 @@ public class HumanManage {
     @GetMapping("forwardmember")
     public String forwardMember(Model model){
         List<TD0StuffVo> td0StuffVos= humanManageInter.getAllStuff();
+        List<TD0Organization>  td0Organizations= organizationService.selectAllOrganization();
+        model.addAttribute("organization",td0Organizations);
         model.addAttribute("listMember",td0StuffVos);
         return "member-list";
     }
@@ -84,7 +108,6 @@ public class HumanManage {
             list.add(stuffAndSidAndOid);
 
         }
-
         oldStuff.setOrg(list);
         model.addAttribute("person",oldStuff);
         return "member-edit";

@@ -11,6 +11,25 @@ public class DimSearch {
 
     String organization;
 
+    String name;
+
+    String org;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getOrg() {
+        return org;
+    }
+
+    public void setOrg(String org) {
+        this.org = org;
+    }
 
     public String getLeaderName() {
         return leaderName;

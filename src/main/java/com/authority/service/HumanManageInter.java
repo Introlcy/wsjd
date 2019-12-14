@@ -1,5 +1,6 @@
 package com.authority.service;
 
+import com.authority.entity.DimSearch;
 import com.authority.entity.TD0Section;
 import com.authority.entity.TD0Stuff;
 import com.authority.entity.vo.StuffAndSidAndOid;
@@ -21,4 +22,5 @@ public interface HumanManageInter {
     Integer addMember(TD0Stuff td0Stuff);
     Integer deleteById(Integer id);
     TD0Section getOneInfo(Integer id);
+    List<TD0StuffVo> dimSearch(DimSearch dimSearch);
 }

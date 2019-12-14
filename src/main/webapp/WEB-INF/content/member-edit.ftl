@@ -188,11 +188,11 @@
                     <option <#if person.perpro=="5">selected="selected"</#if> value="5">其他</option>
                 </select></td>
             <td align="right">类别：</td>
-            <td align="left"><input type="radio" name="radio" id="radio1" value="1" checked  onclick="jdy_show()"/>
+            <td align="left"><input type="radio" name="pertype" id="radio1" value="1" checked  onclick="jdy_show()"/>
                 监督人员
-                <input type="radio" name="radio" id="radio2" value="2"  onclick="jdy_hide()"/>
+                <input type="radio" name="pertype" id="radio2" value="2"  onclick="jdy_hide()"/>
                 协查人员
-                <input type="radio" name="radio" id="radio2" value="3" onclick="jdy_hide()"/>
+                <input type="radio" name="pertype" id="radio2" value="3" onclick="jdy_hide()"/>
                 不详</td>
         </tr>
         <tr>
@@ -216,6 +216,16 @@
             <td align="left">
                 <input name="birthdate" type="date" class="inputTextNormal" id="textfield3" value="${person.birthdate?string('yyyy-MM-dd')}" /></td>
         </tr>
+      <tr>
+          <td width="12%" align="right"><span class="required">*</span>何时取得卫生监督员资格：</td>
+          <td width="21%" align="left">
+              <input name="getquadate" type="date" class="inputTextNormal" id="percode" value="${person.getquadate?string('yyyy-MM-dd')}" /></td>
+          <td align="right">目前所持有效监督员证的有效时间：</td>
+          <td align="left"><input name="cardday" type="date" class="inputTextNormal" id="textfield3"  value="${person.cardday?string('yyyy-MM-dd')}"/></td>
+          <td width="12%" align="right"><span class="required">*</span>目前持有有效的监督员证号：</td>
+          <td width="21%" align="left">
+              <input name="healthcardno" type="text" class="inputTextNormal" id="percode" value="${person.healthcardno}" /></td>
+      </tr>
 
 
   </table>

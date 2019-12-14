@@ -3,6 +3,7 @@ package com.authority.service.impl;
 import com.authority.dao.TD0OrganizationDao;
 import com.authority.dao.TD0SectionDao;
 import com.authority.dao.TD0StuffDao;
+import com.authority.entity.DimSearch;
 import com.authority.entity.TD0Organization;
 import com.authority.entity.TD0Section;
 import com.authority.entity.TD0Stuff;
@@ -131,6 +132,44 @@ public class HumanManageImpl implements HumanManageInter {
         TD0Stuff td0Stuff=td0StuffDao.selectByPrimaryKey(id);
         TD0Section td0Section=td0SectionDao.selectByPrimaryKey(td0Stuff.getSectionid());
         return td0Section;
+    }
+
+    @Override
+    public List<TD0StuffVo> dimSearch(DimSearch dimSearch) {
+
+
+        List<TD0StuffVo> td0StuffVoList=new ArrayList<>();
+        List<TD0Stuff> list=td0StuffDao.dimSearch(dimSearch);
+        for (TD0Stuff td0Stuff : list) {
+
+            TD0StuffVo td0StuffVo=new TD0StuffVo();
+            TD0Section td0Section=td0SectionDao.selectByPrimaryKey(td0Stuff.getSectionid());
+            TD0Organization td0Organization= td0OrganizationDao.selectByPrimaryKey(td0Section.getOrgid());
+            String edu=td0Stuff.getEdu();
+
+            td0StuffVo.setDegree(NumToWord.Edu(edu));
+
+            td0StuffVo.setSection(td0Section.getDivname());
+            String joblevel= td0Stuff.getJoblevel();
+            td0StuffVo.setGrade(NumToWord.JobLevel(joblevel));
+            String sex= td0Stuff.getGender();
+            td0StuffVo.setSex(NumToWord.Sex(sex));
+
+
+            td0StuffVo.setHumanCode(td0Stuff.getId());
+            String job=td0Stuff.getManagejob();
+            td0StuffVo.setJob(NumToWord.Job(job));
+            String spe=td0Stuff.getSpe();
+            td0StuffVo.setMajor(NumToWord.Spe(spe));
+            td0StuffVo.setName(td0Stuff.getRepmanname());
+            td0StuffVo.setOrganization(td0Organization.getOrgname());
+
+            td0StuffVoList.add(td0StuffVo);
+        }
+
+
+
+        return td0StuffVoList;
     }
 
 

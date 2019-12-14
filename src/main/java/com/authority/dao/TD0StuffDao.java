@@ -1,5 +1,6 @@
 package com.authority.dao;
 
+import com.authority.entity.DimSearch;
 import com.authority.entity.TD0Stuff;
 
 import java.util.List;
@@ -18,4 +19,5 @@ public interface TD0StuffDao {
     int updateByPrimaryKey(TD0Stuff record);
 
     List<TD0Stuff> getAllStuff();
+    List<TD0Stuff> dimSearch(DimSearch dimSearch);
 }

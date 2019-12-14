@@ -14,4 +14,6 @@ public interface TSysUsersDao {
     int updateByPrimaryKeySelective(TSysUsers record);
 
     int updateByPrimaryKey(TSysUsers record);
+
+    TSysUsers selectByUserName(String username);
 }

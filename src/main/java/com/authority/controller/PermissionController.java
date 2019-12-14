@@ -2,6 +2,7 @@ package com.authority.controller;
 
 import com.authority.entity.MenuList;
 import com.authority.entity.Permission;
+import com.authority.entity.vo.User;
 import com.authority.service.PermissionManage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -25,14 +27,47 @@ public class PermissionController {
     PermissionManage permissionManage;
 
 
+    @RequestMapping("/login.html")
+    public String loginforward(){
+
+
+        return "login";
+    }
+
+
+    @RequestMapping("/login")
+    public String login(User user, HttpServletRequest request){
+
+         HttpSession session= request.getSession();
+         String codeImg=(String) session.getAttribute("KAPTCHA_SESSION_KEY");
+
+        if(codeImg.equalsIgnoreCase(user.getJ_image_code())) {
+         int tip=permissionManage.getUser(user.getJ_username_encrypt(), user.getJ_password_encrypt());
+         int id=permissionManage.getUserId(user.getJ_username_encrypt(), user.getJ_password_encrypt());
+         if (tip==1){
+
+             return "redirect:/content.html/"+id;
+         }
+         if(tip==3){
+
+             //用户名不存在
+             return "login";
+         }
+            if(tip==2){
+                //密码错误
+                return "login";
+            }
+        }
+        return "login";
+    }
 
 
 
-    @RequestMapping("/index.html")
-    public String getPermission(Integer id, Model model){
+    @RequestMapping("/content.html/{id}")
+    public String getPermission(@PathVariable("id") Integer id, Model model){
 
 
-        List<Permission> permission= permissionManage.getPermission(1);
+        List<Permission> permission= permissionManage.getPermission(id);
         model.addAttribute("menu",permission);
         return "inde";
 

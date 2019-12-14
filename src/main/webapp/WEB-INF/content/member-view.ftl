@@ -79,7 +79,7 @@
                 <td class="title">何时取得行政执法证：</td>
                 <td>${person.getcarddate?string('yyyy-MM-dd')}</td>
                 <td class="title"> 卫生监督胸牌号： </td>
-                <td>${person.healthcardno}</td>
+                <td>${person.healthperno}</td>
             </tr>
             <tr>
                 <td class="title">何时取得卫生监督员资格：</td>

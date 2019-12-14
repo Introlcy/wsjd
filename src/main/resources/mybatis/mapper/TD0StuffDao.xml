@@ -387,4 +387,25 @@
       ifStaffPer = #{ifstaffper,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+    <select id="dimSearch" parameterType="DimSearch" resultType="com.authority.entity.TD0Stuff">
+
+        select
+        tds.id id,tds.sectionId sectionId,tds.perCode perCode,tds.repManName repManName,tds.gender gender,tds.birthDate birthDate,
+        tds.folk folk,tds.pol pol,tds.mobile mobile,tds.workTel workTel,tds.email email,tds.edu edu,tds.graCollege graCollege,
+        tds.choiceSpe choiceSpe,tds.spe spe,tds.beforeSpe beforeSpe,tds.beginWorkDate beginWorkDate,tds.manageJob manageJob,
+        tds.jobLevel jobLevel,tds.title title,tds.getInDate getInDate,tds.perPro perPro,tds.perType perType,tds.enfCardNo enfCardNo,
+        tds.getCardDate getCardDate,tds.healthPerNo healthPerNo,tds.getQuaDate getQuaDate,tds.healthCardNo healthCardNo,tds.cardDay cardDay,
+        tds.ifStaffPer ifStaffPer
+        from t_d0_stuff  AS tds LEFT JOIN t_d0_section AS tdse ON tdse.id=tds.sectionId
+        <where>
+            <if test="name!=null and org!='' ">
+                and tds.repManName like concat('%',#{name},'%')
+            </if>
+            <if test="org!=null and org!='' ">
+                and tdse.orgId like concat('%',#{org},'%')
+            </if>
+        </where>
+    </select>
 </mapper>

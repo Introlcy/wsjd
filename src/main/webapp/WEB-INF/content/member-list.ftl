@@ -13,86 +13,26 @@
 <div class="content-pages-wrap">
     <div class="commonTitle">
     <h2>&gt;&gt; 人员管理</h2></div>
-    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="commonTableSearch">
-       	<form id="form-search" name="form-search" action="" method="post">
-        <tr>
-            <th align="right">机构名称：</th>
-            <td><select name="select" id="select">
-			 <option value="">某某监督机构1</option>
-			 <option value="">某某监督机构2</option>
-			 <option value="">某某监督机构3</option>
-			 <option value="">...</option>
-			</select></td>
-            <th align="right">姓名：</th>
-            <td><input name="textfield" type="text" class="inputTextNormal" id="textfield" /></td>
-            <th >性别：</th>
-            <td><select name="select" id="select">
-                <option>请选择</option>
-                <option>男</option>
-                <option>女</option>
-            </select></td>
-            <th >学历：</th>
-            <td><select name="select2" id="select2">
-                <option>请选择</option>
-                <option>博士</option>
-                <option>硕士</option>
-                <option>本科</option>
-                <option>大专</option>
-                <option>中专</option>
-                <option>高中</option>
-                <option>初中</option>
-                <option>无学历</option>
-                <option>不详</option>
-            </select></td>            
-        </tr>
-        <tr>
-		     <th align="right">科室：</th>
-            <td><select name="select2" id="select2">
-              <option>请选择</option>
-              <option>科室1</option>
-              <option>科室2</option>
-              <option>科室3</option>
-              <option>科室4</option>
-            </select></td>
-            <th align="right">职务：</th>
-            <td><select name="select2" id="select2">
-              <option>请选择</option>
-              <option>所长</option>
-              <option>书记</option>
-              <option>副所长</option>
-              <option>副书记</option>
-              <option>主任(科长)</option>
-              <option>副主任(副科长)</option>
-              <option>无</option>
-            </select></td>
-            <th align="right">职级：</th>
-            <td><select name="select3" id="select3">
-              <option>请选择</option>
-              <option>省部级正职</option>
-              <option>省部级副职</option>
-              <option>厅局级正职</option>
-              <option>厅局级副职</option>
-              <option>乡科级正职</option>
-              <option>乡科级副职</option>
-              <option>县处级正职</option>
-              <option>县处级副职</option>
-              <option>科办员</option>
-            </select></td>
-            <th >所学专业：</th>
-            <td><select name="select" id="select">
-                <option>请选择</option>
-                <option>工程</option>
-                <option>法律</option>
-				 <option>医药</option>
-                <option>公共卫生</option>
-                <option>无专业</option>
-				<option>其他专业</option>
-				  <option>不详</option>
-            </select>&nbsp;&nbsp;<button>检索</button></td>
 
-        </tr>		
-       	</form>
-    </table>
+
+
+
+    <div class="demoTable" style="display: flex;flex-direction: row">
+        姓名：
+        <div class="layui-inline">
+            <input class="layui-input" name="id" id="demoReload" autocomplete="off">
+        </div>
+        <div style="margin-left: 100px;margin-right: 100px;height: 50px">
+            机构名称：
+            <select name="orgId" id="selectOrg" style="width: 200px;height: 40px">
+                <option  value="">请选择</option>
+                <#list organization as la>
+                    <option value="${la.id}">${la.orgname}</option>
+                </#list>
+            </select>
+        </div>
+        <button class="layui-btn" data-type="reload">搜索</button>
+    </div>
 
     <table class="layui-hide" id="test" lay-filter="test"></table>
 
@@ -125,12 +65,11 @@
                         , {field: 'organization', title: '机构'}
                         , {field: 'section', title: '科室', sort: true}
                         , {field: 'name', title: '姓名'}
-                        , {field: 'sex', title: '性别'}
+                        , {field: 'sex', title: '性别',width:60}
                         , {field: 'degree', title: '学历', sort: true}
                         , {field: 'job', title: '职务'}
                         , {field: 'grade', title: '职级'}
-                        , {field: 'major', title: '所学专业'}
-                        , {fixed: 'right', title: '操作', toolbar: '#barDemo', align: 'center'}
+                        , {fixed: 'right', title: '操作', toolbar: '#barDemo', align: 'center',width:200}
                     ]]
                     , response: {
                         code: 'code' //规定数据状态的字段名称，默认：code
@@ -148,6 +87,24 @@
                     }
                 });
 
+                $('.layui-btn').on('click', function () {
+                    // 搜索条件
+                   var url='/content/dimsearch/';
+                    var send_name = $("#demoReload").val();
+                    var send_org=$("#selectOrg").val();
+
+                    table.reload('demo', {
+                        method: 'post'
+                        ,where :{
+                            sendname:send_name,
+                            sendorg:send_org
+                        }
+                        ,url: '/content/dimsearch/'
+                        , page: {
+                            curr: 1
+                        }
+                    });
+                });
 
                 //头工具栏事件
                 table.on('toolbar(test)', function (obj) {
@@ -415,11 +372,11 @@
                         <option  value="5">其他</option>
                     </select></td>
                 <td align="right">类别：</td>
-                <td align="left"><input type="radio" name="radio" id="radio1" value="radio1" checked  onclick="jdy_show()"/>
+                <td align="left"><input type="radio" name="pertype" id="radio1" value="1" checked  onclick="jdy_show()"/>
                     监督人员
-                    <input type="radio" name="radio" id="radio2" value="radio2"  onclick="jdy_hide()"/>
+                    <input type="radio" name="pertype" id="radio2" value="2"  onclick="jdy_hide()"/>
                     协查人员
-                    <input type="radio" name="radio" id="radio2" value="radio2" onclick="jdy_hide()"/>
+                    <input type="radio" name="pertype" id="radio2" value="3" onclick="jdy_hide()"/>
                     不详</td>
             </tr>
             <tr>
@@ -442,6 +399,16 @@
                 <td width="12%" align="right">手机：</td>
                 <td width="21%" align="left"><input name="mobile" type="text" class="inputTextNormal" id="textfield" value="" /></td>
             </tr>
+            <tr>
+                <td width="12%" align="right"><span class="required">*</span>何时取得卫生监督员资格：</td>
+                <td width="21%" align="left">
+                    <input name="getquadate" type="date" class="inputTextNormal" id="percode" value="" /></td>
+                <td align="right">目前所持有效监督员证的有效时间：</td>
+                <td align="left"><input name="cardday" type="date" class="inputTextNormal" id="textfield3"  value=""/></td>
+                <td width="12%" align="right"><span class="required">*</span>目前持有有效的监督员证号：</td>
+                <td width="21%" align="left">
+                    <input name="healthcardno" type="text" class="inputTextNormal" id="percode" value="" /></td>
+            </tr>
 
 
         </table>
@@ -450,7 +417,7 @@
     <div id="formPageButton">
         <ul>
             <li><a  onclick="document.getElementById('memberCreat').submit();" class="btnShort">保存</a></li>
-            <li><a href="javascript:window.history.go(-1)" title="返回" class="btnShort">返回</a></li>
+            <li><a onclick="cl()" title="返回" class="btnShort">返回</a></li>
         </ul>
     </div>
     <!--//commonToolBar-->
@@ -459,6 +426,9 @@
 
 
 <script type="text/javascript">
+    function cl(){
+        layer.closeAll('page');
+    }
     function check() {
         var percode = $("#percode").val();
         var repmanname = $("#repmanname").val();
