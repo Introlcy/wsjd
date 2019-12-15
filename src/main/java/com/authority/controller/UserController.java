@@ -57,6 +57,11 @@ public class UserController {
         return resultJson;
     }
 
+    @GetMapping("/rolemanage")
+    public String RoleManage(){
+        return "user-role";
+    }
+
 
 
 }

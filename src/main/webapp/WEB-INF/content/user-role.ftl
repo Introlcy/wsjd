@@ -27,7 +27,7 @@
     <script type="text/html" id="barDemo">
         <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
         <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
-        <a class="layui-btn layui-btn-xs" lay-even="">资源角色</a>
+        <a class="layui-btn layui-btn-xs" lay-even="">授予资源</a>
     </script>
 
 
@@ -39,13 +39,12 @@
                 table.render({
                     elem: '#demo'
                     , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板
-                    , url: '/getAllUser' //数据接口
+                    , url: '/getAllRoles' //数据接口
                     , page: true //开启分页
                     ,cols: [[
-                        {field: 'id', title: '人员编码',}
-                        , {field: 'username', title: '登陆账号'}
-                        , {field: 'password', title: '密码'}
-                        , {field: 'realname', title: '真实姓名'}
+                        {field: 'id', title: '角色编码',}
+                        , {field: 'rolename', title: '角色名'}
+                        , {field: 'roledesc', title: '角色描述'}
                         , {fixed: 'right', title: '操作', toolbar: '#barDemo', align: 'center',width:200}
                     ]]
                     , response: {

@@ -21,7 +21,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         if(loginUser==null){
             //页面跳转
             response.sendRedirect(request.getContextPath() + "/login.html");
-            return false;
+            return true;
         }
         return true;
     }
