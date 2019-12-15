@@ -19,4 +19,5 @@ public interface TSysResourcesDao {
     int updateByPrimaryKey(TSysResources record);
 
     List<TSysResources> selectResource();
+
 }

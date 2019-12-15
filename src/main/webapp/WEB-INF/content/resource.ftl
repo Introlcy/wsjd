@@ -12,7 +12,7 @@
 <body class="content-pages-body">
 <div class="content-pages-wrap">
     <div class="commonTitle">
-        <h2>&gt;&gt; 用户管理</h2></div>
+        <h2>&gt;&gt; 资源列表</h2></div>
 
 
     <table class="layui-hide" id="test" lay-filter="test"></table>
@@ -140,12 +140,12 @@
 
                         });
                     } else if (layEvent === 'del') {
-                        var id=data.humanCode;
+                        var id=data.id;
                         console.log(id);
                         layer.confirm('真的删除行么', function(index){
                             obj.del();
                             $.ajax({
-                                url: "/content/deleteMember/"+id,
+                                url: "/deleteres/"+id,
                                 type: "delete",
                                 contentType:"application/x-www-form-urlencoded",
                                 success: function (sre) {

@@ -110,4 +110,5 @@
   <select id="selectResource" resultMap="BaseResultMap">
     SELECT * FROM t_sys_resources
   </select>
+
 </mapper>

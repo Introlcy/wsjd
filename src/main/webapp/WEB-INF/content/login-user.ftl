@@ -141,12 +141,12 @@
 
                         });
                     } else if (layEvent === 'del') {
-                        var id=data.humanCode;
+                        var id=data.id;
                         console.log(id);
                         layer.confirm('真的删除行么', function(index){
                             obj.del();
                             $.ajax({
-                                url: "/content/deleteMember/"+id,
+                                url: "/deleteuser/"+id,
                                 type: "delete",
                                 contentType:"application/x-www-form-urlencoded",
                                 success: function (sre) {

@@ -33,6 +33,10 @@ public class OrganizationServiceImpl implements OrganizationService {
     private TD0LeaderDao td0LeaderDao;
     @Resource
     private TSysResourcesDao tSysResourcesDao;
+    @Resource
+    private TSysUsersDao tSysUsersDao;
+    @Resource
+    private TSysRolesDao tSysRolesDao;
 
     @Override
     public List<TD0Organization> selectAllOrganization(Integer page,Integer limit) {
@@ -265,6 +269,24 @@ public class OrganizationServiceImpl implements OrganizationService {
         t.setData(tSysResourcesDao.selectResource());
         t.setCount(100);
         return t;
+    }
+
+    @Override
+    @Transactional
+    public void deleteResById(Integer id) {
+        tSysResourcesDao.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    @Transactional
+    public void deleteUserByid(Integer id) {
+        tSysUsersDao.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    @Transactional
+    public void deleteUserResById(Integer id) {
+        tSysRolesDao.deleteByPrimaryKey(id);
     }
 
 

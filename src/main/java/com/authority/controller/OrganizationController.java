@@ -197,4 +197,18 @@ public class OrganizationController {
     public ResultJson queryresource(){
         return service.selectResources();
     }
+
+    @RequestMapping(value = "/deleteres/{id}",method = RequestMethod.DELETE)
+    public void delRes(@PathVariable("id") Integer id){
+        service.deleteResById(id);
+    }
+    @RequestMapping(value = "/deleteuser/{id}",method = RequestMethod.DELETE)
+    public void delUser(@PathVariable("id") Integer id){
+        service.deleteUserByid(id);
+    }
+
+    @RequestMapping(value = "/deleteuserrole/{id}",method = RequestMethod.DELETE)
+    public void delUserRes(@PathVariable("id") Integer id){
+        service.deleteUserResById(id);
+    }
 }

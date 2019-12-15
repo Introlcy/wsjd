@@ -85,7 +85,17 @@ public interface OrganizationService {
     TD0OrgAndLeader selectLeaderByid(Integer id);
 
     void updateLeaderByid(TD0Leader leader);
-
+    /*
+    查询资源
+     */
     ResultJson selectResources();
+    /*
+    删除资源
+     */
+    void deleteResById(Integer id);
+
+    void deleteUserByid(Integer id);
+
+    void deleteUserResById(Integer id);
 
 }
