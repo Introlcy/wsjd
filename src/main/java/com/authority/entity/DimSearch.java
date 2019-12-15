@@ -19,6 +19,16 @@ public class DimSearch {
 
     Integer roleid;
 
+    String divname;
+
+    public String getDivname() {
+        return divname;
+    }
+
+    public void setDivname(String divname) {
+        this.divname = divname;
+    }
+
     public Integer getRoleid() {
         return roleid;
     }

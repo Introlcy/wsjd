@@ -43,5 +43,7 @@ public interface SectionService {
      */
     List<TD0Section> queryAllSection(Integer page,Integer limit);
 
+    List<TD0Section> querySectionByName(String divname);
+
     List<TD0Section> querySectionByOrgId(Integer id);
 }

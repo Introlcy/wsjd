@@ -1,6 +1,7 @@
 package com.authority.service;
 
 import com.authority.dao.TD0SectionDao;
+import com.authority.entity.DimSearch;
 import com.authority.entity.TD0Section;
 import org.springframework.stereotype.Service;
 
@@ -49,6 +50,13 @@ public class SectionServiceImpl implements SectionService {
     @Override
     public List<TD0Section> queryAllSection(Integer page,Integer limit) {
         return td0SectionDao.queryAllSection(page,limit);
+    }
+
+    @Override
+    public List<TD0Section> querySectionByName(String divname) {
+        DimSearch dimSearch=new DimSearch();
+        dimSearch.setDivname(divname);
+        return td0SectionDao.querySectionByName(dimSearch);
     }
 
     @Override

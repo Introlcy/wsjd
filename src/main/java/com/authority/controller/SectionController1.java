@@ -1,7 +1,9 @@
 package com.authority.controller;
 
 
+import com.authority.entity.DimSearch;
 import com.authority.entity.TD0Section;
+import com.authority.entity.vo.TD0Orgation;
 import com.authority.entity.vo.TD0SectionVo;
 import com.authority.service.SectionService;
 import org.springframework.stereotype.Controller;
@@ -154,5 +156,20 @@ public class SectionController1 {
     public String deleteByPrimaryKey(@PathVariable("id") Integer id) {
         sectionService.deleteByPrimaryKey(id);
         return "redirect:/office";
+    }
+
+
+    @RequestMapping(value = "/officename",method = RequestMethod.POST)
+    @ResponseBody
+    public TD0SectionVo querySectionByName(String divname){
+        TD0SectionVo section = new TD0SectionVo() ;
+        section.setData(sectionService.querySectionByName(divname));
+        DimSearch dimSearch=new DimSearch();
+        dimSearch.setDivname(divname);
+        section.setCode(0);
+        section.setMsg("");
+        section.setCount(10);
+        System.out.println(section.toString());
+        return section;
     }
 }

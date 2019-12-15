@@ -11,7 +11,13 @@
     <script src="/layui/layui.js" charset="utf-8"></script>
 </head>
 <body>
-
+<div class="demoTable">
+    科室名称：
+    <div class="layui-inline">
+        <input class="layui-input" name="id" id="demoReload" autocomplete="off">
+    </div>
+    <button class="layui-btn" id="search" data-type="reload">搜索</button>
+</div>
 <table style="height: 100%" id="test" lay-filter="test"></table>
 
 <script type="text/html" id="toolbarDemo">
@@ -257,6 +263,22 @@
             }
         });
 
+        $('#search').on('click', function () {
+            // 搜索条件
+            var name = $("#demoReload").val();
+            console.log(name);
+            table.reload('test', {
+                method: 'POST'
+                ,where :{
+                    divname:name
+                }
+                ,url: '/officename'
+                , page: {
+                    curr: 1
+                }
+            });
+        });
+
         //监听行工具事件
 
         table.on('tool(test)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
@@ -303,7 +325,7 @@
                 var id = data.id;
                 if (confirm("你确定要删除该条记录吗?")) {
                     $.ajax({
-                        url: "/office/"+id,
+                        url: "/office/" + id,
                         type: "delete",
                         success: function () {
                             alert("删除成功!");
@@ -382,6 +404,7 @@
         var dutytel = $("#dutytel1").val();
         var fax = $("#fax1").val();
         var divroomno = $("#divroomno1").val();
+        console.log(orgid, divcode, divnamecode, divname, ifsub, dutytel, fax, divroomno);
         if ($.trim(orgid) == "" || orgid == null) {
             alert("机构id不能为空!");
             $("#orgid1").focus();

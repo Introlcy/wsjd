@@ -1,5 +1,6 @@
 package com.authority.dao;
 
+import com.authority.entity.DimSearch;
 import com.authority.entity.TD0Section;
 
 import java.util.List;
@@ -32,6 +33,12 @@ public interface TD0SectionDao {
      * @return
      */
     List<TD0Section> queryAllSection(Integer page,Integer limit);
+
+    /**
+     * 通过科室名称查询信息
+     * @return querySectionByName
+     */
+    List<TD0Section> querySectionByName(DimSearch divname);
 
     List<TD0Section> querySectionByOrgId(Integer id);
 }

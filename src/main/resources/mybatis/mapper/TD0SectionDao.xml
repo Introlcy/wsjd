@@ -143,4 +143,11 @@
     from t_d0_section
     where orgId=#{orgid,jdbcType=INTEGER}
   </select>
+
+  <select id="querySectionByName" parameterType="com.authority.entity.DimSearch" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_d0_section
+    where divName like concat('%',#{divname},'%')
+  </select>
 </mapper>
