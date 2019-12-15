@@ -1,6 +1,7 @@
 package com.authority.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * t_sys_roles_resources
@@ -10,6 +11,16 @@ public class TSysRolesResources implements Serializable {
     private Integer roleid;
 
     private Integer resourceid;
+
+    private List<Integer> resourceids;
+
+    public List<Integer> getResourceids() {
+        return resourceids;
+    }
+
+    public void setResourceids(List<Integer> resourceids) {
+        this.resourceids = resourceids;
+    }
 
     private static final long serialVersionUID = 1L;
 

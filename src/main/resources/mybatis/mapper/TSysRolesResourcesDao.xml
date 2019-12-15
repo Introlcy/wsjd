@@ -28,4 +28,30 @@
       </if>
     </trim>
   </insert>
+
+    <select id="getResourcesById" parameterType="com.authority.entity.DimSearch" resultType="com.authority.entity.TSysRolesResources">
+            select * from t_sys_roles_resources where roleid=#{roleid}
+    </select>
+
+
+
+    <update id="updateRoleAndResource" parameterType="com.authority.entity.TSysRolesResources">
+        update t_sys_roles_resources
+        <set>
+            <if test="roleid != null">
+                userid = #{roleid,jdbcType=INTEGER},
+            </if>
+            <if test="resourceid != null">
+                `roleid` = #{resourceid,jdbcType=INTEGER},
+            </if>
+        </set>
+        where roleid = #{roleid,jdbcType=INTEGER}
+    </update>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_sys_roles_resources
+    where roleid = #{roleid,jdbcType=INTEGER}
+  </delete>
+
+
+
 </mapper>

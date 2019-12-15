@@ -17,17 +17,11 @@
 
     <table class="layui-hide" id="test" lay-filter="test"></table>
 
-    <script type="text/html" id="toolbarDemo">
-        <div class="layui-btn-container">
-            <button type="button" class="layui-btn layui-byn-sm" lay-event="add">增加</button>
-        </div>
-    </script>
 
     <table style="height: 100%" id="demo" lay-filter="test"></table>
     <script type="text/html" id="barDemo">
-        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
         <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
-        <a class="layui-btn layui-btn-xs" lay-even="">授予资源</a>
+        <a class="layui-btn layui-btn-xs" lay-event="detail">授予资源</a>
     </script>
 
 
@@ -135,7 +129,7 @@
                             , area: ['1000px', '600px']
                             , maxmin: true  //最大最小化按钮
                             , offset: 'auto'   //位置居中
-                            , content: '/content/memberView/' + data.humanCode
+                            , content: '/grantresource/'+data.id
                             , btnAlign: 'c'
 
                         });
@@ -172,6 +166,10 @@
                             , btnAlign: 'c'
 
                         });
+
+
+
+
                     }
                 });
 

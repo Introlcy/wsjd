@@ -10,4 +10,5 @@ public interface TSysUsersRolesDao {
 
     TSysUsersRoles getRoleById(DimSearch dimSearch);
     Integer updateUserAndRole(TSysUsersRoles ts);
+    Integer deleteByPrimaryKey(Integer userid);
 }

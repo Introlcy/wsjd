@@ -46,4 +46,9 @@
       </if>
     </trim>
   </insert>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_sys_users_roles
+    where userid = #{userid,jdbcType=INTEGER}
+  </delete>
 </mapper>

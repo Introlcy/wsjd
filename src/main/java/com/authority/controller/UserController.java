@@ -1,8 +1,6 @@
 package com.authority.controller;
 
-import com.authority.entity.TSysRoles;
-import com.authority.entity.TSysUsers;
-import com.authority.entity.TSysUsersRoles;
+import com.authority.entity.*;
 import com.authority.entity.vo.ResultJson;
 import com.authority.service.UserManageService;
 import org.springframework.stereotype.Controller;
@@ -80,6 +78,24 @@ public class UserController {
     public String updateUserAndRole(TSysUsersRoles tSysUsersRoles){
         userManageService.updateUserAndRole(tSysUsersRoles);
         return "redirect:/rolemanage";
+    }
+
+
+
+    @RequestMapping("/grantresource/{id}")
+    public String grantresource(@PathVariable("id") Integer id, Model model){
+        DimSearch dimSearch=new DimSearch();
+        dimSearch.setRoleid(id);
+        List<TSysResources> tSysResources=userManageService.getResourcesById(dimSearch);
+        model.addAttribute("roleid",id);
+        model.addAttribute("menu",tSysResources);
+
+        return "grant-resources";
+    }
+    @RequestMapping("/updateRoleAndResource")
+    public String updateUserAndRole(TSysRolesResources tSysRolesResources){
+        userManageService.updateRoleAndResource(tSysRolesResources);
+        return "redirect:/grant-resources";
     }
 
 

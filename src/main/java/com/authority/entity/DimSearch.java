@@ -17,6 +17,16 @@ public class DimSearch {
 
     Integer userid;
 
+    Integer roleid;
+
+    public Integer getRoleid() {
+        return roleid;
+    }
+
+    public void setRoleid(Integer roleid) {
+        this.roleid = roleid;
+    }
+
     public Integer getUserid() {
         return userid;
     }
