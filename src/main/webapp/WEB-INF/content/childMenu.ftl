@@ -27,9 +27,9 @@
                 <tr>
                     <td align="center">
                         ${role.id}
-                    <td align="center"><input type="text" value="${role.resourcesname}" name="resourcesname"></td>
-                    <td align="center"><input type="text" value="${role.url}" name="url"></td>
-                    <td align="center"><input type="text" value="${role.sort}" name="sort"></td>
+                    <td align="center">${role.resourcesname}</td>
+                    <td align="center">${role.url}</td>
+                    <td align="center">${role.sort}</td>
                 </tr>
             </#list>
         </table>

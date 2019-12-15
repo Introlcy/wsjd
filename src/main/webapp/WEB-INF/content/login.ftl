@@ -14,7 +14,6 @@
     <script type="text/javascript" src="/js/jquery-3.2.1.js"></script>
     <script type="text/javascript">
 
-
         function checkPass(s, _minLength) {
             if (_minLength == undefined || _minLength == null) {
                 _minLength = 6;

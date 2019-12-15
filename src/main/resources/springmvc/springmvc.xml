@@ -30,6 +30,7 @@
             <mvc:exclude-mapping path="/**/*.woff2"/>
             <mvc:exclude-mapping path="/**/*.ttf"/>
 			<mvc:exclude-mapping path="/login.html"/>
+            <mvc:exclude-mapping path="/i.html"/>
 			<mvc:exclude-mapping path="/login"/>
 			<mvc:exclude-mapping path="/google.jpg"/>
             <mvc:exclude-mapping path="/**/*.png"/>
