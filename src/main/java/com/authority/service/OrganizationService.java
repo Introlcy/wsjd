@@ -98,4 +98,10 @@ public interface OrganizationService {
 
     void deleteUserResById(Integer id);
 
+    void insertUser(TSysUsers users);
+
+    TSysUsers selectUser(Integer id);
+
+    void updateUser(TSysUsers user);
+
 }

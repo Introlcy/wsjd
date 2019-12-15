@@ -289,5 +289,21 @@ public class OrganizationServiceImpl implements OrganizationService {
         tSysRolesDao.deleteByPrimaryKey(id);
     }
 
+    @Override
+    @Transactional
+    public void insertUser(TSysUsers users) {
+        tSysUsersDao.insertSelective(users);
+    }
+
+    @Override
+    public TSysUsers selectUser(Integer id) {
+        return tSysUsersDao.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public void updateUser(TSysUsers user) {
+        tSysUsersDao.updateByPrimaryKeySelective(user);
+    }
+
 
 }

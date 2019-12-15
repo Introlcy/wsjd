@@ -211,4 +211,21 @@ public class OrganizationController {
     public void delUserRes(@PathVariable("id") Integer id){
         service.deleteUserResById(id);
     }
+
+    @RequestMapping(value = "/adduser",method = RequestMethod.POST)
+    public String addUser(TSysUsers users){
+        service.insertUser(users);
+        return "redirect:/usermanage";
+    }
+    @RequestMapping("/upuser/{id}")
+    public String upUser(@PathVariable("id") Integer id,Model model){
+        model.addAttribute("user",service.selectUser(id));
+        return "loginuserupdate";
+    }
+
+    @RequestMapping("/updateuser")
+    public String updateUser(TSysUsers user){
+        service.updateUser(user);
+        return "redirect:/usermanage";
+    }
 }

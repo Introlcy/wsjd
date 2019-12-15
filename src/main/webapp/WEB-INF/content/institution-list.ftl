@@ -23,7 +23,7 @@
         <div class="layui-inline">
             <input class="layui-input" name="id" id="demoReload" autocomplete="off">
         </div>
-        <button class="layui-btn" data-type="reload">搜索</button>
+        <button class="layui-btn" id="search" data-type="reload">搜索</button>
     </div>
 
     <table class="layui-hide" id="test" lay-filter="test"></table>
@@ -96,7 +96,7 @@
                 });
 
 
-                $('.layui-btn').on('click', function () {
+                $('#search').on('click', function () {
                     // 搜索条件
                     var send_name = $("#demoReload").val();
                     table.reload('demo', {
@@ -337,7 +337,7 @@
                             </tr>
                             <div id="formPageButton">
                                 <ul>
-                                    <li><input type="submit"  title="提交" class="btnShort"></li>
+                                    <li><input type="submit"  title="提交" class="btnShort" value="提交"></li>
                                    <li><a onclick="f()" title="返回" class="btnShort">返回</a></li>
                                 </ul>
                             </div>
