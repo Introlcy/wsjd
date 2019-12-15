@@ -3,9 +3,8 @@ package com.authority.service.impl;
 import com.authority.dao.TSysResourcesDao;
 import com.authority.dao.TSysRolesDao;
 import com.authority.dao.TSysUsersDao;
-import com.authority.entity.TSysResources;
-import com.authority.entity.TSysRoles;
-import com.authority.entity.TSysUsers;
+import com.authority.dao.TSysUsersRolesDao;
+import com.authority.entity.*;
 import com.authority.service.UserManageService;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +26,8 @@ public class UserManageServiceImpl implements UserManageService {
     @Resource
     TSysRolesDao tSysRolesDao;
 
+    @Resource
+    TSysUsersRolesDao tSysUsersRolesDao;
 
 
 
@@ -39,4 +40,23 @@ public class UserManageServiceImpl implements UserManageService {
     public List<TSysRoles> getAllRoles() {
         return tSysRolesDao.getAllRoles();
     }
+
+    @Override
+    public TSysUsersRoles getRoleById(Integer id){
+
+        DimSearch dimSearch=new DimSearch();
+        dimSearch.setUserid(id);
+        TSysUsersRoles ts= tSysUsersRolesDao.getRoleById(dimSearch);
+        return ts;
+
+
+
+    }
+    @Override
+    public Integer updateUserAndRole(TSysUsersRoles ts){
+        return tSysUsersRolesDao.updateUserAndRole(ts);
+    }
+
+
+
 }

@@ -27,7 +27,7 @@
     <script type="text/html" id="barDemo">
         <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
         <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
-        <a class="layui-btn layui-btn-xs" lay-even="">授予角色</a>
+        <a class="layui-btn layui-btn-xs" lay-event="detail">授予角色</a>
     </script>
 
 
@@ -130,16 +130,20 @@
                         , layEvent = obj.event; //获得 lay-event 对应的值
 
                     if (layEvent === 'detail') {
+                        var id=data.id;
+                        console.log(id);
                         layer.open({
                             type: 2 //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
-                            , title: '详情信息'
-                            , area: ['1000px', '600px']
+                            , title: '信息修改'
+                            , area: ['500px', '500px']
                             , maxmin: true  //最大最小化按钮
                             , offset: 'auto'   //位置居中
-                            , content: '/content/memberView/' + data.humanCode
+                            , content: '/grantrole/'+id //不出现滚动条   ,'no'
                             , btnAlign: 'c'
 
                         });
+
+
                     } else if (layEvent === 'del') {
                         var id=data.id;
                         console.log(id);
