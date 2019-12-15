@@ -25,6 +25,7 @@
 
     <table style="height: 100%" id="demo" lay-filter="test"></table>
     <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
         <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
         <a class="layui-btn layui-btn-xs" lay-event="detail">授予角色</a>
     </script>
@@ -164,6 +165,18 @@
                             layer.close(index);
                         });
 
+                    } else if (layEvent === 'edit') {
+                        //  layer.msg('编辑操作');
+                        layer.open({
+                            type: 2 //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+                            , title: '信息修改'
+                            , area: ['1000px', '650px']
+                            , maxmin: true  //最大最小化按钮
+                            , offset: 'auto'   //位置居中
+                            , content: '/content/editMemberforward/'+data.humanCode+'' //不出现滚动条   ,'no'
+                            , btnAlign: 'c'
+
+                        });
                     }
                 });
 
