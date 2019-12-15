@@ -50,6 +50,9 @@ public class PermissionManageImpl implements PermissionManage {
     @Override
     public int getUserId(String username, String password) {
         TSysUsers tSysUsers= tSysUsersDao.selectByUserName(username);
+        if (tSysUsers==null){
+            return 0;
+        }
         return tSysUsers.getId();
     }
 }

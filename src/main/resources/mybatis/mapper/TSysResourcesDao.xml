@@ -110,5 +110,10 @@
   <select id="selectResource" resultMap="BaseResultMap">
     SELECT * FROM t_sys_resources
   </select>
-
+    <select id="selectMenu" resultMap="BaseResultMap">
+    SELECT * FROM t_sys_resources where pid=0
+  </select>
+    <select id="selectByPid" resultMap="BaseResultMap" parameterType="com.authority.entity.DimSearch">
+    SELECT * FROM t_sys_resources where pid=#{roleid}
+  </select>
 </mapper>

@@ -69,7 +69,9 @@ public class UserController {
         List<TSysRoles> ts= userManageService.getAllRoles();
         TSysUsersRoles tsr=userManageService.getRoleById(id);
         model.addAttribute("roles",ts);
-        model.addAttribute("ownroles",tsr);
+        model.addAttribute("ownroles",id);
+        model.addAttribute("tt",tsr);
+
         return "grant-role";
     }
 
@@ -79,23 +81,58 @@ public class UserController {
         userManageService.updateUserAndRole(tSysUsersRoles);
         return "redirect:/rolemanage";
     }
-
+    @RequestMapping("/insertSelective")
+    public String insertSelective(TSysRoles tSysRoles){
+        userManageService.insertSelective(tSysRoles);
+        return "redirect:/rolemanage";
+    }
+    @RequestMapping("/addMenu")
+    public String addMenu(TSysResources tSysResources){
+        tSysResources.setPid(0);
+        userManageService.insertSelectiveResources(tSysResources);
+        return "redirect:/rolemanage";
+    }
 
 
     @RequestMapping("/grantresource/{id}")
     public String grantresource(@PathVariable("id") Integer id, Model model){
         DimSearch dimSearch=new DimSearch();
         dimSearch.setRoleid(id);
-        List<TSysResources> tSysResources=userManageService.getResourcesById(dimSearch);
+        List<TSysResources> tSysResources=userManageService.selectMenu();
         model.addAttribute("roleid",id);
         model.addAttribute("menu",tSysResources);
-
         return "grant-resources";
     }
+
     @RequestMapping("/updateRoleAndResource")
     public String updateUserAndRole(TSysRolesResources tSysRolesResources){
         userManageService.updateRoleAndResource(tSysRolesResources);
         return "redirect:/grant-resources";
+    }
+
+    @RequestMapping("/editMenu/{id}")
+    public String editMenu(@PathVariable("id") Integer id, Model model){
+       DimSearch dimSearch=new DimSearch();
+        dimSearch.setRoleid(id);
+         List<TSysResources> tSysResources=userManageService.selectByPid(dimSearch);
+
+         model.addAttribute("childMenus",tSysResources);
+         model.addAttribute("Menu",id);
+//        List<TSysResources> tSysResources=userManageService.selectMenu();
+//        model.addAttribute("roleid",id);
+//        model.addAttribute("menu",tSysResources);
+        return "childMenu";
+    }
+
+
+    @RequestMapping("/updateChildMenu")
+    public String updateChildMenu(List<TSysResources> tSysResources){
+
+        for (TSysResources tSysResource : tSysResources) {
+            userManageService.updateByPrimaryKeySelective(tSysResource);
+        }
+
+        return "childMenu";
     }
 
 

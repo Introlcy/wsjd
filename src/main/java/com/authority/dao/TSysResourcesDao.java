@@ -1,5 +1,6 @@
 package com.authority.dao;
 
+import com.authority.entity.DimSearch;
 import com.authority.entity.TSysResources;
 import com.authority.entity.vo.ResultJson;
 
@@ -19,5 +20,7 @@ public interface TSysResourcesDao {
     int updateByPrimaryKey(TSysResources record);
 
     List<TSysResources> selectResource();
+    List<TSysResources>    selectMenu();
+    List<TSysResources>    selectByPid(DimSearch dimSearch);
 
 }

@@ -43,6 +43,11 @@ public class UserManageServiceImpl implements UserManageService {
     }
 
     @Override
+    public List<TSysResources> selectMenu() {
+        return tSysResourcesDao.selectMenu();
+    }
+
+    @Override
     public List<TSysUsers> getAllUser() {
         return tSysUsersDao.getAllUser();
     }
@@ -65,7 +70,14 @@ public class UserManageServiceImpl implements UserManageService {
     }
     @Override
     public Integer updateUserAndRole(TSysUsersRoles ts){
-        tSysUsersRolesDao.deleteByPrimaryKey(ts.getUserid());
+
+        DimSearch dimSearch=new DimSearch();
+        dimSearch.setUserid(ts.getUserid());
+        TSysUsersRoles tSysUsersRoles=tSysUsersRolesDao.getRoleById(dimSearch);
+
+        if(tSysUsersRoles!=null) {
+            tSysUsersRolesDao.deleteByPrimaryKey(ts.getUserid());
+        }
         return tSysUsersRolesDao.insertSelective(ts);
     }
 
@@ -98,5 +110,26 @@ public class UserManageServiceImpl implements UserManageService {
         return 0;
     }
 
+    @Override
+    public Integer insertSelective(TSysRoles tSysRoles){
+
+        return tSysRolesDao.insertSelective(tSysRoles);
+    }
+
+    @Override
+    public Integer insertSelectiveResources(TSysResources tSysResources) {
+        return tSysResourcesDao.insertSelective(tSysResources);
+    }
+
+    @Override
+    public List<TSysResources> selectByPid(DimSearch dimSearch) {
+        return tSysResourcesDao.selectByPid(dimSearch);
+    }
+    @Override
+    public Integer  updateByPrimaryKeySelective(TSysResources record){
+
+        return tSysResourcesDao.updateByPrimaryKeySelective(record);
+
+    }
 
 }

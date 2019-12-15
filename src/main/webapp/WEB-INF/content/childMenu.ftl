@@ -11,22 +11,25 @@
 <body class="content-pages-body">
 <div class="content-pages-wrap">
     <div class="commonTitle">
-        <h2>&gt;&gt; 角色授权</h2>
+        <h2>&gt;&gt; 子菜单列表</h2>
     </div>
-    <form id="memberCreat" name="memberCreat" action="/updateUserAndRole" method="post">
-        <input type="hidden" name="userid" value="${ownroles}">
+    <form id="memberCreat" name="memberCreat" action="/updateChildMenu" method="post">
+        <input type="hidden" name="menuid" value="${Menu}">
         <table border="0" cellspacing="1" cellpadding="0" class="commonTable">
 
             <tr>
-                <td align="center" style="width: 40px;">选择</td>
-                <td align="center">角色</td>
-                <td align="center">角色描述</td>
+                <td align="center">菜单编号</td>
+                <td align="center">菜单名称</td>
+                <td align="center">url</td>
+                <td align="center">排序</td>
             </tr>
-            <#list roles as role>
+            <#list childMenus as role>
                 <tr>
-                    <td align="center"><input name="roleid" type="radio" value="${role.id}"  <#if role.id=="${tt.roleid}"> checked="checked"</#if> /></td>
-                    <td align="center">${role.rolename}</td>
-                    <td align="center">${role.roledesc}</td>
+                    <td align="center">
+                        ${role.id}
+                    <td align="center"><input type="text" value="${role.resourcesname}" name="resourcesname"></td>
+                    <td align="center"><input type="text" value="${role.url}" name="url"></td>
+                    <td align="center"><input type="text" value="${role.sort}" name="sort"></td>
                 </tr>
             </#list>
         </table>
@@ -52,7 +55,6 @@
         var index = parent.layer.getFrameIndex(window.name);
         parent.layer.close(index);
     }
-
 </script>
 <!--//content pages wrap-->
 </body>

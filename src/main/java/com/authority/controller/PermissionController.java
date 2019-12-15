@@ -36,7 +36,7 @@ public class PermissionController {
 
 
     @RequestMapping("/login")
-    public String login(User user, HttpServletRequest request){
+    public String login(User user, HttpServletRequest request,Model model){
 
          HttpSession session= request.getSession();
          String codeImg=(String) session.getAttribute("KAPTCHA_SESSION_KEY");
@@ -51,15 +51,17 @@ public class PermissionController {
              return "redirect:/content.html/"+id;
          }
          if(tip==3){
-
+                model.addAttribute("note","用户名不存在");
              //用户名不存在
              return "login";
          }
             if(tip==2){
                 //密码错误
+                model.addAttribute("note","密码错误");
                 return "login";
             }
         }
+        model.addAttribute("note","验证码错误");
         return "login";
     }
 

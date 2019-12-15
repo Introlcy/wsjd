@@ -86,6 +86,9 @@
                              title="点击刷新验证码" alt="点击刷新验证码">
                     </div>
                 </div>
+                <div class="kit-login-row" style="margin-bottom: 0;color: #FB0000;font-weight: bold;font-family: 微软雅黑;">
+                    <span style="text-align: center">${note}</span>
+                </div>
                 <div class="kit-login-row" style="flex-direction: row;">
                     <div class="kit-login-col-inline" style="width: 200px;">
                         <button class="layui-btn kit-login-btn" id="submitBt" lay-submit="submit"
@@ -93,9 +96,7 @@
                         </button>
                     </div>
                 </div>
-                <div class="kit-login-row" style="margin-bottom: 0;color: #FB0000;font-weight: bold;font-family: 微软雅黑;">
-                    <span>本系统禁止上传涉密文件，违者将追究个人责任！</span>
-                </div>
+
             </form>
         </div>
     </div>

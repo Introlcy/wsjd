@@ -266,7 +266,7 @@ public class OrganizationServiceImpl implements OrganizationService {
         ResultJson t = new ResultJson();
         t.setCode(0);
         t.setMsg("");
-        t.setData(tSysResourcesDao.selectResource());
+        t.setData(tSysResourcesDao.selectMenu());
         t.setCount(100);
         return t;
     }

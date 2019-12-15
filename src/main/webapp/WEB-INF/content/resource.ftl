@@ -43,7 +43,6 @@
                     ,cols: [[
                         {field: 'id', title: '资源ID',}
                         , {field: 'resourcesname', title: '资源名'}
-                        , {field: 'url', title: '资源路径'}
                         , {field: 'sort', title: '排序'}
                         , {fixed: 'right', title: '操作', toolbar: '#barDemo', align: 'center',width:200}
                     ]]
@@ -63,59 +62,20 @@
                     }
                 });
 
-                $('.layui-btn').on('click', function () {
-                    // 搜索条件
-                    var url='/content/dimsearch/';
-                    var send_name = $("#demoReload").val();
-                    var send_org=$("#selectOrg").val();
-
-                    table.reload('demo', {
-                        method: 'post'
-                        ,where :{
-                            sendname:send_name,
-                            sendorg:send_org
-                        }
-                        ,url: '/content/dimsearch/'
-                        , page: {
-                            curr: 1
-                        }
-                    });
-                });
 
                 //头工具栏事件
                 table.on('toolbar(test)', function (obj) {
                     var rowEvent = obj.event;
                     if (rowEvent === 'add') {
-                        $("#selectOrg").empty();
-                        $.ajax({
-                            url: "/find",
-                            type: "post",
-                            success: function (sre) {
-                                var htmladd="<option value=''>请选择</option>";
-                                for(var key in sre){
-                                    var name= sre[key].orgname;
-                                    var val=sre[key].id;
-                                    htmladd +='<option value='+'"'+val+'"'+"onclick='console.log(1)'"+'>';
-                                    htmladd +=name;
-                                    htmladd +=' </option>';
-                                }
-                                $("#selectOrg").append(htmladd);
-                                console.log($("#selectOrg").html());
-                                console.log(htmladd);
-                                //  layer.msg('编辑操作');
-                                layer.open({
-                                    type: 1 //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
-                                    , title: '添加'
-                                    , area: ['1000px', '650px']
-                                    , maxmin: true  //最大最小化按钮
-                                    , offset: 'auto'   //位置居中
-                                    , content: $("#addPerson") //不出现滚动条   ,'no'
-                                    , btnAlign: 'c'
-                                })
-
-
-                            },
-                        });
+                        layer.open({
+                            type: 1 //0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+                            , title: '添加'
+                            , area: ['400px', '300px']
+                            , maxmin: true  //最大最小化按钮
+                            , offset: 'auto'   //位置居中
+                            , content: $("#saveDiv") //不出现滚动条   ,'no'
+                            , btnAlign: 'c'
+                        })
 
 
 
@@ -153,10 +113,6 @@
 
                                 },
                             });
-
-
-
-
                             layer.close(index);
                         });
 
@@ -168,7 +124,7 @@
                             , area: ['1000px', '650px']
                             , maxmin: true  //最大最小化按钮
                             , offset: 'auto'   //位置居中
-                            , content: '/content/editMemberforward/'+data.humanCode+'' //不出现滚动条   ,'no'
+                            , content: '/editMenu/'+data.id //不出现滚动条   ,'no'
                             , btnAlign: 'c'
 
                         });
@@ -181,59 +137,50 @@
     </script>
 </div>
 <!--//content pages wrap-->
+<div id="saveDiv" style="display:none">
+    <from class="layui-form" action="" lay-filter="dataFrm">
+        <div class="layui-from-item">
+            <div class="layui-inline">
+                <div class="content-pages-wrap">
+                    <div class="commonTitle"><h2>&gt;&gt; <td>资源管理</td> - 菜单创建</h2></div>
+                    <table border="0" cellspacing="1" cellpadding="0" class="commonTable" onsubmit="return check()">
+                        <form id="institutionCreat" name="institutionCreat" action="/addMenu" method="post">
+                            <tr>
+                                <td align="right"><span class="required">*</span>菜单名：</td>
+                                <td align="left"><input name="resourcesname" type="text" class="inputTextMiddle" id="username"/></td>
+                            </tr>
+                            <tr>
+                                <td align="right"><span class="required">*</span>排序：</td>
+                                <td align="left"><input name="sort" type="text" class="inputTextMiddle" id="password"/></td>
+                            </tr>
+                            <div id="formPageButton">
+                                <ul>
+                                    <li><input type="submit"  title="提交" class="btnShort" value="提交"></li>
+                                    <li><a onclick="f()" title="返回" class="btnShort">返回</a></li>
+                                </ul>
+                            </div>
+                        </form>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </from>
+</div>
 
 
 
+
+<script>
+    function f() {
+        layer.closeAll('page');
+    }
+</script>
 
 
 <script type="text/javascript">
     function cl(){
         layer.closeAll('page');
     }
-    function check() {
-        var percode = $("#percode").val();
-        var repmanname = $("#repmanname").val();
-
-        if ($.trim(percode) == "" || percode == null) {
-            alert("人员编码不能为空!");
-            return false;
-        }
-        if ($.trim(repmanname) == "" || repmanname == null) {
-            alert("不能为空!");
-            return false;
-        }
-        return true;
-    }
-    function getSection() {
-        var section=  $("#selectOrg").val();
-        $("#divNa").empty();
-        $.ajax({
-            url: "/querySectionByOrgId?id="+section+"",
-            type: "get",
-            success: function (sre) {
-                console.log(sre)
-                var htmladd="";
-                for(var key in sre){
-                    var val= sre[key].id;
-                    var name=sre[key].divname;
-                    htmladd +='<option value='+'"'+val+'"'+'>';
-                    htmladd +=name;
-                    htmladd +=' </option>';
-                }
-                $("#divNa").append(htmladd);
-                // console.log($("#selectOrg").html());
-                // console.log(htmladd);
-                //  layer.msg('编辑操作');
-
-
-
-            },
-        });
-
-
-
-    }
 </script>
-
 </body>
 </html>
