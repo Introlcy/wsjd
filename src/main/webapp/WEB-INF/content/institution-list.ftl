@@ -55,7 +55,7 @@
                     , cols: [[
                         {field: 'orgno', title: '机构编码',}
                         , {field: 'orgname', title: '机构名称'}
-                        , {field: 'exetype', title: '专业类别', sort: true}
+
                         , {field: 'linkadd', title: '经营地址'}
                         , {field: 'listingdate', title: '报告日期'}
                         , {field: 'zbbdocdate', title: '审核日期', sort: true}

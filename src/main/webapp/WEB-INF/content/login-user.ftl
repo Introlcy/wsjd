@@ -25,9 +25,9 @@
 
     <table style="height: 100%" id="demo" lay-filter="test"></table>
     <script type="text/html" id="barDemo">
-        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">编辑</a>
         <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
-        <a class="layui-btn layui-btn-xs" lay-event="detail">授予角色</a>
+        <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="detail">授予角色</a>
     </script>
 
 

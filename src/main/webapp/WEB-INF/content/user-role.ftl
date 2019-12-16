@@ -25,7 +25,7 @@
     <table style="height: 100%" id="demo" lay-filter="test"></table>
     <script type="text/html" id="barDemo">
         <a class="layui-btn layui-btn-xs" lay-event="del">删除</a>
-        <a class="layui-btn layui-btn-xs" lay-event="detail">授予资源</a>
+        <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="detail">授予资源</a>
     </script>
 
 
