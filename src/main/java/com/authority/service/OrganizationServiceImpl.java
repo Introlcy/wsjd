@@ -1,6 +1,5 @@
 package com.authority.service;
 
-import com.alibaba.druid.sql.dialect.oracle.ast.stmt.OracleCreateTableStatement;
 import com.authority.dao.*;
 import com.authority.entity.*;
 import com.authority.entity.vo.ResultJson;
@@ -9,7 +8,6 @@ import com.authority.entity.vo.TD0OrgAndLeader;
 import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
@@ -39,8 +37,8 @@ public class OrganizationServiceImpl implements OrganizationService {
     private TSysRolesDao tSysRolesDao;
 
     @Override
-    public List<TD0Organization> selectAllOrganization(Integer page,Integer limit) {
-        PageHelper.startPage(page,limit);
+    public List<TD0Organization> selectAllOrganization(Integer page, Integer limit) {
+        PageHelper.startPage(page, limit);
 
         return td0OrganizationDao.selectAll();
     }
@@ -162,8 +160,8 @@ public class OrganizationServiceImpl implements OrganizationService {
     }
 
     @Override
-    public List<TD0OrgAndLeader> selectAllOAL(Integer page,Integer limit) {
-        PageHelper.startPage(page,limit);
+    public List<TD0OrgAndLeader> selectAllOAL(Integer page, Integer limit) {
+        PageHelper.startPage(page, limit);
         return td0LeaderDao.queryAOL();
     }
 
@@ -180,8 +178,8 @@ public class OrganizationServiceImpl implements OrganizationService {
     }
 
     @Override
-    public List<TD0OrgAndLeader> selectLeaderByname(Integer page, Integer limit,DimSearch dimSearch) {
-        PageHelper.startPage(page,limit);
+    public List<TD0OrgAndLeader> selectLeaderByname(Integer page, Integer limit, DimSearch dimSearch) {
+        PageHelper.startPage(page, limit);
         return td0LeaderDao.queryByname(dimSearch);
     }
 
@@ -245,8 +243,8 @@ public class OrganizationServiceImpl implements OrganizationService {
     }
 
     @Override
-    public List<TD0Organization> selectByorgname(Integer page,Integer limit,DimSearch dimSearch) {
-        PageHelper.startPage(page,limit);
+    public List<TD0Organization> selectByorgname(Integer page, Integer limit, DimSearch dimSearch) {
+        PageHelper.startPage(page, limit);
         return td0OrganizationDao.selectOrgByname(dimSearch);
     }
 

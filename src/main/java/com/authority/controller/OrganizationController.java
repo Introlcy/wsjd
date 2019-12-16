@@ -6,6 +6,7 @@ import com.authority.entity.vo.TD0OrgAndLeader;
 import com.authority.entity.vo.TD0Orgation;
 import com.authority.entity.vo.TD0OrgleaderJson;
 import com.authority.service.OrganizationService;
+import com.authority.util.MD5Util;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -214,6 +215,9 @@ public class OrganizationController {
 
     @RequestMapping(value = "/adduser",method = RequestMethod.POST)
     public String addUser(TSysUsers users){
+        String pwd=users.getPassword();
+        String md5pwd= MD5Util.toMD5(pwd);
+        users.setPassword(md5pwd);
         service.insertUser(users);
         return "redirect:/usermanage";
     }
@@ -225,7 +229,11 @@ public class OrganizationController {
 
     @RequestMapping("/updateuser")
     public String updateUser(TSysUsers user){
+        String pwd=user.getPassword();
+        String md5pwd= MD5Util.toMD5(pwd);
+        user.setPassword(md5pwd);
         service.updateUser(user);
+        System.out.println(user.toString());
         return "redirect:/usermanage";
     }
 }

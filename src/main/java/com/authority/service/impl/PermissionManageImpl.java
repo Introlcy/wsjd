@@ -6,6 +6,7 @@ import com.authority.entity.MenuList;
 import com.authority.entity.Permission;
 import com.authority.entity.TSysUsers;
 import com.authority.service.PermissionManage;
+import com.authority.util.MD5Util;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -39,8 +40,9 @@ public class PermissionManageImpl implements PermissionManage {
     @Override
     public int getUser(String username,String password) {
          TSysUsers tSysUsers= tSysUsersDao.selectByUserName(username);
+        String md5Pwd = MD5Util.toMD5(password);
          if(tSysUsers!=null) {
-             if (password.equals(tSysUsers.getPassword())) {
+             if (md5Pwd.equals(tSysUsers.getPassword())) {
                  return 1;
              }
              return 2;
