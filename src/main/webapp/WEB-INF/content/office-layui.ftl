@@ -22,14 +22,14 @@
 
 <script type="text/html" id="toolbarDemo">
     <div class="layui-btn-container">
-        <button type="button" class="layui-btn layui-btn-primary"
+        <button type="button" class="layui-btn layui-btn-sm"
                 lay-event="add">增加
         </button>
     </div>
 </script>
 <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="edit" onclick="query()">编辑</a>
-    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit" >编辑</a>
+    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="del">删除</a>
 </script>
 
 <div id="add" style="display: none">
@@ -214,7 +214,7 @@
                 {field: 'orgid', title: '机构id', sort: true, fixed: 'left'}
                 , {field: 'divcode', title: '科室编码'}
                 , {field: 'divnamecode', title: '科室名称编码', sort: true}
-                , {field: 'divname', title: '科室名称代码'}
+                , {field: 'divname', title: '科室名称'}
                 , {field: 'ifsub', title: '是否为分所'}
                 , {field: 'dutytel', title: '电话号码', sort: true}
                 , {field: 'fax', title: '传真号码', sort: true}
