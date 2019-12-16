@@ -55,10 +55,10 @@
 <div id="header-wrap">
     <div id="header">
         <div class="logo-title">
-            <h1>江苏省卫生监督业务系统</h1>
+            <h1>卫生监督业务系统</h1>
         </div>
-        <div class="logout user-icon">
-            欢迎登录，<span class="user-text">管理员</span> [<span class="signout-text"><a href="/logout"  title="退出系统">退出系统</a></span>]
+        <div class="logout">
+            欢迎登录，${Session["loginname"]}</span> [<span class="signout-text"><a href="/logout"  title="退出系统">退出系统</a></span>]
         </div>
     </div>
 </div>
