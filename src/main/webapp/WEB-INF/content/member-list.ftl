@@ -31,14 +31,14 @@
                 </#list>
             </select>
         </div>
-        <button class="layui-btn" data-type="reload">搜索</button>
+        <button class="layui-btn" id="ss" data-type="reload">搜索</button>
     </div>
 
     <table class="layui-hide" id="test" lay-filter="test"></table>
 
     <script type="text/html" id="toolbarDemo">
         <div class="layui-btn-container">
-            <button type="button" class="layui-btn layui-byn-sm" lay-event="add">增加</button>
+            <button type="button" class="layui-btn layui-byn-sm"  lay-event="add">增加</button>
         </div>
     </script>
 
@@ -87,7 +87,7 @@
                     }
                 });
 
-                $('.layui-btn').on('click', function () {
+                $('#ss').on('click', function () {
                     // 搜索条件
                    var url='/content/dimsearch/';
                     var send_name = $("#demoReload").val();
