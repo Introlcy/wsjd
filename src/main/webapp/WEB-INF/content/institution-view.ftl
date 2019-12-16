@@ -145,7 +145,7 @@
             <th width="20%">公务费（万元）</th>
             <th width="20%">业务经费（万元）</th>
             <th width="20%">基本建设资金（万元）</th>
-            <th class="editColS">编辑</th>
+            <th class="editColS">删除</th>
         </tr>
         <#list fund as fundall>
             <tr>

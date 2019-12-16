@@ -29,7 +29,7 @@
                                 <td align="right"><span class="required">*</span>行政类别：</td>
                                 <td align="left" colspan="4">
 
-                                    <input type="radio" name="td0Organization.exetype" id="radio5" value="1" />行政部门
+                                    <input type="radio" name="td0Organization.exetype" id="radio5" value="1" checked="checked"/>行政部门
                                     <input type="radio" name="td0Organization.exetype" id="radio6" value="2" />卫生监督机构
                                     <input type="radio" name="td0Organization.exetype" id="radio7" value="3" />协作单位
                                 </td>
@@ -52,7 +52,7 @@
                                 <td align="right"><span class="required">*</span>行政区类别：</td>
                                 <td align="left">
                                     <input type="radio" name="td0Organization.areatype" id="radio1" value="1" />省
-                                    <input type="radio" name="td0Organization.areatype" id="radio2" value="2" />市
+                                    <input type="radio" name="td0Organization.areatype" id="radio2" value="2" checked="checked"/>市
                                     <input type="radio" name="td0Organization.areatype" id="radio3" value="3" />县
                                     <input type="radio" name="td0Organization.areatype" id="radio4" value="4" />区
 
@@ -86,7 +86,7 @@
                             </tr>
                             <tr>
                                 <td align="right"><span class="required">*</span>是否参公管理 ：</td>
-                                <td align="left"><input type="radio" name="ifpublicmanage" value="是"/>是<input type="radio" name="ifpublicmanage" value="否">否</td>
+                                <td align="left"><input type="radio" name="ifpublicmanage" value="是" checked="checked"/>是<input type="radio" name="ifpublicmanage" value="否">否</td>
                                 <td align="right"><span class="required">*</span>离退休人数 ：</td>
                                 <td align="left"><input name="retirenum" type="text" class="inputTextNormal" value="${orgattached.retirenum}"/></td>
                                 <td align="right"><span class="required">*</span>编制人数 ：</td>

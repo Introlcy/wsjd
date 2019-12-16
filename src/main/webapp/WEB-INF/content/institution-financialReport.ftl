@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html >
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -19,6 +19,7 @@
      <table border="0" align="center" cellpadding="0" cellspacing="1" class="commonTable">
 		<tr>
             <td align="center">单位</td>
+            <td align="center">年度</td>
             <td align="center">人员经费（万元）</td>
             <td align="center">公务费（万元）</td>
             <td align="center">业务经费（万元）</td>
@@ -27,6 +28,7 @@
          <#list  list as  fund>
              <tr>
                  <td align="center">${fund.td0Organization.orgname}</td>
+                 <td align="center">${fund.yearly}</td>
                  <td align="center">${fund.prefund}</td>
                  <td align="center">${fund.dutyfund}</td>
                  <td align="center">${fund.businessfund}</td>

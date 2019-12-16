@@ -58,7 +58,7 @@
                         , {field: 'exetype', title: '专业类别', sort: true}
                         , {field: 'linkadd', title: '经营地址'}
                         , {field: 'listingdate', title: '报告日期'}
-                        , {field: 'zbbdocdate', title: '审核状态', sort: true}
+                        , {field: 'zbbdocdate', title: '审核日期', sort: true}
                         , {fixed: 'right', title: '操作', toolbar: '#barDemo', align: 'center'}
                     ]]
                     , response: {

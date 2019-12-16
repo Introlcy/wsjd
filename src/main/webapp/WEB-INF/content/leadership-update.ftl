@@ -28,7 +28,7 @@
                                                                     class="inputTextNormal" id="leadername"
                                                                     value="${list.leadername}"/></td>
                                 <td width="12%" align="right"><span class="required">*</span>性别</td>
-                                <td width="21%" align="left"><input type="radio" name="gender" id="gender" value="男"/>
+                                <td width="21%" align="left"><input type="radio" name="gender" id="gender" value="男" checked="checked"/>
                                     男
                                     <input type="radio" name="gender" id="radio3" value="女"/>
                                     女
